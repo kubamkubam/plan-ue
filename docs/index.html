@@ -165,7 +165,16 @@ h1 { margin: 2px 0 0; font-size: 30px; line-height: 1.1; letter-spacing: -.02em;
 .nstat { font-size: 12.5px; color: var(--text-2); }
 .nstat.ok { color: var(--ok); font-weight: 650; }
 .nstat.dirty { color: var(--warn); font-weight: 650; }
-.orphans { margin-top: 4px; }
+.archive { border-color: color-mix(in srgb, var(--warn) 45%, var(--line)); }
+.state.warn { background: var(--warn-soft); color: var(--warn); }
+.arch-item { border-left: 3.5px solid hsl(var(--h) var(--sub-s) var(--sub-l)); background: hsl(var(--h) var(--tint-s) var(--tint-l)); border-radius: 10px; padding: 9px 11px; margin-top: 10px; }
+.arch-h { font-size: 14px; }
+.arch-h span { color: var(--text-2); }
+.arch-text { white-space: pre-wrap; overflow-wrap: anywhere; margin: 5px 0 8px; font-size: 14.5px; }
+.arch-actions { display: flex; flex-wrap: wrap; gap: 6px; }
+.arch-actions select { flex: 1 1 200px; min-width: 0; border: 1px solid var(--line); border-radius: 10px; padding: 7px 8px; background: var(--surface); color: var(--text); font: inherit; font-size: 14px; }
+.legend.abbr { margin-top: 6px; gap: 4px 16px; }
+.legend.abbr b { color: var(--text); }
 .more { width: 100%; margin-bottom: 14px; color: var(--text-2); }
 .empty { color: var(--text-2); padding: 30px 0; text-align: center; }
 @media (max-width: 560px) {
@@ -214,7 +223,7 @@ h1 { margin: 2px 0 0; font-size: 30px; line-height: 1.1; letter-spacing: -.02em;
 @media (min-width: 760px) { .subjects { grid-template-columns: 1fr 1fr; } }
 .subj { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; box-shadow: var(--shadow); }
 .subj h3 { margin: 0 0 2px; font-size: 16px; line-height: 1.3; display: flex; gap: 9px; align-items: baseline; }
-.subj h3 i { width: 10px; height: 10px; border-radius: 3px; background: hsl(var(--h) var(--sub-s) var(--sub-l)); flex: none; transform: translateY(-1px); }
+.row b.ty { color: hsl(var(--h) var(--sub-s) var(--sub-l)); }
 .subj .code { color: var(--text-3); font-size: 13px; margin: 0 0 8px 19px; }
 .row { display: grid; grid-template-columns: 44px 1fr auto; gap: 10px; align-items: center; padding: 6px 0; border-top: 1px solid var(--line-soft); font-size: 14px; }
 .row b { font-size: 13px; color: var(--text-2); }
@@ -286,6 +295,7 @@ ol.steps li { margin: 4px 0; }
           <button data-mode="semestr" aria-selected="false">Cały semestr</button>
         </div>
       </div>
+      <div id="archive"></div>
       <div id="notice"></div>
       <div id="zjazdy"></div>
       <div id="semestr" hidden></div>
@@ -300,8 +310,9 @@ ol.steps li { margin: 4px 0; }
 
 <script>
 "use strict";
-const HUES = { ZIDT: 262, PLK: 212, ZPR: 160, PBM: 24, ZJP: 340, KZP: 190, BiCP: 45, JA: 232 };
-const ELECTIVE_HUES = [300, 128, 88, 5, 280, 100];
+// jak w oryginalnym planie: wykłady niebieskie, ćwiczenia i lektorat zielone, laboratoria i reszta czerwone
+const TYPE_HUE = { W: 215, "Ćw": 140, Lekt: 140 };
+const OTHER_HUE = 2;
 const DAY = ["niedziela", "poniedziałek", "wtorek", "środa", "czwartek", "piątek", "sobota"];
 const DAY_ACC = ["niedzielę", "poniedziałek", "wtorek", "środę", "czwartek", "piątek", "sobotę"];
 const DAY_SHORT = ["ndz", "pon", "wt", "śr", "czw", "pt", "sob"];
@@ -362,14 +373,7 @@ function relTime(d, now = new Date()) {
   const h = Math.floor(min / 60), m = min % 60;
   return m && h < 5 ? `za ${h} h ${m} min` : `za ${Math.round(min / 60)} h`;
 }
-function electiveNames() {
-  return [...new Set(state.data.events.filter((e) => e.kind === "elective").map((e) => e.name))];
-}
-function hueFor(ev) {
-  if (ev.kind === "elective") return ELECTIVE_HUES[electiveNames().indexOf(ev.name) % ELECTIVE_HUES.length];
-  if (ev.code in HUES) return HUES[ev.code];
-  let h = 0; for (const c of ev.code) h = (h * 31 + c.charCodeAt(0)) % 360; return h;
-}
+const hueFor = (ev) => TYPE_HUE[ev.type_short] ?? OTHER_HUE;
 function abbr(ev) {
   if (ev.kind === "language") return "ANG";
   if (ev.kind !== "elective") return ev.code;
@@ -402,7 +406,8 @@ const Notes = {
     });
   },
   async pull() {
-    const r = await this.api("notes.json");
+    // unikalny adres: GitHub trzyma odpowiedź w cache do 60 s, a usunięcie/zmiana musi dojść od razu
+    const r = await this.api(`notes.json?t=${Date.now()}`);
     if (r.status === 404) {
       if (!(await this.repoVisible())) { const e = new Error("Brak dostępu do repozytorium notatek"); e.auth = true; throw e; }
       return { notes: {}, sha: null };
@@ -480,6 +485,13 @@ function prepare() {
   }
   const blockOf = new Map();
   for (const b of blocks) for (const p of b.parts) blockOf.set(p.key, b);
+  // notatka należy do bloku, jeśli jest zapisana pod kluczem którejkolwiek jego części
+  for (const b of blocks) b.nk = (b.parts.find((p) => Notes.get(p.key)) || b).key;
+  // notatki bez zajęć w planie -> przechowalnia (nic nie znika po zmianie planu)
+  const shown = new Set(blocks.map((b) => b.nk));
+  const hidden = new Set(state.data.events.filter((e) => !state.showPS && e.kind === "not_enrolled").map((e) => e.key));
+  const orphans = Object.entries(Notes.all).filter(([k, n]) => n.text && !shown.has(k) && !hidden.has(k))
+    .map(([k, n]) => ({ k, ...n })).sort((a, b) => ((a.date || "") + (a.start || "")).localeCompare((b.date || "") + (b.start || "")));
   // dni -> zjazdy (dni oddalone o max 2 doby tworzą jeden zjazd)
   const days = new Map();
   for (const b of blocks) { if (!days.has(b.date)) days.set(b.date, []); days.get(b.date).push(b); }
@@ -510,7 +522,7 @@ function prepare() {
     z.slots = [...new Set(z.days.flatMap((x) => x.list.flatMap((b) => b.parts.map((p) => p.start))))].sort();
   });
   const allSlots = [...new Set(events.map((e) => e.start))].sort();
-  return { blocks, zjazdy, blockOf, allSlots };
+  return { blocks, zjazdy, blockOf, allSlots, orphans };
 }
 
 function unseenChanges() {
@@ -547,7 +559,7 @@ function renderHero(blocks) {
   const sameDay = upcoming.slice(1).filter((x) => x.date === b.date && x.kind !== "not_enrolled");
   const after = sameDay.length ? sameDay : upcoming.slice(1, 4);
   const endOfDay = [b, ...sameDay].slice(-1)[0];
-  const note = Notes.get(b.key);
+  const note = Notes.get(b.nk);
   el.innerHTML = `
     <div>
       <div class="hero-label">${label}</div>
@@ -592,8 +604,9 @@ function noteStatusHtml(key) {
 
 function cardHtml(b, now, marks) {
   const open = state.expanded.has(b.key);
-  const note = Notes.get(b.key);
-  const draft = state.drafts.get(b.key);
+  const nk = b.nk;
+  const note = Notes.get(nk);
+  const draft = state.drafts.get(nk);
   const hasDraft = draft !== undefined && draft !== (note?.text || "");
   const cls = ["card", b.e < now ? "past" : "", b.s <= now && b.e > now ? "live" : "", open ? "open" : ""].join(" ");
   const mark = marks.get(`${b.code}|${b.date}`);
@@ -611,9 +624,9 @@ function cardHtml(b, now, marks) {
         <dt>Sala</dt><dd>${esc(b.room || "— (brak w planie)")}</dd>
         <dt>Prowadzi</dt><dd>${esc(b.teacher || "—")}</dd>
       </dl>
-      <label for="t-${esc(b.key)}">Notatka</label>
-      <textarea id="t-${esc(b.key)}" data-note="${esc(b.key)}" placeholder="np. przygotować projekt, co przynieść…">${esc(val)}</textarea>
-      <div class="note-actions"><button class="btn primary" data-save="${esc(b.key)}">Zapisz</button>${noteStatusHtml(b.key)}</div>
+      <label for="t-${esc(nk)}">Notatka</label>
+      <textarea id="t-${esc(nk)}" data-note="${esc(nk)}" placeholder="np. przygotować projekt, co przynieść…">${esc(val)}</textarea>
+      <div class="note-actions"><button class="btn primary" data-save="${esc(nk)}">Zapisz</button>${noteStatusHtml(nk)}</div>
     </div>`;
   }
   return html + `</div>`;
@@ -655,14 +668,6 @@ function renderZjazdy(zjazdy) {
     html += `<article class="zjazd" id="z${z.no}"><header><h2><span>Zjazd ${z.no}</span>${range}</h2><span class="tag ${running || (n < 7 && n >= 0) ? "now" : ""}">${tag}</span></header>
       <div class="zgrid" style="--cols:${z.cols.length}">${g}</div></article>`;
   }
-  // notatki do zajęć, których już nie ma w planie (np. po przeniesieniu terminu)
-  const keys = new Set(zjazdy.flatMap((z) => z.days.flatMap((d) => d.list.map((b) => b.key))));
-  const orphans = Object.entries(Notes.all).filter(([k, n]) => n.text && !keys.has(k));
-  if (orphans.length) {
-    html += `<div class="panel orphans"><h3>Notatki do terminów, których nie ma już w planie</h3>
-      ${orphans.map(([k, n]) => `<div class="snote" style="--h:210;cursor:default;margin-top:6px"><b>${esc(n.name || k)} · ${n.date ? `${fmtShort(toDate(n.date))} ${esc(n.start || "")}` : ""}</b>${esc(n.text)}</div>`).join("")}
-      <p class="hint">Termin zajęć zmienił się po dodaniu notatki. Przepisz ją do nowego terminu.</p></div>`;
-  }
   $("#zjazdy").innerHTML = html;
   const t = $("#togglePast");
   if (t) t.onclick = () => { state.showPast = !state.showPast; render(); };
@@ -682,18 +687,19 @@ function renderSemestr(zjazdy, allSlots, blockOf) {
         if (!ev) { g += `<span class="nochip"></span>`; continue; }
         const b = blockOf.get(ev.key);
         const cont = b.parts[0] !== ev;
-        const note = Notes.get(b.key);
+        const note = Notes.get(b.nk);
         g += `<button class="chip ${cont ? "cont" : ""}" style="--h:${hueFor(ev)}" data-open="${esc(b.key)}" title="${esc(`${ev.name} (${TYPE_FULL[ev.type_short] || ev.type}) ${ev.start}–${ev.end}${ev.room ? `, sala ${ev.room}` : ""}${note ? `\nNotatka: ${note.text}` : ""}`)}"><span>${esc(abbr(ev))}</span>${cont ? "" : `<small>${esc(ev.type_short)}</small>`}${note && !cont ? `<i class="nd"></i>` : ""}</button>`;
       }
     }
     return `<div class="sc ${z.end < now ? "past" : ""} ${z.no === nextNo ? "next" : ""}"><div class="sc-h"><b>Zjazd ${z.no}</b><span>${range}</span></div><div class="sg" style="--cols:${z.cols.length}">${g}</div></div>`;
   });
-  // legenda
+  // legenda: kolory rodzajów + skróty przedmiotów
   const seen = new Map();
-  for (const z of zjazdy) for (const d of z.days) for (const b of d.list) if (!seen.has(b.name)) seen.set(b.name, b);
-  const legend = [...seen.values()].map((b) => `<span><span class="chip" style="--h:${hueFor(b)}"><span>${esc(abbr(b))}</span></span>${esc(b.name)}</span>`).join("");
+  for (const z of zjazdy) for (const d of z.days) for (const b of d.list) if (!seen.has(abbr(b))) seen.set(abbr(b), b.name);
+  const types = [["W", "wykład"], ["Ćw", "ćwiczenia / lektorat"], ["Lab", "laboratorium"]];
   $("#semestr").innerHTML = `<div class="sem">${cards.join("")}</div>
-    <div class="legend">${legend}<span><i class="nd-demo"></i>jest notatka</span></div>
+    <div class="legend">${types.map(([ty, l]) => `<span><span class="chip" style="--h:${hueFor({ type_short: ty })}"><span>${ty}</span></span>${l}</span>`).join("")}<span><i class="nd-demo"></i>jest notatka</span></div>
+    <div class="legend abbr">${[...seen].map(([a, n]) => `<span><b>${esc(a)}</b> ${esc(n)}</span>`).join("")}</div>
     <p class="hint" style="margin:8px 2px 0">Stuknij zajęcia, żeby zobaczyć szczegóły i notatkę.</p>`;
 }
 
@@ -702,7 +708,7 @@ function renderPrzedmioty() {
   const events = state.data.events.filter((e) => e.kind !== "not_enrolled" || state.showPS).map((e) => ({ ...e, s: toDate(e.date, e.start), e: toDate(e.date, e.end) }));
   const subjects = new Map();
   for (const e of events) {
-    if (!subjects.has(e.name)) subjects.set(e.name, { name: e.name, code: e.code, kind: e.kind, h: hueFor(e), types: new Map(), next: null });
+    if (!subjects.has(e.name)) subjects.set(e.name, { name: e.name, code: e.code, kind: e.kind, types: new Map(), next: null });
     const s = subjects.get(e.name);
     if (!s.types.has(e.type_short)) s.types.set(e.type_short, { total: 0, done: 0, teachers: new Set(), rooms: new Set(), min: 0 });
     const t = s.types.get(e.type_short);
@@ -720,15 +726,15 @@ function renderPrzedmioty() {
   $("#przedmioty").innerHTML = list.map((s) => {
     const notes = (notesBy.get(s.name) || []).sort((a, b) => (a.date + a.start).localeCompare(b.date + b.start));
     return `
-    <div class="subj" style="--h:${s.h}">
-      <h3><i></i>${esc(s.name)}</h3>
+    <div class="subj">
+      <h3>${esc(s.name)}</h3>
       <div class="code">${esc(abbr(s))}${s.kind === "elective" ? " · do wyboru" : s.kind === "not_enrolled" ? " · jeszcze nie zapisany" : ""}${s.next ? ` · następne: ${DAY_SHORT[s.next.s.getDay()]} ${fmtShort(s.next.s)}, ${s.next.start}` : " · zakończony"}</div>
       ${[...s.types].map(([ty, t]) => `
-        <div class="row"><b>${esc(ty)}</b>
+        <div class="row" style="--h:${hueFor({ type_short: ty })}"><b class="ty">${esc(ty)}</b>
           <div class="who">${esc([...t.teachers].join(", ") || "—")}<small>${Math.round(t.min / 45)} h · ${t.rooms.size ? "sale: " + esc([...t.rooms].join(", ")) : "sala: —"}</small></div>
           <div class="cnt">${t.done}/${t.total}<div class="bar"><i style="width:${(t.done / t.total) * 100}%"></i></div></div>
         </div>`).join("")}
-      ${notes.length ? `<div class="snotes">${notes.map((n) => `<button class="snote" data-open="${esc(n.k)}"><b>Notatka · ${DAY_SHORT[toDate(n.date).getDay()]} ${fmtShort(toDate(n.date))}, ${esc(n.start)} (${esc(n.type_short || "")})</b>${esc(n.text)}</button>`).join("")}</div>` : ""}
+      ${notes.length ? `<div class="snotes">${notes.map((n) => `<button class="snote" style="--h:${hueFor(n)}" data-open-note="${esc(n.k)}"><b>${prepared.orphans.some((o) => o.k === n.k) ? "W przechowalni · " : ""}Notatka · ${DAY_SHORT[toDate(n.date).getDay()]} ${fmtShort(toDate(n.date))}, ${esc(n.start)} (${esc(n.type_short || "")})</b>${esc(n.text)}</button>`).join("")}</div>` : ""}
     </div>`;
   }).join("") + (hasOptional ? `
     <div class="panel" style="grid-column:1/-1">
@@ -894,6 +900,7 @@ function render(force = false) {
   renderStatus();
   renderHero(blocks);
   renderNotice();
+  renderArchive(prepared.orphans, blocks);
   renderZjazdy(zjazdy);
   renderSemestr(zjazdy, allSlots, blockOf);
   renderPrzedmioty();
@@ -922,6 +929,38 @@ function showMode(mode) {
 document.querySelectorAll("[data-tab]").forEach((b) => (b.onclick = () => showTab(b.dataset.tab)));
 document.querySelectorAll("[data-mode]").forEach((b) => (b.onclick = () => showMode(b.dataset.mode)));
 
+function renderArchive(orphans, blocks) {
+  const el = $("#archive");
+  if (!orphans.length) { el.innerHTML = ""; return; }
+  const now = new Date();
+  const items = orphans.map((o) => {
+    const od = o.date ? toDate(o.date, o.start || "00:00") : now;
+    // propozycje: ten sam przedmiot, najpierw ten sam rodzaj zajęć i najbliższy termin
+    const targets = blocks.filter((b) => b.name === o.name)
+      .sort((a, b) => (a.type_short !== o.type_short) - (b.type_short !== o.type_short) || Math.abs(a.s - od) - Math.abs(b.s - od) || b.s - a.s);
+    const when = o.date ? `${DAY_SHORT[od.getDay()]} ${fmtShort(od)}, ${esc(o.start || "")}` : "—";
+    return `<div class="arch-item" style="--h:${hueFor(o)}">
+      <div class="arch-h"><b>${esc(o.name || "Zajęcia")}</b> <span>· ${esc(TYPE_FULL[o.type_short] || o.type_short || "")} · był termin: ${when}</span></div>
+      <div class="arch-text">${esc(o.text)}</div>
+      <div class="arch-actions">
+        ${targets.length ? `<select data-target-for="${esc(o.k)}" aria-label="Nowy termin">${targets.map((b) => `<option value="${esc(b.key)}">${DAY_SHORT[b.s.getDay()]} ${fmtShort(b.s)}, ${b.start} · ${esc(TYPE_FULL[b.type_short] || b.type)}${Notes.get(b.nk) ? " (ma już notatkę – dopiszę)" : ""}</option>`).join("")}</select>
+        <button class="btn primary" data-move="${esc(o.k)}">Przenieś</button>` : ""}
+        <button class="btn" data-copy="${esc(o.k)}">Kopiuj tekst</button>
+        <button class="btn" data-drop="${esc(o.k)}">Usuń</button>
+      </div>
+    </div>`;
+  }).join("");
+  el.innerHTML = `<div class="panel archive"><h3>Przechowalnia notatek <span class="state warn">${orphans.length}</span></h3>
+    <p>Te zajęcia zniknęły z planu albo zmieniły termin. Notatki są bezpieczne — przenieś je do nowego terminu albo skopiuj.</p>${items}</div>`;
+}
+
+function openNote(k) {
+  const b = prepared?.blockOf.get(k);
+  if (b && b.nk === k) return openClass(b.key);
+  state.tab = "plan"; render(true);
+  $("#archive")?.scrollIntoView({ block: "start", behavior: "smooth" });
+}
+
 // otwórz konkretne zajęcia w widoku zjazdów (z widoku semestru, przedmiotów, karty "najbliższe")
 function openClass(key) {
   const b = prepared?.blocks.find((x) => x.key === key);
@@ -936,8 +975,32 @@ function openClass(key) {
 
 // obsługa kliknięć i pisania (delegacja - elementy są przerysowywane)
 document.addEventListener("click", async (ev) => {
-  const t = ev.target.closest("[data-toggle],[data-save],[data-open]");
+  const t = ev.target.closest("[data-toggle],[data-save],[data-open],[data-open-note],[data-move],[data-copy],[data-drop]");
   if (!t) return;
+  const ok = t.dataset.move || t.dataset.copy || t.dataset.drop;
+  const o = ok ? Notes.all[ok] : null;
+  const keepMeta = (n) => ({ name: n.name, date: n.date, start: n.start, end: n.end, type_short: n.type_short });
+  if (t.dataset.openNote) return openNote(t.dataset.openNote);
+  if (t.dataset.copy) {
+    try { await navigator.clipboard.writeText(o.text); toast("Skopiowano tekst notatki"); } catch { prompt("Skopiuj notatkę:", o.text); }
+    return;
+  }
+  if (t.dataset.drop) {
+    if (!confirm(`Usunąć na stałe notatkę „${o.text.slice(0, 60)}”?`)) return;
+    await Notes.save(ok, "", keepMeta(o));
+    toast("Notatka usunięta");
+    return render(true);
+  }
+  if (t.dataset.move) {
+    const sel = document.querySelector(`[data-target-for="${CSS.escape(ok)}"]`);
+    const b = prepared.blocks.find((x) => x.key === sel.value);
+    const existing = Notes.get(b.nk)?.text;
+    t.disabled = true; t.textContent = "Przenoszę…";
+    await Notes.save(b.nk, existing ? `${existing}\n\n${o.text}` : o.text, keepMeta(b));
+    await Notes.save(ok, "", keepMeta(o));
+    toast(`Przeniesiono do: ${DAY_SHORT[b.s.getDay()]} ${fmtShort(b.s)}, ${b.start}`);
+    return openClass(b.key);
+  }
   if (t.dataset.toggle) {
     const k = t.dataset.toggle;
     state.expanded.has(k) ? state.expanded.delete(k) : state.expanded.add(k);
@@ -947,7 +1010,8 @@ document.addEventListener("click", async (ev) => {
     openClass(t.dataset.open);
   } else if (t.dataset.save) {
     const k = t.dataset.save;
-    const b = prepared.blocks.find((x) => x.key === k);
+    const b = prepared.blocks.find((x) => x.nk === k);
+    if (!b) return;
     const text = (state.drafts.has(k) ? state.drafts.get(k) : Notes.get(k)?.text || "").trim();
     t.disabled = true; t.textContent = "Zapisuję…";
     const res = await Notes.save(k, text, { name: b.name, date: b.date, start: b.start, end: b.end, type_short: b.type_short });
@@ -1023,6 +1087,13 @@ window.addEventListener("online", () => load());
 window.addEventListener("offline", () => state.data && renderStatus());
 setInterval(() => { if (!document.hidden) load(); }, 10 * 6e4);
 setInterval(() => { if (state.data && !document.hidden) render(); }, 60 * 1000);
+// notatki: sprawdzaj zmiany z innych urządzeń co 30 s, gdy strona jest na wierzchu
+function syncNotesQuietly() {
+  if (!Notes.token || document.hidden || !state.data) return;
+  Notes.sync().then((changed) => { if (changed) render(); }).catch(() => {});
+}
+setInterval(syncNotesQuietly, 30 * 1000);
+window.addEventListener("focus", syncNotesQuietly);
 if ("serviceWorker" in navigator && location.protocol === "https:") navigator.serviceWorker.register("sw.js").catch(() => {});
 </script>
 </body>
