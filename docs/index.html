@@ -158,8 +158,8 @@ h1 { margin: 2px 0 0; font-size: 30px; line-height: 1.1; letter-spacing: -.02em;
 .body dt { color: var(--text-3); }
 .body dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
 .body label { display: block; font-weight: 650; margin-bottom: 4px; }
-.body textarea { width: 100%; min-height: 92px; resize: vertical; border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; background: var(--surface); font-size: 16px; line-height: 1.4; }
-.body textarea:focus { outline: 2px solid hsl(var(--h) var(--sub-s) var(--sub-l)); outline-offset: -1px; border-color: transparent; }
+.neditor textarea { width: 100%; min-height: 92px; resize: vertical; border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; background: var(--surface); font-size: 16px; line-height: 1.4; }
+.neditor textarea:focus { outline: 2px solid var(--accent); outline-offset: -1px; border-color: transparent; }
 .note-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin-top: 8px; }
 .note-actions .btn { padding: 7px 16px; }
 .nstat { font-size: 12.5px; color: var(--text-2); }
@@ -174,6 +174,55 @@ h1 { margin: 2px 0 0; font-size: 30px; line-height: 1.1; letter-spacing: -.02em;
 .arch-actions { display: flex; flex-wrap: wrap; gap: 6px; }
 .arch-actions select { flex: 1 1 200px; min-width: 0; border: 1px solid var(--line); border-radius: 10px; padding: 7px 8px; background: var(--surface); color: var(--text); font: inherit; font-size: 14px; }
 .legend.abbr { margin-top: 6px; gap: 4px 16px; }
+/* nagłówek: dwa przyciski stanu (plan / notatki) */
+.pills { display: flex; flex-wrap: wrap; gap: 6px; }
+button.pill { cursor: pointer; font: inherit; font-size: 13px; }
+.pill.off i { background: var(--text-3); }
+.pill .rl { color: var(--accent); padding-left: 2px; }
+.ctx-note { margin: 0 0 10px; padding: 7px 10px; border-radius: 10px; background: var(--surface); border: 1px solid var(--line); white-space: pre-wrap; overflow-wrap: anywhere; font-size: 13px; }
+.ctx-note b { display: block; font-size: 12px; color: var(--text-2); }
+.linkbtn { background: none; border: 0; padding: 8px 0 0; color: var(--accent); font: inherit; font-size: 13.5px; font-weight: 650; cursor: pointer; text-align: left; }
+/* przedmioty: lista -> przedmiot -> rodzaj zajęć */
+.subj-link { display: block; width: 100%; text-align: left; font: inherit; color: inherit; cursor: pointer; }
+.subj-link h3 { justify-content: space-between; }
+.go { color: var(--text-3); font-size: 22px; line-height: 1; margin-left: 8px; font-weight: 400; }
+.ncount { display: inline-flex; gap: 5px; align-items: center; margin-top: 8px; font-size: 13px; font-weight: 650; color: var(--warn); }
+.ncount svg { width: 14px; height: 14px; }
+.back { background: none; border: 0; color: var(--accent); font: inherit; font-weight: 650; font-size: 15px; padding: 2px 0 10px; cursor: pointer; }
+.phead h2 { margin: 0; font-size: 22px; letter-spacing: -.01em; line-height: 1.25; }
+.phead p { margin: 4px 0 12px; color: var(--text-2); font-size: 14px; }
+.tlist { display: grid; gap: 10px; margin-bottom: 14px; }
+@media (min-width: 760px) { .tlist { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); } }
+.tcard { text-align: left; width: 100%; background: var(--surface); border: 1px solid var(--line); border-left: 4px solid hsl(var(--h) var(--sub-s) var(--sub-l)); border-radius: var(--radius); padding: 12px 14px; cursor: pointer; box-shadow: var(--shadow); font: inherit; color: inherit; }
+.tc-h { display: flex; justify-content: space-between; align-items: baseline; font-size: 16px; }
+.tc-h b { color: hsl(var(--h) var(--sub-s) var(--sub-l)); }
+.tc-m { color: var(--text-2); font-size: 13.5px; margin-top: 2px; }
+.tcard .bar { width: 100%; margin-top: 8px; }
+.ty-badge { display: inline-block; font-size: 13px; font-weight: 750; padding: 2px 9px; border-radius: 999px; background: hsl(var(--h) var(--tint-s) var(--tint-l)); color: hsl(var(--h) var(--sub-s) var(--sub-l)); vertical-align: 3px; margin-right: 4px; }
+.prog { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--text-2); margin-bottom: 14px; }
+.prog .bar { flex: 1; margin: 0; width: auto; }
+h3.sec { font-size: 15px; margin: 18px 2px 8px; }
+.sessions { display: grid; gap: 8px; }
+@media (min-width: 760px) { .sessions { grid-template-columns: 1fr 1fr; align-items: start; } }
+.sess { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow); overflow: hidden; }
+.sess.past { opacity: .6; }
+.sess.past.open { opacity: 1; }
+.sess.next { border-color: hsl(var(--h) var(--sub-s) var(--sub-l)); box-shadow: 0 0 0 1px hsl(var(--h) var(--sub-s) var(--sub-l)); }
+.sess-h { display: grid; grid-template-columns: 30px 1fr auto; gap: 10px; align-items: center; width: 100%; text-align: left; background: none; border: 0; padding: 10px 12px; cursor: pointer; font: inherit; color: inherit; }
+.sess-no { width: 28px; height: 28px; border-radius: 50%; background: hsl(var(--h) var(--tint-s) var(--tint-l)); color: hsl(var(--h) var(--sub-s) var(--sub-l)); display: flex; align-items: center; justify-content: center; font-weight: 750; font-size: 13px; }
+.sess-main { min-width: 0; }
+.sess-main b { display: block; font-size: 14.5px; }
+.sess-main span { font-size: 13px; color: var(--text-2); }
+.sess-note, .sess-add { display: flex; gap: 7px; width: calc(100% - 24px); margin: 0 12px 10px; text-align: left; border: 0; border-radius: 10px; padding: 8px 10px; font: inherit; font-size: 14px; cursor: pointer; background: hsl(var(--h) var(--tint-s) var(--tint-l)); white-space: pre-wrap; overflow-wrap: anywhere; color: var(--text); }
+.sess-note svg { width: 15px; height: 15px; flex: none; margin-top: 2px; color: hsl(var(--h) var(--sub-s) var(--sub-l)); }
+.sess-add { background: none; border: 1.5px dashed var(--line); color: var(--text-3); font-weight: 600; }
+.sess-body { padding: 0 12px 12px; }
+/* skaner QR */
+.scan { position: relative; margin-top: 12px; border-radius: 14px; overflow: hidden; background: #000; width: 100%; max-width: 360px; aspect-ratio: 1; }
+.scan video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.scan-frame { position: absolute; inset: 16%; border: 3px solid rgba(255, 255, 255, .9); border-radius: 14px; box-shadow: 0 0 0 999px rgba(0, 0, 0, .35); }
+details.alt { margin-top: 14px; }
+details.alt summary { cursor: pointer; color: var(--accent); font-weight: 600; font-size: 14px; }
 .legend.abbr b { color: var(--text); }
 .more { width: 100%; margin-bottom: 14px; color: var(--text-2); }
 .empty { color: var(--text-2); padding: 30px 0; text-align: center; }
@@ -273,7 +322,10 @@ ol.steps li { margin: 4px 0; }
       <div class="eyebrow" id="sub">UEW</div>
       <h1 id="title">Plan zajęć</h1>
     </div>
-    <div class="pill" id="status"><i></i><span>Ładowanie…</span></div>
+    <div class="pills">
+      <div class="pill" id="status"><i></i><span>Ładowanie…</span></div>
+      <button class="pill" id="notesPill" hidden></button>
+    </div>
   </header>
 
   <section class="hero" id="hero" hidden></section>
@@ -300,7 +352,7 @@ ol.steps li { margin: 4px 0; }
       <div id="zjazdy"></div>
       <div id="semestr" hidden></div>
     </section>
-    <section data-view="przedmioty" hidden><div id="przedmioty" class="subjects"></div></section>
+    <section data-view="przedmioty" hidden><div id="przedmioty"></div></section>
     <section data-view="zmiany" hidden><div id="zmiany"></div></section>
     <section data-view="ustawienia" hidden><div id="sync"></div><div id="kalendarz"></div></section>
   </main>
@@ -318,6 +370,7 @@ const DAY_ACC = ["niedzielę", "poniedziałek", "wtorek", "środę", "czwartek",
 const DAY_SHORT = ["ndz", "pon", "wt", "śr", "czw", "pt", "sob"];
 const MONTH = ["stycznia", "lutego", "marca", "kwietnia", "maja", "czerwca", "lipca", "sierpnia", "września", "października", "listopada", "grudnia"];
 const TYPE_FULL = { W: "wykład", "Ćw": "ćwiczenia", Lab: "laboratorium", Lekt: "lektorat" };
+const TYPE_GEN = { W: "wykładu", "Ćw": "ćwiczeń", Lab: "laboratorium", Lekt: "lektoratu" };
 const CHANGE_LABEL = { moved: "przeniesione", removed: "odwołane", added: "nowe", room: "sala", teacher: "prowadzący" };
 const ICON_NOTE = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2.5h7l3 3v8H3z"/><path d="M5.5 7.5h5M5.5 10h5"/></svg>';
 const ICON_CHEV = '<svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg>';
@@ -333,7 +386,16 @@ const state = {
   showPast: false, showPS: store.get("showPS", true),
   expanded: new Set(), drafts: new Map(), noteMsg: new Map(),
   deferredRender: false,
+  noteMeta: new Map(), sOpen: new Set(), subj: store.get("subj", null),
+  scanning: false, qrOpen: false,
 };
+let editorSeq = 0;
+const metaOf = (b) => ({ name: b.name, date: b.date, start: b.start, end: b.end, type_short: b.type_short });
+const skey = (name, ty) => (ty ? `subj|${name}|${ty}` : `subj|${name}`);
+const isPhone = () => matchMedia("(pointer: coarse)").matches;
+function loadScript(src) {
+  return new Promise((ok, fail) => { const s = document.createElement("script"); s.src = src; s.onload = ok; s.onerror = fail; document.head.appendChild(s); });
+}
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
@@ -455,7 +517,7 @@ const Notes = {
         }
         throw new Error("Konflikt zapisu, spróbuj ponownie");
       } catch (e) { this.syncError = e.message; throw e; }
-      finally { this.syncing = null; }
+      finally { this.syncing = null; setTimeout(() => typeof renderNotesPill === "function" && state.data && renderNotesPill(), 0); }
     })();
     return this.syncing;
   },
@@ -490,7 +552,7 @@ function prepare() {
   // notatki bez zajęć w planie -> przechowalnia (nic nie znika po zmianie planu)
   const shown = new Set(blocks.map((b) => b.nk));
   const hidden = new Set(state.data.events.filter((e) => !state.showPS && e.kind === "not_enrolled").map((e) => e.key));
-  const orphans = Object.entries(Notes.all).filter(([k, n]) => n.text && !shown.has(k) && !hidden.has(k))
+  const orphans = Object.entries(Notes.all).filter(([k, n]) => n.text && !k.startsWith("subj|") && !shown.has(k) && !hidden.has(k))
     .map(([k, n]) => ({ k, ...n })).sort((a, b) => ((a.date || "") + (a.start || "")).localeCompare((b.date || "") + (b.start || "")));
   // dni -> zjazdy (dni oddalone o max 2 doby tworzą jeden zjazd)
   const days = new Map();
@@ -602,6 +664,15 @@ function noteStatusHtml(key) {
   return n ? `<span class="nstat">Zapisano ${fmtStamp(n.updated, true)}</span>` : `<span class="nstat">Notatka widoczna tylko dla Ciebie</span>`;
 }
 
+function noteEditor(key, meta, placeholder = "np. przygotować projekt, co przynieść…") {
+  state.noteMeta.set(key, meta);
+  const note = Notes.get(key);
+  const draft = state.drafts.get(key);
+  const val = draft !== undefined ? draft : note?.text || "";
+  return `<div class="neditor"><textarea id="t${++editorSeq}" data-note="${esc(key)}" placeholder="${esc(placeholder)}" aria-label="Notatka">${esc(val)}</textarea>
+    <div class="note-actions"><button class="btn primary" data-save="${esc(key)}">Zapisz</button>${noteStatusHtml(key)}</div></div>`;
+}
+
 function cardHtml(b, now, marks) {
   const open = state.expanded.has(b.key);
   const nk = b.nk;
@@ -616,7 +687,8 @@ function cardHtml(b, now, marks) {
       <div class="m">${metaShort(b)}${note || hasDraft ? `<span class="ico" title="Jest notatka">${ICON_NOTE}${hasDraft ? "*" : ""}</span>` : ""}${b.kind === "not_enrolled" ? `<span class="chg">niezapisany</span>` : ""}${mark ? `<span class="chg">${CHANGE_LABEL[mark]}</span>` : ""}</div>
     </button>`;
   if (open) {
-    const val = draft !== undefined ? draft : note?.text || "";
+    const ctx = [[skey(b.name, b.type_short), `Notatki do ${TYPE_GEN[b.type_short] || b.type}`], [skey(b.name), "Notatki ogólne do przedmiotu"]]
+      .map(([k, l]) => (Notes.get(k) ? `<div class="ctx-note"><b>${esc(l)}</b>${esc(Notes.get(k).text)}</div>` : "")).join("");
     html += `<div class="body">
       <dl>
         <dt>Godziny</dt><dd>${b.start}–${b.end}${b.n > 1 ? ` (${b.n} bloki po 90 min)` : ""}</dd>
@@ -624,9 +696,10 @@ function cardHtml(b, now, marks) {
         <dt>Sala</dt><dd>${esc(b.room || "— (brak w planie)")}</dd>
         <dt>Prowadzi</dt><dd>${esc(b.teacher || "—")}</dd>
       </dl>
-      <label for="t-${esc(nk)}">Notatka</label>
-      <textarea id="t-${esc(nk)}" data-note="${esc(nk)}" placeholder="np. przygotować projekt, co przynieść…">${esc(val)}</textarea>
-      <div class="note-actions"><button class="btn primary" data-save="${esc(nk)}">Zapisz</button>${noteStatusHtml(nk)}</div>
+      ${ctx}
+      <label>Notatka do tych zajęć</label>
+      ${noteEditor(nk, metaOf(b))}
+      <button class="linkbtn" data-goto="${esc(b.name)}" data-goto-type="${esc(b.type_short)}">Wszystkie zajęcia: ${esc(TYPE_FULL[b.type_short] || b.type)} ›</button>
     </div>`;
   }
   return html + `</div>`;
@@ -703,46 +776,118 @@ function renderSemestr(zjazdy, allSlots, blockOf) {
     <p class="hint" style="margin:8px 2px 0">Stuknij zajęcia, żeby zobaczyć szczegóły i notatkę.</p>`;
 }
 
-function renderPrzedmioty() {
+const TYPE_ORDER = { W: 0, "Ćw": 1, Lab: 2, Lekt: 3 };
+const plural = (n, one, few, many) => (n === 1 ? one : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? few : many);
+
+function subjectsModel() {
   const now = new Date();
-  const events = state.data.events.filter((e) => e.kind !== "not_enrolled" || state.showPS).map((e) => ({ ...e, s: toDate(e.date, e.start), e: toDate(e.date, e.end) }));
-  const subjects = new Map();
-  for (const e of events) {
-    if (!subjects.has(e.name)) subjects.set(e.name, { name: e.name, code: e.code, kind: e.kind, types: new Map(), next: null });
-    const s = subjects.get(e.name);
-    if (!s.types.has(e.type_short)) s.types.set(e.type_short, { total: 0, done: 0, teachers: new Set(), rooms: new Set(), min: 0 });
-    const t = s.types.get(e.type_short);
-    t.total++; if (e.e < now) t.done++;
-    t.min += (e.e - e.s) / 6e4;
-    if (e.teacher) t.teachers.add(e.teacher);
-    if (e.room) t.rooms.add(e.room);
-    if (e.s > now && (!s.next || e.s < s.next.s)) s.next = e;
+  const map = new Map();
+  for (const b of prepared.blocks) {
+    if (!map.has(b.name)) map.set(b.name, { name: b.name, kind: b.kind, ab: abbr(b), types: new Map(), next: null, min: 0 });
+    const s = map.get(b.name);
+    if (!s.types.has(b.type_short)) s.types.set(b.type_short, { ty: b.type_short, type_short: b.type_short, type: b.type, blocks: [], teachers: new Set(), rooms: new Set(), min: 0, total: 0, done: 0, next: null });
+    const t = s.types.get(b.type_short);
+    t.blocks.push(b);
+    for (const p of b.parts) { t.total++; if (p.e < now) t.done++; t.min += (p.e - p.s) / 6e4; s.min += (p.e - p.s) / 6e4; }
+    if (b.teacher) t.teachers.add(b.teacher);
+    if (b.room) t.rooms.add(b.room);
+    if (b.e > now && !t.next) t.next = b;
+    if (b.e > now && (!s.next || b.s < s.next.s)) s.next = b;
   }
+  for (const s of map.values()) s.types = new Map([...s.types].sort((a, b) => (TYPE_ORDER[a[0]] ?? 9) - (TYPE_ORDER[b[0]] ?? 9)));
   const order = { regular: 0, language: 1, elective: 2, not_enrolled: 3 };
-  const list = [...subjects.values()].sort((a, b) => order[a.kind] - order[b.kind] || a.name.localeCompare(b.name, "pl"));
-  const notesBy = new Map();
-  for (const [k, n] of Object.entries(Notes.all)) if (n.text) { if (!notesBy.has(n.name)) notesBy.set(n.name, []); notesBy.get(n.name).push({ k, ...n }); }
+  return [...map.values()].sort((a, b) => order[a.kind] - order[b.kind] || a.name.localeCompare(b.name, "pl"));
+}
+function notesCount(s, ty) {
+  const types = ty ? [s.types.get(ty)] : [...s.types.values()];
+  let n = types.reduce((acc, t) => acc + t.blocks.filter((b) => Notes.get(b.nk)).length + (Notes.get(skey(s.name, t.ty)) ? 1 : 0), 0);
+  if (!ty && Notes.get(skey(s.name))) n++;
+  return n;
+}
+const nextTxt = (b) => `${DAY_SHORT[b.s.getDay()]} ${fmtShort(b.s)}, ${b.start}`;
+const ncountHtml = (n) => (n ? `<div class="ncount">${ICON_NOTE}${n} ${plural(n, "notatka", "notatki", "notatek")}</div>` : "");
+
+function subjListHtml(list) {
   const hasOptional = state.data.events.some((e) => e.kind === "not_enrolled");
-  $("#przedmioty").innerHTML = list.map((s) => {
-    const notes = (notesBy.get(s.name) || []).sort((a, b) => (a.date + a.start).localeCompare(b.date + b.start));
-    return `
-    <div class="subj">
-      <h3>${esc(s.name)}</h3>
-      <div class="code">${esc(abbr(s))}${s.kind === "elective" ? " · do wyboru" : s.kind === "not_enrolled" ? " · jeszcze nie zapisany" : ""}${s.next ? ` · następne: ${DAY_SHORT[s.next.s.getDay()]} ${fmtShort(s.next.s)}, ${s.next.start}` : " · zakończony"}</div>
-      ${[...s.types].map(([ty, t]) => `
-        <div class="row" style="--h:${hueFor({ type_short: ty })}"><b class="ty">${esc(ty)}</b>
+  return `<div class="subjects">${list.map((s) => `
+    <button class="subj subj-link" data-nav="${esc(s.name)}">
+      <h3><span>${esc(s.name)}</span><span class="go">›</span></h3>
+      <div class="code" style="margin-left:0">${esc(s.ab)}${s.kind === "elective" ? " · do wyboru" : s.kind === "not_enrolled" ? " · jeszcze nie zapisany" : ""}${s.next ? ` · następne: ${nextTxt(s.next)}` : " · zakończony"}</div>
+      ${[...s.types.values()].map((t) => `
+        <div class="row" style="--h:${hueFor(t)}"><b class="ty">${esc(t.ty)}</b>
           <div class="who">${esc([...t.teachers].join(", ") || "—")}<small>${Math.round(t.min / 45)} h · ${t.rooms.size ? "sale: " + esc([...t.rooms].join(", ")) : "sala: —"}</small></div>
           <div class="cnt">${t.done}/${t.total}<div class="bar"><i style="width:${(t.done / t.total) * 100}%"></i></div></div>
         </div>`).join("")}
-      ${notes.length ? `<div class="snotes">${notes.map((n) => `<button class="snote" style="--h:${hueFor(n)}" data-open-note="${esc(n.k)}"><b>${prepared.orphans.some((o) => o.k === n.k) ? "W przechowalni · " : ""}Notatka · ${DAY_SHORT[toDate(n.date).getDay()]} ${fmtShort(toDate(n.date))}, ${esc(n.start)} (${esc(n.type_short || "")})</b>${esc(n.text)}</button>`).join("")}</div>` : ""}
-    </div>`;
-  }).join("") + (hasOptional ? `
-    <div class="panel" style="grid-column:1/-1">
+      ${ncountHtml(notesCount(s))}
+    </button>`).join("")}</div>` + (hasOptional ? `
+    <div class="panel" style="margin-top:12px">
       <label class="switch"><span><b>Pokazuj przedmioty, na które nie jesteś zapisany</b></span>
       <input type="checkbox" id="ps" ${state.showPS ? "checked" : ""}></label>
     </div>` : "");
+}
+
+function subjPageHtml(s) {
+  return `<button class="back" data-nav="">‹ Wszystkie przedmioty</button>
+    <div class="phead"><h2>${esc(s.name)}</h2>
+      <p>${esc(s.ab)}${s.kind === "elective" ? " · do wyboru" : ""} · ${Math.round(s.min / 45)} h w semestrze${s.next ? ` · następne: ${nextTxt(s.next)}` : " · zakończony"}</p></div>
+    <div class="tlist">${[...s.types.values()].map((t) => `
+      <button class="tcard" style="--h:${hueFor(t)}" data-nav="${esc(s.name)}" data-nav-type="${esc(t.ty)}">
+        <div class="tc-h"><b>${esc(cap(TYPE_FULL[t.ty] || t.type))}</b><span class="go">›</span></div>
+        <div class="tc-m">${esc([...t.teachers].join(", ") || "—")}</div>
+        <div class="tc-m">${t.blocks.length} ${plural(t.blocks.length, "spotkanie", "spotkania", "spotkań")} · ${Math.round(t.min / 45)} h${t.next ? ` · następne: ${nextTxt(t.next)}` : " · zakończone"}</div>
+        <div class="bar"><i style="width:${(t.done / t.total) * 100}%"></i></div>
+        ${ncountHtml(notesCount(s, t.ty))}
+      </button>`).join("")}</div>
+    <div class="panel"><h3>Notatki ogólne do przedmiotu</h3>
+      ${noteEditor(skey(s.name), { name: s.name, scope: "subject" }, "np. zasady zaliczenia, projekt semestralny, kontakt do prowadzącego…")}</div>`;
+}
+
+function sessionHtml(b, i, next) {
+  const now = new Date();
+  const open = state.sOpen.has(b.key);
+  const note = Notes.get(b.nk);
+  const status = b.e < now ? "odbyte" : b.s <= now ? "trwa" : b === next ? `najbliższe · ${relDay(b.s, now)}` : relDay(b.s, now);
+  return `<div class="sess ${b.e < now ? "past" : ""} ${b === next ? "next" : ""} ${open ? "open" : ""}" style="--h:${hueFor(b)}">
+    <button class="sess-h" data-stoggle="${esc(b.key)}" aria-expanded="${open}">
+      <div class="sess-no">${i + 1}</div>
+      <div class="sess-main"><b>${cap(DAY[b.s.getDay()])}, ${fmtDay(b.s)}</b><span>${b.start}–${b.end}${b.n > 1 ? ` · ${b.n} bloki` : ""} · sala ${esc(b.room || "—")}${b.teacher ? ` · ${esc(b.teacher)}` : ""}</span></div>
+      <span class="tag ${b === next ? "now" : ""}">${status}</span>
+    </button>
+    ${open ? `<div class="sess-body">${noteEditor(b.nk, metaOf(b))}<button class="linkbtn" data-open="${esc(b.key)}">Pokaż w planie ›</button></div>`
+      : note ? `<button class="sess-note" data-stoggle="${esc(b.key)}">${ICON_NOTE}<span>${esc(note.text)}</span></button>`
+      : `<button class="sess-add" data-stoggle="${esc(b.key)}">+ Dodaj notatkę</button>`}
+  </div>`;
+}
+
+function typePageHtml(s, t) {
+  const label = cap(TYPE_FULL[t.ty] || t.type);
+  return `<button class="back" data-nav="${esc(s.name)}">‹ ${esc(s.name)}</button>
+    <div class="phead" style="--h:${hueFor(t)}"><h2><span class="ty-badge">${esc(label)}</span> ${esc(s.name)}</h2>
+      <p>${esc([...t.teachers].join(", ") || "—")} · ${Math.round(t.min / 45)} h · ${t.rooms.size ? "sale: " + esc([...t.rooms].join(", ")) : "sala: —"}</p>
+      <div class="prog"><div class="bar"><i style="width:${(t.done / t.total) * 100}%"></i></div><span>odbyte ${t.done} z ${t.total} bloków po 90 min</span></div></div>
+    <div class="panel"><h3>Notatki do ${esc(TYPE_GEN[t.ty] || label.toLowerCase())}</h3>
+      ${noteEditor(skey(s.name, t.ty), { name: s.name, type_short: t.ty, scope: "type" }, "np. materiały, wymagania, terminy oddania…")}</div>
+    <h3 class="sec">Zajęcia (${t.blocks.length})</h3>
+    <div class="sessions">${t.blocks.map((b, i) => sessionHtml(b, i, t.next)).join("")}</div>`;
+}
+
+function renderPrzedmioty() {
+  const list = subjectsModel();
+  const s = state.subj && list.find((x) => x.name === state.subj.name);
+  const ty = s && state.subj.type ? s.types.get(state.subj.type) : null;
+  const el = $("#przedmioty");
+  if (!s) { state.subj = null; el.innerHTML = subjListHtml(list); }
+  else if (!ty) el.innerHTML = subjPageHtml(s);
+  else el.innerHTML = typePageHtml(s, ty);
   const ps = $("#ps");
   if (ps) ps.onchange = (e) => { state.showPS = e.target.checked; store.set("showPS", state.showPS); render(); };
+}
+function navSubject(name, type) {
+  state.subj = name ? { name, type: type || null } : null;
+  store.set("subj", state.subj);
+  state.tab = "przedmioty";
+  render(true);
+  window.scrollTo({ top: Math.min(window.scrollY, $(".tabs").offsetTop) });
 }
 
 function renderZmiany() {
@@ -771,64 +916,135 @@ function renderSync() {
   const el = $("#sync");
   if (!Notes.repo()) { el.innerHTML = ""; return; }
   const on = !!Notes.token;
+  const phone = isPhone();
   const localCount = Object.values(Notes.all).filter((n) => n.text).length;
-  el.innerHTML = on ? `
-    <div class="panel">
-      <h3>Synchronizacja notatek <span class="state ${Notes.syncError ? "" : "on"}">${Notes.syncError ? "problem" : "włączona"}</span></h3>
-      ${state.justPaired ? `<p><b>To urządzenie jest połączone.</b> Jeśli korzystasz z ikony na ekranie początkowym iPhone’a, otwórz ją, wejdź w Ustawienia i wklej tam klucz (przycisk „Kopiuj klucz” poniżej) — ikona ma osobną pamięć od Safari.</p>` : ""}
-      <p>Notatki zapisują się w prywatnym repozytorium <b>${esc(Notes.repo())}</b> i są takie same na telefonie i komputerze.</p>
-      <p>${Notes.syncError ? `<span class="err">${esc(Notes.syncError)}</span>` : `Ostatnia synchronizacja: <b>${Notes.lastSync ? fmtStamp(Notes.lastSync, true) : "—"}</b>`}${Notes.dirty.size ? ` · czeka na wysłanie: ${Notes.dirty.size}` : ""}</p>
-      <div class="btns">
-        <button class="btn" id="syncNow">Synchronizuj teraz</button>
-        <button class="btn" id="showQr">Połącz drugie urządzenie (QR)</button>
-        <button class="btn" id="copyKey">Kopiuj klucz</button>
-        <button class="btn" id="unpair">Rozłącz to urządzenie</button>
-      </div>
-      <div id="qrBox"></div>
-    </div>` : `
-    <div class="panel">
-      <h3>Synchronizacja notatek <span class="state">wyłączona</span></h3>
-      <p>Teraz notatki zapisują się tylko na tym urządzeniu${localCount ? ` (masz ich ${localCount})` : ""}. Żeby mieć je i na telefonie, i na komputerze, połącz synchronizację — to jednorazowe, ok. 2 minuty:</p>
-      <ol class="steps">
-        <li>Na komputerze otwórz <a href="${esc(patUrl())}" target="_blank" rel="noopener">tworzenie klucza na GitHubie</a>.</li>
+  const desktopSteps = `<ol class="steps">
+        <li>Otwórz <a href="${esc(patUrl())}" target="_blank" rel="noopener">tworzenie klucza na GitHubie</a>.</li>
         <li>W <b>Repository access</b> wybierz <b>Only select repositories</b> → <b>${esc((Notes.repo() || "").split("/")[1] || "")}</b>.</li>
         <li>W <b>Permissions</b> ustaw <b>Contents: Read and write</b> (jeśli nie jest już ustawione).</li>
         <li>Kliknij <b>Generate token</b>, skopiuj klucz (zaczyna się od <code>github_pat_</code>) i wklej poniżej.</li>
-        <li>Potem kliknij „Połącz drugie urządzenie (QR)” i zeskanuj kod aparatem iPhone’a.</li>
       </ol>
-      <div class="field"><input type="password" id="tokenIn" placeholder="github_pat_…" autocomplete="off" spellcheck="false"><button class="btn primary" id="pair">Połącz</button></div>
-      <p class="hint">Klucz daje dostęp wyłącznie do repozytorium z notatkami i zostaje tylko na Twoich urządzeniach.</p>
+      <div class="field"><input type="password" id="tokenIn" placeholder="github_pat_…" autocomplete="off" spellcheck="false"><button class="btn primary" id="pair">Połącz</button></div>`;
+  if (on) {
+    el.innerHTML = `
+    <div class="panel" id="syncPanel">
+      <h3>Synchronizacja notatek <span class="state ${Notes.syncError ? "warn" : "on"}">${Notes.syncError ? "problem" : "włączona"}</span></h3>
+      <p>Notatki zapisują się w prywatnym repozytorium <b>${esc(Notes.repo())}</b> i są takie same na wszystkich połączonych urządzeniach. Sprawdzanie zmian odbywa się samo co 30 s.</p>
+      <p>${Notes.syncError ? `<span class="err">${esc(Notes.syncError)}</span>` : `Ostatnia synchronizacja: <b>${Notes.lastSync ? fmtStamp(Notes.lastSync, true) : "—"}</b>`}${Notes.dirty.size ? ` · czeka na wysłanie: ${Notes.dirty.size}` : ""}</p>
+      <div class="btns">
+        <button class="btn primary" id="syncNow">Synchronizuj teraz</button>
+        <button class="btn" id="showQr">${phone ? "Pokaż kod QR" : "Połącz telefon (kod QR)"}</button>
+        <button class="btn" id="unpair">Rozłącz to urządzenie</button>
+      </div>
+      <div id="qrBox"></div>
+    </div>`;
+    $("#syncNow").onclick = () => $("#notesPill").click();
+    $("#unpair").onclick = () => { if (confirm("Rozłączyć synchronizację na tym urządzeniu? Notatki zostaną tu zapisane lokalnie.")) { Notes.disconnect(); render(true); } };
+    $("#showQr").onclick = showQr;
+    return;
+  }
+  el.innerHTML = phone ? `
+    <div class="panel" id="syncPanel">
+      <h3>Synchronizacja notatek <span class="state">wyłączona</span></h3>
+      <p>Teraz notatki zapisują się tylko na tym telefonie${localCount ? ` (masz ich ${localCount})` : ""}. Połącz go z komputerem — wystarczy zeskanować kod:</p>
+      <ol class="steps">
+        <li>Na komputerze otwórz plan → <b>Ustawienia</b> → <b>Połącz telefon (kod QR)</b>.</li>
+        <li>Tutaj stuknij <b>Zeskanuj kod QR</b> i skieruj aparat na ekran komputera.</li>
+      </ol>
+      <div class="btns"><button class="btn primary" id="scanQr">Zeskanuj kod QR</button></div>
+      <div id="scanBox"></div>
+      <div id="pairMsg"></div>
+      <details class="alt"><summary>Komputer nie jest jeszcze połączony albo wolisz wkleić klucz?</summary>
+        <p>Klucz tworzy się raz, najwygodniej na komputerze (instrukcja w Ustawieniach na komputerze). Możesz też zrobić to tutaj:</p>
+        ${desktopSteps}
+      </details>
+    </div>` : `
+    <div class="panel" id="syncPanel">
+      <h3>Synchronizacja notatek <span class="state">wyłączona</span></h3>
+      <p>Teraz notatki zapisują się tylko na tym urządzeniu${localCount ? ` (masz ich ${localCount})` : ""}. Żeby mieć je i na telefonie, i na komputerze, połącz synchronizację — to jednorazowe, ok. 2 minuty:</p>
+      ${desktopSteps}
+      <p class="hint">Potem kliknij „Połącz telefon (kod QR)” i zeskanuj kod w aplikacji planu na iPhonie (Ustawienia → Zeskanuj kod QR). Klucz daje dostęp wyłącznie do repozytorium z notatkami i zostaje tylko na Twoich urządzeniach.</p>
       <div id="pairMsg"></div>
     </div>`;
-  if (on) {
-    $("#syncNow").onclick = async () => { try { await Notes.sync(); toast("Notatki zsynchronizowane"); } catch { toast("Nie udało się zsynchronizować"); } render(true); };
-    $("#unpair").onclick = () => { if (confirm("Rozłączyć synchronizację na tym urządzeniu? Notatki zostaną tu zapisane lokalnie.")) { Notes.disconnect(); render(true); } };
-    $("#copyKey").onclick = async () => { try { await navigator.clipboard.writeText(Notes.token); toast("Skopiowano klucz"); } catch { prompt("Skopiuj klucz:", Notes.token); } };
-    $("#showQr").onclick = showQr;
-  } else {
-    $("#pair").onclick = async () => {
-      const v = $("#tokenIn").value.trim();
-      const m = v.match(/sync=([\w-]+)/);
-      const token = m ? m[1] : v;
-      if (!token) return;
-      Notes.connect(token);
-      $("#pairMsg").innerHTML = `<p class="hint">Sprawdzam klucz…</p>`;
-      try { await Notes.sync(); toast("Połączono — notatki są zsynchronizowane"); render(true); }
-      catch (e) { Notes.disconnect(); $("#pairMsg").innerHTML = `<p class="err">Nie udało się połączyć: ${esc(e.message)}. Sprawdź, czy klucz ma dostęp do repozytorium ${esc(Notes.repo())} z uprawnieniem Contents: Read and write.</p>`; }
-    };
+  const pairBtn = $("#pair");
+  if (pairBtn) pairBtn.onclick = () => {
+    const v = $("#tokenIn").value.trim();
+    const m = v.match(/sync=([\w-]+)/);
+    if (v) pairWith(m ? m[1] : v);
+  };
+  const scanBtn = $("#scanQr");
+  if (scanBtn) scanBtn.onclick = scanQr;
+}
+
+async function pairWith(token) {
+  Notes.connect(token);
+  const msg = $("#pairMsg");
+  if (msg) msg.innerHTML = `<p class="hint">Łączę…</p>`;
+  try {
+    await Notes.sync();
+    toast("Połączono — notatki są zsynchronizowane");
+    render(true);
+  } catch (e) {
+    Notes.disconnect();
+    if ($("#pairMsg")) $("#pairMsg").innerHTML = `<p class="err">Nie udało się połączyć: ${esc(e.message)}. Sprawdź, czy klucz ma dostęp do repozytorium ${esc(Notes.repo())} z uprawnieniem Contents: Read and write.</p>`;
   }
+}
+
+async function scanQr() {
+  const box = $("#scanBox");
+  const msg = $("#pairMsg");
+  if (state.scanning) return;
+  if (!navigator.mediaDevices?.getUserMedia) { msg.innerHTML = `<p class="err">Ta przeglądarka nie daje dostępu do aparatu. Użyj opcji „wkleić klucz” poniżej.</p>`; return; }
+  let stream;
+  try {
+    if (!window.jsQR) await loadScript("https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js");
+    stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" }, audio: false });
+  } catch (e) {
+    msg.innerHTML = e && e.name === "NotAllowedError"
+      ? `<p class="err">Brak zgody na aparat. Zezwól na dostęp do aparatu dla tej strony i spróbuj ponownie.</p>`
+      : `<p class="err">Nie udało się uruchomić aparatu (${esc(e?.message || e?.name || "błąd")}).</p>`;
+    return;
+  }
+  state.scanning = true;
+  msg.innerHTML = "";
+  box.innerHTML = `<div class="scan"><video playsinline muted autoplay></video><div class="scan-frame"></div></div>
+    <p class="hint">Skieruj aparat na kod QR wyświetlony na komputerze.</p><button class="btn" id="scanStop">Anuluj</button>`;
+  const video = box.querySelector("video");
+  video.srcObject = stream;
+  try { await video.play(); } catch {}
+  const canvas = document.createElement("canvas");
+  const ctx = canvas.getContext("2d", { willReadFrequently: true });
+  const stop = () => { state.scanning = false; stream.getTracks().forEach((tr) => tr.stop()); box.innerHTML = ""; };
+  $("#scanStop").onclick = stop;
+  const tick = () => {
+    if (!state.scanning) return;
+    if (video.readyState >= 2 && video.videoWidth) {
+      const sc = Math.min(1, 640 / Math.max(video.videoWidth, video.videoHeight));
+      const w = Math.round(video.videoWidth * sc), h = Math.round(video.videoHeight * sc);
+      canvas.width = w; canvas.height = h;
+      ctx.drawImage(video, 0, 0, w, h);
+      const code = window.jsQR(ctx.getImageData(0, 0, w, h).data, w, h, { inversionAttempts: "dontInvert" });
+      const m = code && (code.data.match(/sync=([\w-]+)/) || code.data.match(/^(github_pat_\w+|gh[opsu]_\w+)$/));
+      if (m) { stop(); if (navigator.vibrate) navigator.vibrate(60); pairWith(m[1]); return; }
+    }
+    requestAnimationFrame(tick);
+  };
+  tick();
 }
 
 async function showQr() {
   const box = $("#qrBox");
-  if (box.innerHTML) { box.innerHTML = ""; return; }
+  if (state.qrOpen) { state.qrOpen = false; box.innerHTML = ""; return; }
   const url = `${location.origin}${location.pathname}#sync=${Notes.token}`;
   try {
-    if (!window.qrcode) await new Promise((ok, fail) => { const s = document.createElement("script"); s.src = "https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"; s.onload = ok; s.onerror = fail; document.head.appendChild(s); });
+    if (!window.qrcode) await loadScript("https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js");
     const q = window.qrcode(0, "M"); q.addData(url); q.make();
+    state.qrOpen = true;
     box.innerHTML = `<div class="qr">${q.createSvgTag({ cellSize: 4, margin: 2, scalable: true })}</div>
-      <p class="hint">Zeskanuj aparatem iPhone’a — otworzy się plan z włączoną synchronizacją. Kod zawiera Twój klucz, nie pokazuj go innym.</p>`;
-  } catch { box.innerHTML = `<p class="err">Nie udało się wygenerować kodu. Użyj „Kopiuj klucz” i wklej go na drugim urządzeniu.</p>`; }
+      <p class="hint">Na iPhonie otwórz aplikację planu (ikona na ekranie początkowym) → Ustawienia → <b>Zeskanuj kod QR</b> i skieruj aparat na ten kod. Kod zawiera Twój klucz — nie pokazuj go innym.</p>
+      <button class="btn" id="qrClose">Ukryj kod</button>`;
+    $("#qrClose").onclick = showQr;
+  } catch { box.innerHTML = `<p class="err">Nie udało się wygenerować kodu.</p>`; }
 }
 
 function renderKalendarz() {
@@ -878,19 +1094,43 @@ function renderStatus() {
     const ago = (Date.now() - parseLocal(st.checked_at)) / 36e5;
     if (!st.ok) { cls = "bad"; txt = `Nie udało się sprawdzić · dane z ${fmtStamp(state.data.generated_at)}`; }
     else if (ago > 8) { cls = "warn"; txt = `Sprawdzono ${relTime(parseLocal(st.checked_at))}`; }
-    else txt = `Aktualny · sprawdzono ${relTime(parseLocal(st.checked_at))}`;
+    else txt = `Plan aktualny · sprawdzono ${relTime(parseLocal(st.checked_at))}`;
   }
   if (!navigator.onLine) { cls = "warn"; txt = "Offline · ostatnia pobrana wersja"; }
   el.className = `pill ${cls}`;
-  el.innerHTML = `<i></i><span>${txt}</span><button id="reload" aria-label="Odśwież">↻</button>`;
+  el.innerHTML = `<i></i><span>${txt}</span><button id="reload" aria-label="Odśwież plan" title="Odśwież plan">↻</button>`;
   $("#reload").onclick = () => load(true);
 }
+
+function renderNotesPill() {
+  const el = $("#notesPill");
+  if (!Notes.repo()) { el.hidden = true; return; }
+  el.hidden = false;
+  let cls = "", txt;
+  if (!Notes.token) { cls = "off"; txt = "Notatki: tylko na tym urządzeniu"; }
+  else if (Notes.syncing) txt = "Notatki: synchronizuję…";
+  else if (Notes.syncError) { cls = "bad"; txt = "Notatki: błąd synchronizacji"; }
+  else if (Notes.dirty.size) { cls = "warn"; txt = `Notatki: ${Notes.dirty.size} czeka na wysłanie`; }
+  else txt = `Notatki zsynchronizowane${Notes.lastSync ? ` · ${hm(new Date(Notes.lastSync))}` : ""}`;
+  el.className = `pill ${cls}`;
+  el.title = Notes.token ? "Synchronizuj notatki" : "Włącz synchronizację notatek";
+  el.innerHTML = `<i></i><span>${txt}</span><span class="rl" aria-hidden="true">↻</span>`;
+}
+$("#notesPill").onclick = async () => {
+  if (!Notes.token) { state.tab = "ustawienia"; render(true); $("#sync")?.scrollIntoView({ behavior: "smooth", block: "start" }); return; }
+  const p = Notes.sync();
+  renderNotesPill();
+  try { const changed = await p; toast(changed ? "Notatki zsynchronizowane — pobrano zmiany" : "Notatki zsynchronizowane"); }
+  catch (e) { toast(`Nie udało się zsynchronizować: ${Notes.syncError || e.message}`); }
+  render(true);
+};
 
 let prepared = null;
 function render(force = false) {
   if (!state.data) return;
   // nie przerywaj pisania notatki odświeżeniem
   if (!force && document.activeElement?.matches?.("textarea[data-note], #tokenIn")) { state.deferredRender = true; return; }
+  editorSeq = 0;
   state.deferredRender = false;
   const cfg = state.data.config || {};
   $("#title").textContent = cfg.title || "Plan zajęć";
@@ -898,6 +1138,7 @@ function render(force = false) {
   prepared = prepare();
   const { blocks, zjazdy, blockOf, allSlots } = prepared;
   renderStatus();
+  renderNotesPill();
   renderHero(blocks);
   renderNotice();
   renderArchive(prepared.orphans, blocks);
@@ -905,7 +1146,8 @@ function render(force = false) {
   renderSemestr(zjazdy, allSlots, blockOf);
   renderPrzedmioty();
   renderZmiany();
-  renderSync();
+  // nie przerywaj skanowania ani wyświetlania kodu QR odświeżeniem
+  if (!state.scanning && !state.qrOpen) renderSync();
   renderKalendarz();
   $("#foot").innerHTML = `Źródło: <a href="${esc(state.data.source)}" target="_blank" rel="noopener">plan.ue.wroc.pl</a> · w razie wątpliwości rozstrzyga oficjalny plan i USOS`;
   showTab(state.tab, false);
@@ -914,6 +1156,11 @@ function render(force = false) {
 
 function showTab(tab, scroll = true) {
   if (!document.querySelector(`[data-view="${tab}"]`)) tab = "plan";
+  if (tab !== "ustawienia") {
+    // wyjście z Ustawień zamyka aparat i kod QR
+    if (state.scanning) $("#scanStop")?.click();
+    if (state.qrOpen) { state.qrOpen = false; $("#qrBox") && ($("#qrBox").innerHTML = ""); }
+  }
   state.tab = tab; store.set("tab2", tab);
   document.querySelectorAll("[data-tab]").forEach((b) => b.setAttribute("aria-selected", b.dataset.tab === tab));
   document.querySelectorAll("[data-view]").forEach((v) => (v.hidden = v.dataset.view !== tab));
@@ -926,7 +1173,10 @@ function showMode(mode) {
   $("#semestr").hidden = mode !== "semestr";
   $("#notice").hidden = mode !== "zjazdy";
 }
-document.querySelectorAll("[data-tab]").forEach((b) => (b.onclick = () => showTab(b.dataset.tab)));
+document.querySelectorAll("[data-tab]").forEach((b) => (b.onclick = () => {
+  if (b.dataset.tab === "przedmioty" && state.tab === "przedmioty" && state.subj) return navSubject(null);
+  showTab(b.dataset.tab);
+}));
 document.querySelectorAll("[data-mode]").forEach((b) => (b.onclick = () => showMode(b.dataset.mode)));
 
 function renderArchive(orphans, blocks) {
@@ -975,8 +1225,15 @@ function openClass(key) {
 
 // obsługa kliknięć i pisania (delegacja - elementy są przerysowywane)
 document.addEventListener("click", async (ev) => {
-  const t = ev.target.closest("[data-toggle],[data-save],[data-open],[data-open-note],[data-move],[data-copy],[data-drop]");
+  const t = ev.target.closest("[data-toggle],[data-save],[data-open],[data-open-note],[data-move],[data-copy],[data-drop],[data-nav],[data-stoggle],[data-goto]");
   if (!t) return;
+  if ("nav" in t.dataset) return navSubject(t.dataset.nav, t.dataset.navType);
+  if (t.dataset.goto) return navSubject(t.dataset.goto, t.dataset.gotoType);
+  if (t.dataset.stoggle) {
+    const k = t.dataset.stoggle;
+    state.sOpen.has(k) ? state.sOpen.delete(k) : state.sOpen.add(k);
+    return renderPrzedmioty();
+  }
   const ok = t.dataset.move || t.dataset.copy || t.dataset.drop;
   const o = ok ? Notes.all[ok] : null;
   const keepMeta = (n) => ({ name: n.name, date: n.date, start: n.start, end: n.end, type_short: n.type_short });
@@ -1010,11 +1267,12 @@ document.addEventListener("click", async (ev) => {
     openClass(t.dataset.open);
   } else if (t.dataset.save) {
     const k = t.dataset.save;
-    const b = prepared.blocks.find((x) => x.nk === k);
-    if (!b) return;
+    const blk = prepared.blocks.find((x) => x.nk === k);
+    const meta = state.noteMeta.get(k) || (blk && metaOf(blk));
+    if (!meta) return;
     const text = (state.drafts.has(k) ? state.drafts.get(k) : Notes.get(k)?.text || "").trim();
     t.disabled = true; t.textContent = "Zapisuję…";
-    const res = await Notes.save(k, text, { name: b.name, date: b.date, start: b.start, end: b.end, type_short: b.type_short });
+    const res = await Notes.save(k, text, meta);
     state.drafts.delete(k);
     const time = hm(new Date());
     const msg = {
@@ -1033,7 +1291,7 @@ document.addEventListener("input", (ev) => {
   if (!k) return;
   state.drafts.set(k, ev.target.value);
   state.noteMsg.delete(k);
-  const actions = ev.target.closest(".body")?.querySelector(".note-actions");
+  const actions = ev.target.closest(".neditor")?.querySelector(".note-actions");
   if (actions) actions.innerHTML = `<button class="btn primary" data-save="${esc(k)}">Zapisz</button>${noteStatusHtml(k)}`;
 });
 document.addEventListener("focusout", (ev) => {
@@ -1042,7 +1300,7 @@ document.addEventListener("focusout", (ev) => {
 });
 document.addEventListener("keydown", (ev) => {
   const k = ev.target.dataset?.note;
-  if (k && ev.key === "Enter" && (ev.ctrlKey || ev.metaKey)) { ev.preventDefault(); document.querySelector(`[data-save="${CSS.escape(k)}"]`)?.click(); }
+  if (k && ev.key === "Enter" && (ev.ctrlKey || ev.metaKey)) { ev.preventDefault(); ev.target.closest(".neditor")?.querySelector("[data-save]")?.click(); }
 });
 window.addEventListener("beforeunload", (ev) => {
   for (const [k, v] of state.drafts) if (v !== (Notes.get(k)?.text || "")) { ev.preventDefault(); ev.returnValue = ""; return; }
