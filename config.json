@@ -1,0 +1,29 @@
+{
+  "title": "Plan zajęć",
+  "subtitle": "N1 · ZR/2 · semestr zimowy 2026/27",
+  "semester_id": 60,
+  "group": "200/2",
+  "language": {
+    "sjo_group": "155/2",
+    "block": "BLOK III",
+    "teacher": "Saturny",
+    "label": "Język angielski C1 · gr. 26"
+  },
+  "electives": [
+    {
+      "code": "PH",
+      "weekday": 5,
+      "name": "Etyka wpływu i manipulacji",
+      "teacher": "Anna Wójcik-Lubzińska",
+      "teacher_id": 10834
+    },
+    {
+      "code": "PH",
+      "weekday": 6,
+      "name": "Megatrendy w kreatywnej przestrzeni",
+      "teacher": "Stanisław Korenik",
+      "teacher_id": 3946
+    }
+  ],
+  "not_enrolled": ["PS"]
+}

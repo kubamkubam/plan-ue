@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Plan zajęć</title>
+<meta name="description" content="Plan zajęć UEW, aktualizowany automatycznie z plan.ue.wroc.pl">
+<meta name="theme-color" content="#f4f2ee" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#16171b" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Plan UEW">
+<meta name="format-detection" content="telephone=no">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png">
+<link rel="manifest" href="manifest.webmanifest">
+<style>
+:root {
+  --bg: #f4f2ee;
+  --surface: #ffffff;
+  --surface-2: #faf9f7;
+  --line: #e6e2db;
+  --line-soft: #efece6;
+  --text: #1b1c20;
+  --text-2: #5d5f66;
+  --text-3: #8d8f96;
+  --accent: #3446d4;
+  --accent-soft: #e8ebfd;
+  --ok: #1f8a4c;
+  --warn: #b86e00;
+  --warn-soft: #fff4e0;
+  --bad: #c2372f;
+  --shadow: 0 1px 2px rgba(20, 20, 30, .05), 0 4px 16px rgba(20, 20, 30, .04);
+  --radius: 16px;
+  --sub-l: 44%; --sub-s: 62%; --tint-l: 95.5%; --tint-s: 70%;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16171b;
+    --surface: #1f2126;
+    --surface-2: #24262c;
+    --line: #2f3239;
+    --line-soft: #292b31;
+    --text: #eceef2;
+    --text-2: #a6a9b1;
+    --text-3: #767a83;
+    --accent: #8f9cff;
+    --accent-soft: #272b4a;
+    --ok: #4fc47f;
+    --warn: #f0a93b;
+    --warn-soft: #332917;
+    --bad: #ff7a70;
+    --shadow: none;
+    --sub-l: 70%; --sub-s: 70%; --tint-l: 17%; --tint-s: 28%;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 15px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI Variable Text", "Segoe UI", system-ui, Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+button { font: inherit; color: inherit; }
+a { color: var(--accent); }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px 48px; }
+
+/* ---------- nagłówek ---------- */
+header.top { padding: 22px 0 14px; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 10px 16px; }
+.eyebrow { font-size: 12.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--text-3); font-weight: 600; }
+h1 { margin: 2px 0 0; font-size: 30px; line-height: 1.1; letter-spacing: -.02em; font-weight: 750; }
+.pill { display: inline-flex; align-items: center; gap: 7px; padding: 6px 11px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-size: 13px; color: var(--text-2); white-space: nowrap; }
+.pill i { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); flex: none; }
+.pill.warn i { background: var(--warn); } .pill.bad i { background: var(--bad); }
+.pill button { border: 0; background: none; padding: 0 0 0 4px; cursor: pointer; color: var(--accent); font-size: 13px; }
+
+/* ---------- karta "najbliższe" ---------- */
+.hero { background: var(--surface); border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--line); padding: 18px 18px 16px; margin-bottom: 14px; display: grid; gap: 14px; }
+@media (min-width: 760px) { .hero { grid-template-columns: 1.25fr 1fr; align-items: stretch; padding: 22px; } }
+.hero-label { font-size: 13px; font-weight: 650; color: var(--text-2); display: flex; gap: 8px; align-items: center; }
+.hero-label .live { color: var(--ok); }
+.hero-when { font-size: 34px; font-weight: 750; letter-spacing: -.025em; line-height: 1.1; margin: 6px 0 4px; font-variant-numeric: tabular-nums; }
+.hero-when small { font-size: 17px; font-weight: 600; color: var(--text-2); letter-spacing: 0; }
+.hero-name { font-size: 18px; font-weight: 650; line-height: 1.3; display: flex; gap: 10px; align-items: baseline; }
+.hero-meta { color: var(--text-2); font-size: 14px; margin-top: 3px; }
+.hero-next { border-top: 1px solid var(--line-soft); padding-top: 12px; }
+@media (min-width: 760px) { .hero-next { border-top: 0; border-left: 1px solid var(--line-soft); padding: 0 0 0 20px; } }
+.mini { display: flex; gap: 10px; padding: 6px 0; align-items: baseline; font-size: 14px; }
+.mini time { color: var(--text-2); font-variant-numeric: tabular-nums; min-width: 92px; }
+.mini span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* ---------- zakładki ---------- */
+.tabs { position: sticky; top: 0; z-index: 5; background: var(--bg); padding: 8px 0 10px; margin: 0 -16px; padding-left: 16px; padding-right: 16px; }
+.seg { display: flex; background: var(--line-soft); border-radius: 12px; padding: 3px; gap: 2px; max-width: 560px; }
+.seg button { flex: 1; border: 0; background: none; padding: 8px 6px; border-radius: 9px; font-size: 14px; font-weight: 600; color: var(--text-2); cursor: pointer; position: relative; white-space: nowrap; }
+.seg button[aria-selected="true"] { background: var(--surface); color: var(--text); box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+.seg .dot { position: absolute; top: 6px; right: 8px; width: 7px; height: 7px; border-radius: 50%; background: var(--warn); }
+
+/* ---------- baner zmian ---------- */
+.notice { background: var(--warn-soft); border: 1px solid color-mix(in srgb, var(--warn) 30%, transparent); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 14px; }
+.notice h3 { margin: 0 0 6px; font-size: 15px; display: flex; justify-content: space-between; gap: 10px; align-items: baseline; }
+.notice ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+.notice li { font-size: 14px; display: flex; gap: 8px; align-items: baseline; }
+.notice .btn { margin-top: 10px; }
+.btn { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line); background: var(--surface); border-radius: 10px; padding: 8px 13px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; color: var(--text); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+@media (prefers-color-scheme: dark) { .btn.primary { color: #111428; } }
+.chg { font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; padding: 2px 7px; border-radius: 6px; background: var(--warn-soft); color: var(--warn); white-space: nowrap; }
+
+/* ---------- zjazdy ---------- */
+.zjazd { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 14px; overflow: hidden; scroll-margin-top: 70px; }
+.zjazd > header { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; padding: 14px 16px 10px; }
+.zjazd h2 { margin: 0; font-size: 18px; letter-spacing: -.01em; }
+.zjazd h2 span { color: var(--text-3); font-weight: 600; font-size: 14px; margin-right: 6px; }
+.tag { font-size: 12.5px; font-weight: 650; color: var(--text-2); background: var(--line-soft); border-radius: 999px; padding: 3px 9px; white-space: nowrap; }
+.tag.now { background: var(--accent-soft); color: var(--accent); }
+.days { display: grid; }
+@media (min-width: 760px) { .days { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); } .days .day + .day { border-left: 1px solid var(--line-soft); } }
+.day { padding: 4px 16px 14px; border-top: 1px solid var(--line-soft); }
+.day-h { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 0 8px; font-size: 13.5px; }
+.day-h b { font-size: 14.5px; }
+.day-h span { color: var(--text-3); font-variant-numeric: tabular-nums; }
+.day.today .day-h b { color: var(--accent); }
+.day.today .day-h b::after { content: " · dziś"; }
+.cls { display: grid; grid-template-columns: 56px 1fr; gap: 12px; padding: 8px 0; align-items: start; }
+.cls .t { font-variant-numeric: tabular-nums; font-size: 14px; font-weight: 650; line-height: 1.25; padding-top: 9px; }
+.cls .t small { display: block; color: var(--text-3); font-weight: 500; }
+.card { border-radius: 12px; padding: 8px 11px 9px 13px; background: hsl(var(--h) var(--tint-s) var(--tint-l)); position: relative; min-width: 0; }
+.card::before { content: ""; position: absolute; left: 0; top: 8px; bottom: 8px; width: 3.5px; border-radius: 3px; background: hsl(var(--h) var(--sub-s) var(--sub-l)); }
+.card .n { font-weight: 650; line-height: 1.3; display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: baseline; }
+.card .k { font-size: 12px; font-weight: 700; color: hsl(var(--h) var(--sub-s) var(--sub-l)); letter-spacing: .02em; }
+.card .m { font-size: 13.5px; color: var(--text-2); margin-top: 2px; display: flex; flex-wrap: wrap; gap: 2px 12px; }
+.card .room { font-weight: 650; color: var(--text); }
+.card .room.none { font-weight: 500; color: var(--text-3); }
+.cls.past { opacity: .5; }
+.cls.live .card { outline: 2px solid hsl(var(--h) var(--sub-s) var(--sub-l)); outline-offset: 1px; }
+.cls.opt .card { background: transparent; border: 1.5px dashed var(--line); }
+.cls.opt .card::before { display: none; }
+.cls.opt .n { color: var(--text-2); font-weight: 600; }
+.gap { margin-left: 68px; font-size: 12.5px; color: var(--text-3); padding: 2px 0; display: flex; align-items: center; gap: 8px; }
+.gap::after { content: ""; flex: 1; border-top: 1px dashed var(--line); }
+.more { width: 100%; margin-bottom: 14px; justify-content: center; color: var(--text-2); }
+.empty { color: var(--text-2); padding: 30px 0; text-align: center; }
+
+/* ---------- przedmioty ---------- */
+.subjects { display: grid; gap: 12px; }
+@media (min-width: 760px) { .subjects { grid-template-columns: 1fr 1fr; } }
+.subj { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; box-shadow: var(--shadow); }
+.subj h3 { margin: 0 0 2px; font-size: 16px; line-height: 1.3; display: flex; gap: 9px; align-items: baseline; }
+.subj h3 i { width: 10px; height: 10px; border-radius: 3px; background: hsl(var(--h) var(--sub-s) var(--sub-l)); flex: none; transform: translateY(-1px); }
+.subj .code { color: var(--text-3); font-size: 13px; margin: 0 0 8px 19px; }
+.row { display: grid; grid-template-columns: 44px 1fr auto; gap: 10px; align-items: center; padding: 6px 0; border-top: 1px solid var(--line-soft); font-size: 14px; }
+.row b { font-size: 13px; color: var(--text-2); }
+.row .who { color: var(--text-2); overflow: hidden; text-overflow: ellipsis; }
+.row .who small { display: block; color: var(--text-3); font-size: 12.5px; }
+.bar { width: 76px; height: 6px; border-radius: 3px; background: var(--line-soft); overflow: hidden; margin-top: 4px; }
+.bar i { display: block; height: 100%; background: hsl(var(--h) var(--sub-s) var(--sub-l)); }
+.cnt { text-align: right; font-variant-numeric: tabular-nums; color: var(--text-2); font-size: 13px; }
+
+/* ---------- zmiany / kalendarz ---------- */
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow); margin-bottom: 14px; }
+.panel h3 { margin: 0 0 8px; font-size: 16px; }
+.panel p { margin: 6px 0; color: var(--text-2); }
+.log { list-style: none; margin: 0; padding: 0; }
+.log > li { padding: 12px 0; border-top: 1px solid var(--line-soft); }
+.log > li:first-child { border-top: 0; padding-top: 0; }
+.log time { font-size: 13px; color: var(--text-3); font-weight: 600; }
+.log ul { list-style: none; padding: 0; margin: 6px 0 0; display: grid; gap: 5px; }
+.log ul li { display: flex; gap: 8px; align-items: baseline; font-size: 14px; }
+.log .what { color: var(--text-2); }
+.btns { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+ol.steps { margin: 6px 0 0; padding-left: 20px; color: var(--text-2); }
+ol.steps li { margin: 3px 0; }
+.switch { display: flex; align-items: center; justify-content: space-between; gap: 12px; cursor: pointer; }
+.switch input { width: 20px; height: 20px; accent-color: var(--accent); flex: none; }
+.foot { color: var(--text-3); font-size: 12.5px; text-align: center; margin-top: 26px; }
+.foot a { color: inherit; }
+[hidden] { display: none !important; }
+.toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom)); transform: translateX(-50%); background: var(--text); color: var(--bg); padding: 9px 15px; border-radius: 10px; font-size: 14px; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <div class="eyebrow" id="sub">UEW</div>
+      <h1 id="title">Plan zajęć</h1>
+    </div>
+    <div class="pill" id="status"><i></i><span>Ładowanie…</span></div>
+  </header>
+
+  <section class="hero" id="hero" hidden></section>
+
+  <div class="tabs">
+    <div class="seg" role="tablist">
+      <button role="tab" data-tab="zjazdy" aria-selected="true">Zjazdy</button>
+      <button role="tab" data-tab="przedmioty" aria-selected="false">Przedmioty</button>
+      <button role="tab" data-tab="zmiany" aria-selected="false">Zmiany</button>
+      <button role="tab" data-tab="kalendarz" aria-selected="false">Kalendarz</button>
+    </div>
+  </div>
+
+  <main>
+    <section data-view="zjazdy"><div id="notice"></div><div id="zjazdy"></div></section>
+    <section data-view="przedmioty" hidden><div id="przedmioty" class="subjects"></div></section>
+    <section data-view="zmiany" hidden><div id="zmiany"></div></section>
+    <section data-view="kalendarz" hidden><div id="kalendarz"></div></section>
+  </main>
+
+  <p class="foot" id="foot"></p>
+</div>
+
+<script>
+"use strict";
+const HUES = { ZIDT: 262, PLK: 212, ZPR: 160, PBM: 24, ZJP: 340, KZP: 190, BiCP: 45, JA: 232, PS: 0 };
+const ELECTIVE_HUES = [300, 128];
+const DAY = ["niedziela", "poniedziałek", "wtorek", "środa", "czwartek", "piątek", "sobota"];
+const DAY_ACC = ["niedzielę", "poniedziałek", "wtorek", "środę", "czwartek", "piątek", "sobotę"];
+const DAY_SHORT =["ndz", "pon", "wt", "śr", "czw", "pt", "sob"];
+const MONTH = ["stycznia", "lutego", "marca", "kwietnia", "maja", "czerwca", "lipca", "sierpnia", "września", "października", "listopada", "grudnia"];
+const TYPE_FULL = { W: "wykład", "Ćw": "ćwiczenia", Lab: "laboratorium", Lekt: "lektorat" };
+const CHANGE_LABEL = { moved: "przeniesione", removed: "odwołane", added: "nowe", room: "sala", teacher: "prowadzący" };
+
+const store = {
+  get(k, d) { try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch { return d; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
+};
+const state = { data: null, status: null, tab: store.get("tab", "zjazdy"), showPast: false, showPS: store.get("showPS", true) };
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+function toDate(date, time = "00:00") {
+  const [y, m, d] = date.split("-").map(Number);
+  const [hh, mm] = time.split(":").map(Number);
+  return new Date(y, m - 1, d, hh, mm);
+}
+function parseLocal(iso) { const [d, t] = iso.split("T"); return toDate(d, t.slice(0, 5)); }
+const dayStart = (d) => new Date(d.getFullYear(), d.getMonth(), d.getDate());
+const daysBetween = (a, b) => Math.round((dayStart(b) - dayStart(a)) / 864e5);
+const fmtDay = (d) => `${d.getDate()} ${MONTH[d.getMonth()]}`;
+const fmtShort = (d) => `${d.getDate()}.${String(d.getMonth() + 1).padStart(2, "0")}`;
+
+function relDay(d, now = new Date()) {
+  const n = daysBetween(now, d);
+  if (n === 0) return "dziś";
+  if (n === 1) return "jutro";
+  if (n === -1) return "wczoraj";
+  if (n > 1 && n < 7) return `${d.getDay() === 2 ? "we" : "w"} ${DAY_ACC[d.getDay()]}`;
+  if (n >= 7) { const w = Math.round(n / 7); return n < 14 ? `za ${n} dni` : `za ${w} tyg.`; }
+  return `${-n} dni temu`;
+}
+function relTime(d, now = new Date()) {
+  const min = Math.round((d - now) / 6e4);
+  if (Math.abs(min) < 1) return "teraz";
+  if (min < 0) {
+    const a = -min;
+    if (a < 60) return `${a} min temu`;
+    if (a < 60 * 24) return `${Math.round(a / 60)} h temu`;
+    return `${Math.round(a / 1440)} dni temu`;
+  }
+  if (min < 60) return `za ${min} min`;
+  const h = Math.floor(min / 60), m = min % 60;
+  return m && h < 5 ? `za ${h} h ${m} min` : `za ${Math.round(min / 60)} h`;
+}
+function hueFor(ev) {
+  if (ev.kind === "elective") {
+    const names = [...new Set(state.data.events.filter((e) => e.kind === "elective").map((e) => e.name))].sort();
+    return ELECTIVE_HUES[names.indexOf(ev.name) % ELECTIVE_HUES.length];
+  }
+  if (ev.code in HUES) return HUES[ev.code];
+  let h = 0; for (const c of ev.code) h = (h * 31 + c.charCodeAt(0)) % 360; return h;
+}
+
+/* --------------- przygotowanie danych --------------- */
+function prepare() {
+  const events = state.data.events
+    .filter((e) => state.showPS || e.kind !== "not_enrolled")
+    .map((e) => ({ ...e, s: toDate(e.date, e.start), e: toDate(e.date, e.end) }));
+  // scal kolejne bloki tego samego przedmiotu (np. 8:00–9:30 + 9:45–11:15)
+  const blocks = [];
+  for (const ev of events) {
+    const last = blocks[blocks.length - 1];
+    const same = last && last.date === ev.date && last.code === ev.code && last.name === ev.name && last.type_short === ev.type_short
+      && last.room === ev.room && last.teacher === ev.teacher && ev.s - last.e <= 15 * 6e4;
+    if (same) { last.e = ev.e; last.end = ev.end; last.n++; last.keys.push(ev.key); }
+    else blocks.push({ ...ev, n: 1, keys: [ev.key] });
+  }
+  // dni -> zjazdy (dni oddalone o max 2 doby tworzą jeden zjazd)
+  const days = new Map();
+  for (const b of blocks) { if (!days.has(b.date)) days.set(b.date, []); days.get(b.date).push(b); }
+  const zjazdy = [];
+  for (const [date, list] of days) {
+    const d = toDate(date);
+    const cur = zjazdy[zjazdy.length - 1];
+    if (cur && daysBetween(cur.days[cur.days.length - 1].d, d) <= 2) cur.days.push({ date, d, list });
+    else zjazdy.push({ days: [{ date, d, list }] });
+  }
+  zjazdy.forEach((z, i) => { z.no = i + 1; z.start = z.days[0].d; z.end = z.days[z.days.length - 1].list.slice(-1)[0].e; });
+  return { blocks, zjazdy };
+}
+
+function unseenChanges() {
+  const seen = store.get("seenChange", null);
+  const all = state.data.changes || [];
+  if (seen === null) {
+    const weekAgo = Date.now() - 7 * 864e5;
+    return all.filter((c) => parseLocal(c.detected_at) > weekAgo);
+  }
+  return all.filter((c) => c.detected_at > seen);
+}
+function changedMarks() {
+  const m = new Map();
+  for (const c of unseenChanges()) for (const it of c.items) {
+    const k = `${it.code}|${it.date}`;
+    if (!m.has(k)) m.set(k, it.kind);
+  }
+  return m;
+}
+
+/* --------------- widoki --------------- */
+function metaLine(b, withTeacher = true) {
+  const room = b.room ? `<span class="room">sala ${esc(b.room)}</span>` : `<span class="room none">sala: —</span>`;
+  const blocks = b.n > 1 ? ` · ${b.n} bloki` : "";
+  return `<span>${esc(TYPE_FULL[b.type_short] || b.type)}${blocks}</span>${room}${withTeacher && b.teacher ? `<span>${esc(b.teacher)}</span>` : ""}`;
+}
+
+function renderHero(blocks) {
+  const now = new Date();
+  const upcoming = blocks.filter((b) => b.e > now && b.kind !== "not_enrolled");
+  const el = $("#hero");
+  if (!upcoming.length) { el.hidden = true; return; }
+  const b = upcoming[0];
+  const live = b.s <= now;
+  const n = daysBetween(now, b.s);
+  let label, when;
+  if (live) { label = `<span class="live">● Trwa teraz</span> · do ${b.end}`; when = `${b.start}–${b.end}`; }
+  else if (n === 0) { label = `Dziś · ${relTime(b.s, now)}`; when = `${b.start}<small> – ${b.end}</small>`; }
+  else { label = `Najbliższe zajęcia · ${relDay(b.s, now)}`; when = `${b.start}<small> – ${b.end} · ${DAY[b.s.getDay()]}, ${fmtDay(b.s)}</small>`; }
+  const sameDay = upcoming.slice(1).filter((x) => x.date === b.date && x.kind !== "not_enrolled");
+  const after = sameDay.length ? sameDay : upcoming.slice(1, 4);
+  const endOfDay = [b, ...sameDay].slice(-1)[0];
+  el.style.setProperty("--h", hueFor(b));
+  el.innerHTML = `
+    <div>
+      <div class="hero-label">${label}</div>
+      <div class="hero-when">${when}</div>
+      <div class="hero-name">${esc(b.name)}</div>
+      <div class="hero-meta">${metaLine(b).replace(/<\/span><span/g, "</span> · <span")}</div>
+    </div>
+    <div class="hero-next">
+      <div class="hero-label">${sameDay.length ? `Potem tego dnia · koniec o ${endOfDay.end}` : "Kolejne"}</div>
+      ${after.slice(0, 4).map((x) => `<div class="mini"><time>${x.date === b.date ? `${x.start}–${x.end}` : `${DAY_SHORT[x.s.getDay()]} ${fmtShort(x.s)} ${x.start}`}</time><span>${esc(x.name)} · ${esc(x.type_short)}${x.room ? ` · ${esc(x.room)}` : ""}</span></div>`).join("") || `<div class="mini"><span>Koniec zajęć tego dnia</span></div>`}
+    </div>`;
+  el.hidden = false;
+}
+
+function renderNotice() {
+  const list = unseenChanges();
+  const el = $("#notice");
+  const dot = document.querySelector('[data-tab="zmiany"]');
+  dot.querySelector(".dot")?.remove();
+  if (!list.length) { el.innerHTML = ""; return; }
+  dot.insertAdjacentHTML("beforeend", '<i class="dot"></i>');
+  const items = list.flatMap((c) => c.items);
+  el.innerHTML = `<div class="notice">
+    <h3><span>Plan się zmienił</span><span class="tag">${items.length} ${items.length === 1 ? "zmiana" : items.length < 5 ? "zmiany" : "zmian"}</span></h3>
+    <ul>${items.slice(0, 6).map((it) => `<li><span class="chg">${CHANGE_LABEL[it.kind] || it.kind}</span><span><b>${esc(it.name)}</b> (${esc(it.type_short)}) · ${esc(it.text)}</span></li>`).join("")}</ul>
+    ${items.length > 6 ? `<p style="margin:8px 0 0;font-size:14px">…i ${items.length - 6} więcej w zakładce Zmiany.</p>` : ""}
+    <button class="btn" id="ack">OK, widzę</button>
+  </div>`;
+  $("#ack").onclick = () => { store.set("seenChange", state.data.changes[0].detected_at); render(); };
+}
+
+function renderZjazdy(zjazdy) {
+  const now = new Date();
+  const marks = changedMarks();
+  const past = zjazdy.filter((z) => z.end < now);
+  const shown = state.showPast ? zjazdy : zjazdy.filter((z) => z.end >= now);
+  let html = "";
+  if (past.length) html += `<button class="btn more" id="togglePast">${state.showPast ? "Ukryj minione zjazdy" : `Pokaż minione zjazdy (${past.length})`}</button>`;
+  if (!shown.length) html += `<p class="empty">Wszystkie zajęcia w tym semestrze już się odbyły.</p>`;
+  for (const z of shown) {
+    const n = daysBetween(now, z.start);
+    const running = z.start <= now && z.end >= now || (n <= 0 && z.end >= now);
+    const tag = z.end < now ? "minął" : running ? "trwa" : n === 1 ? "jutro" : n < 7 ? `za ${n} dni` : relDay(z.start, now);
+    const range = z.days.length > 1
+      ? (z.start.getMonth() === z.days[z.days.length - 1].d.getMonth()
+        ? `${z.start.getDate()}–${fmtDay(z.days[z.days.length - 1].d)}`
+        : `${fmtDay(z.start)} – ${fmtDay(z.days[z.days.length - 1].d)}`)
+      : fmtDay(z.start);
+    html += `<article class="zjazd" id="z${z.no}"><header><h2><span>Zjazd ${z.no}</span>${range}</h2><span class="tag ${running || n < 7 && n >= 0 ? "now" : ""}">${tag}</span></header><div class="days">`;
+    for (const day of z.days) {
+      const first = day.list[0], last = day.list[day.list.length - 1];
+      const isToday = daysBetween(now, day.d) === 0;
+      html += `<div class="day ${isToday ? "today" : ""}"><div class="day-h"><b>${DAY[day.d.getDay()][0].toUpperCase() + DAY[day.d.getDay()].slice(1)} ${fmtShort(day.d)}</b><span>${first.start}–${last.end}</span></div>`;
+      day.list.forEach((b, i) => {
+        if (i > 0) {
+          const gap = (b.s - day.list[i - 1].e) / 6e4;
+          if (gap >= 45) html += `<div class="gap">okienko ${gap >= 60 ? `${Math.floor(gap / 60)} h ` : ""}${gap % 60 ? `${gap % 60} min` : ""}</div>`;
+        }
+        const cls = ["cls", b.e < now ? "past" : "", b.s <= now && b.e > now ? "live" : "", b.kind === "not_enrolled" ? "opt" : ""].join(" ");
+        const mark = marks.get(`${b.code}|${b.date}`);
+        html += `<div class="${cls}" style="--h:${hueFor(b)}"><div class="t">${b.start}<small>${b.end}</small></div><div class="card">
+          <div class="n"><span>${esc(b.name)}</span>${b.kind === "not_enrolled" ? `<span class="chg">niezapisany</span>` : ""}${mark ? `<span class="chg">${CHANGE_LABEL[mark]}</span>` : ""}</div>
+          <div class="m">${b.kind === "not_enrolled" ? "<span>termin zarezerwowany w planie kierunku</span>" : metaLine(b)}</div></div></div>`;
+      });
+      html += `</div>`;
+    }
+    html += `</div></article>`;
+  }
+  $("#zjazdy").innerHTML = html;
+  const t = $("#togglePast");
+  if (t) t.onclick = () => { state.showPast = !state.showPast; render(); };
+}
+
+function renderPrzedmioty(blocksAll) {
+  const now = new Date();
+  const events = state.data.events.filter((e) => e.kind !== "not_enrolled" || state.showPS).map((e) => ({ ...e, s: toDate(e.date, e.start), e: toDate(e.date, e.end) }));
+  const subjects = new Map();
+  for (const e of events) {
+    const key = e.name;
+    if (!subjects.has(key)) subjects.set(key, { name: e.name, code: e.code, kind: e.kind, h: hueFor(e), types: new Map(), next: null });
+    const s = subjects.get(key);
+    if (!s.types.has(e.type_short)) s.types.set(e.type_short, { total: 0, done: 0, teachers: new Set(), rooms: new Set(), min: 0 });
+    const t = s.types.get(e.type_short);
+    t.total++; if (e.e < now) t.done++;
+    t.min += (e.e - e.s) / 6e4;
+    if (e.teacher) t.teachers.add(e.teacher);
+    if (e.room) t.rooms.add(e.room);
+    if (e.s > now && (!s.next || e.s < s.next.s)) s.next = e;
+  }
+  const order = { regular: 0, language: 1, elective: 2, not_enrolled: 3 };
+  const list = [...subjects.values()].sort((a, b) => order[a.kind] - order[b.kind] || a.name.localeCompare(b.name, "pl"));
+  $("#przedmioty").innerHTML = list.map((s) => `
+    <div class="subj" style="--h:${s.h}">
+      <h3><i></i>${esc(s.name)}</h3>
+      <div class="code">${esc(s.code)}${s.kind === "elective" ? " · przedmiot do wyboru" : s.kind === "not_enrolled" ? " · jeszcze nie zapisany" : ""}${s.next ? ` · następne: ${DAY_SHORT[s.next.s.getDay()]} ${fmtShort(s.next.s)}, ${s.next.start}` : " · zakończony"}</div>
+      ${[...s.types].map(([ty, t]) => `
+        <div class="row"><b>${esc(ty)}</b>
+          <div class="who">${esc([...t.teachers].join(", ") || "—")}<small>${Math.round(t.min / 45)} h · ${t.rooms.size ? "sale: " + esc([...t.rooms].join(", ")) : "sala: —"}</small></div>
+          <div class="cnt">${t.done}/${t.total}<div class="bar"><i style="width:${(t.done / t.total) * 100}%"></i></div></div>
+        </div>`).join("")}
+    </div>`).join("") + `
+    <div class="panel" style="grid-column:1/-1">
+      <label class="switch"><span><b>Pokazuj „Przedmiot społeczny do wyboru”</b><br><span style="color:var(--text-2);font-size:14px">Terminy z planu kierunku, choć nie jesteś jeszcze zapisany.</span></span>
+      <input type="checkbox" id="ps" ${state.showPS ? "checked" : ""}></label>
+    </div>`;
+  $("#ps").onchange = (e) => { state.showPS = e.target.checked; store.set("showPS", state.showPS); render(); };
+}
+
+function renderZmiany() {
+  const ch = state.data.changes || [];
+  const st = state.status;
+  $("#zmiany").innerHTML = `
+    <div class="panel">
+      <h3>Jak to działa</h3>
+      <p>Co 2 godziny automat sprawdza <a href="${esc(state.data.source)}" target="_blank" rel="noopener">plan.ue.wroc.pl</a> (plan kierunku, Twoją grupę z angielskiego i przedmioty humanistyczne). Każda zmiana terminu, sali lub prowadzącego trafia tutaj, a strona i kalendarz aktualizują się same.</p>
+      <p>Ostatnie sprawdzenie: <b>${st ? `${fmtStamp(st.checked_at)}${st.ok ? "" : " — nieudane"}` : "brak danych"}</b>. Ostatnia zmiana danych: <b>${fmtStamp(state.data.generated_at)}</b>.</p>
+    </div>
+    <div class="panel"><h3>Historia zmian</h3>
+      ${ch.length ? `<ul class="log">${ch.map((c) => `<li><time>wykryto ${fmtStamp(c.detected_at)}</time><ul>${c.items.map((it) => `<li><span class="chg">${CHANGE_LABEL[it.kind] || it.kind}</span><span><b>${esc(it.name)}</b> (${esc(it.type_short)}) <span class="what">· ${esc(it.text)}</span></span></li>`).join("")}</ul></li>`).join("")}</ul>`
+        : `<p>Na razie bez zmian od momentu uruchomienia automatu.</p>`}
+    </div>`;
+}
+
+function renderKalendarz() {
+  const icsUrl = new URL("plan.ics", location.href).href;
+  const webcal = icsUrl.replace(/^https?:/, "webcal:");
+  const outlook = `https://outlook.live.com/calendar/0/addfromweb?url=${encodeURIComponent(icsUrl)}&name=${encodeURIComponent("UEW – plan zajęć")}`;
+  const google = `https://calendar.google.com/calendar/r?cid=${encodeURIComponent(webcal)}`;
+  $("#kalendarz").innerHTML = `
+    <div class="panel">
+      <h3>Subskrybuj w kalendarzu</h3>
+      <p>Zajęcia pojawią się w kalendarzu telefonu lub Outlooka i będą się same aktualizować po każdej zmianie w planie (bez przedmiotu społecznego, dopóki nie jesteś zapisany).</p>
+      <div class="btns">
+        <a class="btn primary" href="${esc(webcal)}">iPhone / Mac</a>
+        <a class="btn" href="${esc(outlook)}" target="_blank" rel="noopener">Outlook</a>
+        <a class="btn" href="${esc(google)}" target="_blank" rel="noopener">Google</a>
+        <button class="btn" id="copy">Kopiuj link</button>
+      </div>
+      <p style="font-size:13.5px">iPhone odświeża subskrybowane kalendarze sam; częstotliwość ustawisz w Ustawieniach → Aplikacje → Kalendarz → Konta kalendarza → Pobierz nowe dane.</p>
+    </div>
+    <div class="panel">
+      <h3>Ikona na ekranie iPhone’a</h3>
+      <ol class="steps"><li>Otwórz tę stronę w Safari.</li><li>Stuknij <b>Udostępnij</b> (kwadrat ze strzałką).</li><li>Wybierz <b>Do ekranu początkowego</b>.</li></ol>
+      <p>Plan otworzy się jak aplikacja, pełnoekranowo, i działa też bez internetu (pokazuje ostatnio pobraną wersję).</p>
+    </div>
+    <div class="panel">
+      <h3>Na komputerze</h3>
+      <p>Dodaj stronę do zakładek (Ctrl+D) albo w Edge/Chrome: menu ⋯ → <b>Aplikacje → Zainstaluj tę witrynę jako aplikację</b>.</p>
+    </div>`;
+  $("#copy").onclick = async () => {
+    try { await navigator.clipboard.writeText(icsUrl); toast("Skopiowano link do kalendarza"); }
+    catch { prompt("Skopiuj link:", icsUrl); }
+  };
+}
+
+function fmtStamp(iso) {
+  if (!iso) return "—";
+  const d = parseLocal(iso);
+  const n = daysBetween(new Date(), d);
+  const hm = `${String(d.getHours()).padStart(2, "0")}:${String(d.getMinutes()).padStart(2, "0")}`;
+  return n === 0 ? `dziś ${hm}` : n === -1 ? `wczoraj ${hm}` : `${fmtShort(d)}.${d.getFullYear()} ${hm}`;
+}
+
+function renderStatus() {
+  const el = $("#status"), st = state.status;
+  let cls = "", txt;
+  if (!st) txt = `Dane z ${fmtStamp(state.data.generated_at)}`;
+  else {
+    const ago = (Date.now() - parseLocal(st.checked_at)) / 36e5;
+    if (!st.ok) { cls = "bad"; txt = `Nie udało się sprawdzić · dane z ${fmtStamp(state.data.generated_at)}`; }
+    else if (ago > 8) { cls = "warn"; txt = `Sprawdzono ${relTime(parseLocal(st.checked_at))}`; }
+    else txt = `Aktualny · sprawdzono ${relTime(parseLocal(st.checked_at))}`;
+  }
+  if (!navigator.onLine) { cls = "warn"; txt = "Offline · ostatnia pobrana wersja"; }
+  el.className = `pill ${cls}`;
+  el.innerHTML = `<i></i><span>${txt}</span><button id="reload" aria-label="Odśwież">↻</button>`;
+  $("#reload").onclick = () => load(true);
+}
+
+function render() {
+  if (!state.data) return;
+  const cfg = state.data.config || {};
+  $("#title").textContent = cfg.title || "Plan zajęć";
+  $("#sub").textContent = cfg.subtitle || "UEW";
+  const { blocks, zjazdy } = prepare();
+  renderStatus();
+  renderHero(blocks);
+  renderNotice();
+  renderZjazdy(zjazdy);
+  renderPrzedmioty(blocks);
+  renderZmiany();
+  renderKalendarz();
+  $("#foot").innerHTML = `Źródło: <a href="${esc(state.data.source)}" target="_blank" rel="noopener">plan.ue.wroc.pl</a> · w razie wątpliwości rozstrzyga oficjalny plan i USOS`;
+  showTab(state.tab, false);
+}
+
+function showTab(tab, scroll = true) {
+  state.tab = tab; store.set("tab", tab);
+  document.querySelectorAll("[data-tab]").forEach((b) => b.setAttribute("aria-selected", b.dataset.tab === tab));
+  document.querySelectorAll("[data-view]").forEach((v) => (v.hidden = v.dataset.view !== tab));
+  if (scroll && window.scrollY > $(".tabs").offsetTop) window.scrollTo({ top: $(".tabs").offsetTop });
+}
+document.querySelectorAll("[data-tab]").forEach((b) => (b.onclick = () => showTab(b.dataset.tab)));
+
+function toast(msg) {
+  const t = document.createElement("div"); t.className = "toast"; t.textContent = msg;
+  document.body.appendChild(t); setTimeout(() => t.remove(), 2200);
+}
+
+async function getJSON(url) {
+  const r = await fetch(`${url}?t=${Date.now()}`, { cache: "no-store" });
+  if (!r.ok) throw new Error(`${url}: ${r.status}`);
+  return r.json();
+}
+let loading = false;
+async function load(manual = false) {
+  if (loading) return; loading = true;
+  try {
+    const [data, status] = await Promise.all([getJSON("data.json"), getJSON("status.json").catch(() => null)]);
+    const changed = state.data && state.data.generated_at !== data.generated_at;
+    state.data = data; state.status = status;
+    render();
+    if (manual) toast(changed ? "Pobrano nową wersję planu" : "Plan jest aktualny");
+  } catch (e) {
+    if (!state.data) $("#zjazdy").innerHTML = `<p class="empty">Nie udało się wczytać planu. Sprawdź połączenie i odśwież stronę.</p>`;
+    else if (manual) toast("Brak połączenia — pokazuję ostatnią wersję");
+  } finally { loading = false; }
+}
+
+load();
+document.addEventListener("visibilitychange", () => { if (!document.hidden) load(); });
+window.addEventListener("online", () => load());
+window.addEventListener("offline", () => state.data && renderStatus());
+setInterval(() => { if (!document.hidden) { load(); } }, 10 * 6e4);
+setInterval(() => { if (state.data && !document.hidden) render(); }, 60 * 1000);
+if ("serviceWorker" in navigator && location.protocol === "https:") navigator.serviceWorker.register("sw.js").catch(() => {});
+</script>
+</body>
+</html>

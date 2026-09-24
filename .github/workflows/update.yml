@@ -1,0 +1,50 @@
+name: Aktualizacja planu
+
+on:
+  schedule:
+    - cron: "7 */2 * * *"   # co 2 godziny (czas UTC)
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: plan
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Pobierz plan z plan.ue.wroc.pl
+        run: python3 scraper/scrape.py
+
+      - name: Zapisz zmiany w repozytorium
+        run: |
+          git config user.name "plan-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data.json docs/plan.ics
+          if ! git diff --cached --quiet; then
+            git commit -m "Plan: aktualizacja $(date -u +'%Y-%m-%d %H:%M') UTC"
+            git push
+          elif [ $(( $(date +%s) - $(git log -1 --format=%ct) )) -gt $(( 40 * 86400 )) ]; then
+            # GitHub wyłącza harmonogram po 60 dniach bez aktywności w repo
+            git commit --allow-empty -m "Podtrzymanie harmonogramu"
+            git push
+          fi
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+      - id: deploy
+        uses: actions/deploy-pages@v4
