@@ -6,11 +6,13 @@ Czytelna wersja planu z [plan.ue.wroc.pl](https://plan.ue.wroc.pl/), która aktu
   wykrywa zmiany i zapisuje `docs/data.json` oraz kalendarz `docs/plan.ics`.
 - `docs/index.html` – strona (działa na telefonie i komputerze, także offline).
 - `config.json` – co pobierać: semestr, grupa, lektorat, przedmioty do wyboru.
+- Notatki do zajęć zapisują się w przeglądarce, a po połączeniu synchronizacji (Ustawienia na stronie)
+  także w prywatnym repozytorium `plan-ue-notatki` (plik `notes.json`) – dzięki temu są te same na telefonie i komputerze.
 
 ## Typowe zmiany w `config.json`
 
-- **Zapisałeś się na przedmiot społeczny** – usuń `"PS"` z `not_enrolled` i dopisz go do `electives`
-  (kod `PS`, dzień tygodnia: 5 = sobota, 6 = niedziela, nazwa, prowadzący, `teacher_id` z listy
+- **Zmiana przedmiotu do wyboru** – popraw wpis w `electives`
+  (kod `PH`/`PS`, dzień tygodnia: 5 = sobota, 6 = niedziela, nazwa, prowadzący, `teacher_id` z listy
   „Pracownicy” na plan.ue.wroc.pl).
 - **Nowy semestr** – zmień `semester_id` i `group` (widać je w adresie linku na plan.ue.wroc.pl,
   np. `l_pozycjaplanu1.php?se=60&gr=200/2`).

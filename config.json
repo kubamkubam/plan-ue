@@ -23,7 +23,22 @@
       "name": "Megatrendy w kreatywnej przestrzeni",
       "teacher": "Stanisław Korenik",
       "teacher_id": 3946
+    },
+    {
+      "code": "PS",
+      "weekday": 5,
+      "name": "Społeczne kompetencje",
+      "teacher": "Małgorzata Wójcik-Pyzik",
+      "teacher_id": null
+    },
+    {
+      "code": "PS",
+      "weekday": 6,
+      "name": "Nowe koncepcje w przestrzeni społeczno-gospodarczej",
+      "teacher": "Dariusz Głuszczuk",
+      "teacher_id": 10871
     }
   ],
-  "not_enrolled": ["PS"]
+  "not_enrolled": [],
+  "notes_repo": "kubamkubam/plan-ue-notatki"
 }

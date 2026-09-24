@@ -19,7 +19,6 @@
 :root {
   --bg: #f4f2ee;
   --surface: #ffffff;
-  --surface-2: #faf9f7;
   --line: #e6e2db;
   --line-soft: #efece6;
   --text: #1b1c20;
@@ -28,19 +27,19 @@
   --accent: #3446d4;
   --accent-soft: #e8ebfd;
   --ok: #1f8a4c;
+  --ok-soft: #e3f4ea;
   --warn: #b86e00;
   --warn-soft: #fff4e0;
   --bad: #c2372f;
   --shadow: 0 1px 2px rgba(20, 20, 30, .05), 0 4px 16px rgba(20, 20, 30, .04);
   --radius: 16px;
-  --sub-l: 44%; --sub-s: 62%; --tint-l: 95.5%; --tint-s: 70%;
+  --sub-l: 44%; --sub-s: 62%; --tint-l: 95%; --tint-s: 70%;
   color-scheme: light dark;
 }
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #16171b;
     --surface: #1f2126;
-    --surface-2: #24262c;
     --line: #2f3239;
     --line-soft: #292b31;
     --text: #eceef2;
@@ -49,11 +48,12 @@
     --accent: #8f9cff;
     --accent-soft: #272b4a;
     --ok: #4fc47f;
+    --ok-soft: #173024;
     --warn: #f0a93b;
     --warn-soft: #332917;
     --bad: #ff7a70;
     --shadow: none;
-    --sub-l: 70%; --sub-s: 70%; --tint-l: 17%; --tint-s: 28%;
+    --sub-l: 70%; --sub-s: 70%; --tint-l: 18%; --tint-s: 28%;
   }
 }
 * { box-sizing: border-box; }
@@ -66,7 +66,7 @@ body {
   -webkit-font-smoothing: antialiased;
   padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
-button { font: inherit; color: inherit; }
+button, textarea, input { font: inherit; color: inherit; }
 a { color: var(--accent); }
 .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px 48px; }
 
@@ -81,12 +81,12 @@ h1 { margin: 2px 0 0; font-size: 30px; line-height: 1.1; letter-spacing: -.02em;
 
 /* ---------- karta "najbliższe" ---------- */
 .hero { background: var(--surface); border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--line); padding: 18px 18px 16px; margin-bottom: 14px; display: grid; gap: 14px; }
-@media (min-width: 760px) { .hero { grid-template-columns: 1.25fr 1fr; align-items: stretch; padding: 22px; } }
-.hero-label { font-size: 13px; font-weight: 650; color: var(--text-2); display: flex; gap: 8px; align-items: center; }
+@media (min-width: 760px) { .hero { grid-template-columns: 1.25fr 1fr; padding: 22px; } }
+.hero-label { font-size: 13px; font-weight: 650; color: var(--text-2); }
 .hero-label .live { color: var(--ok); }
 .hero-when { font-size: 34px; font-weight: 750; letter-spacing: -.025em; line-height: 1.1; margin: 6px 0 4px; font-variant-numeric: tabular-nums; }
 .hero-when small { font-size: 17px; font-weight: 600; color: var(--text-2); letter-spacing: 0; }
-.hero-name { font-size: 18px; font-weight: 650; line-height: 1.3; display: flex; gap: 10px; align-items: baseline; }
+.hero-name { font-size: 18px; font-weight: 650; line-height: 1.3; }
 .hero-meta { color: var(--text-2); font-size: 14px; margin-top: 3px; }
 .hero-next { border-top: 1px solid var(--line-soft); padding-top: 12px; }
 @media (min-width: 760px) { .hero-next { border-top: 0; border-left: 1px solid var(--line-soft); padding: 0 0 0 20px; } }
@@ -95,11 +95,14 @@ h1 { margin: 2px 0 0; font-size: 30px; line-height: 1.1; letter-spacing: -.02em;
 .mini span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 /* ---------- zakładki ---------- */
-.tabs { position: sticky; top: 0; z-index: 5; background: var(--bg); padding: 8px 0 10px; margin: 0 -16px; padding-left: 16px; padding-right: 16px; }
+.tabs { position: sticky; top: 0; z-index: 5; background: var(--bg); padding: 8px 16px 10px; margin: 0 -16px; }
 .seg { display: flex; background: var(--line-soft); border-radius: 12px; padding: 3px; gap: 2px; max-width: 560px; }
 .seg button { flex: 1; border: 0; background: none; padding: 8px 6px; border-radius: 9px; font-size: 14px; font-weight: 600; color: var(--text-2); cursor: pointer; position: relative; white-space: nowrap; }
 .seg button[aria-selected="true"] { background: var(--surface); color: var(--text); box-shadow: 0 1px 3px rgba(0,0,0,.12); }
 .seg .dot { position: absolute; top: 6px; right: 8px; width: 7px; height: 7px; border-radius: 50%; background: var(--warn); }
+.toolbar { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.seg.small { max-width: 300px; flex: 1 1 240px; }
+.seg.small button { font-size: 13.5px; padding: 6px; }
 
 /* ---------- baner zmian ---------- */
 .notice { background: var(--warn-soft); border: 1px solid color-mix(in srgb, var(--warn) 30%, transparent); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 14px; }
@@ -107,45 +110,104 @@ h1 { margin: 2px 0 0; font-size: 30px; line-height: 1.1; letter-spacing: -.02em;
 .notice ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
 .notice li { font-size: 14px; display: flex; gap: 8px; align-items: baseline; }
 .notice .btn { margin-top: 10px; }
-.btn { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line); background: var(--surface); border-radius: 10px; padding: 8px 13px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; color: var(--text); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid var(--line); background: var(--surface); border-radius: 10px; padding: 8px 13px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; color: var(--text); }
 .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn:disabled { opacity: .5; cursor: default; }
 @media (prefers-color-scheme: dark) { .btn.primary { color: #111428; } }
-.chg { font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; padding: 2px 7px; border-radius: 6px; background: var(--warn-soft); color: var(--warn); white-space: nowrap; }
+.chg { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; padding: 1px 6px; border-radius: 6px; background: var(--warn-soft); color: var(--warn); white-space: nowrap; }
 
-/* ---------- zjazdy ---------- */
-.zjazd { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 14px; overflow: hidden; scroll-margin-top: 70px; }
-.zjazd > header { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; padding: 14px 16px 10px; }
+/* ---------- zjazd: siatka wyrównana do godzin ---------- */
+.zjazd { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 14px; scroll-margin-top: 70px; }
+.zjazd > header { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; padding: 14px 16px 4px; }
 .zjazd h2 { margin: 0; font-size: 18px; letter-spacing: -.01em; }
 .zjazd h2 span { color: var(--text-3); font-weight: 600; font-size: 14px; margin-right: 6px; }
 .tag { font-size: 12.5px; font-weight: 650; color: var(--text-2); background: var(--line-soft); border-radius: 999px; padding: 3px 9px; white-space: nowrap; }
 .tag.now { background: var(--accent-soft); color: var(--accent); }
-.days { display: grid; }
-@media (min-width: 760px) { .days { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); } .days .day + .day { border-left: 1px solid var(--line-soft); } }
-.day { padding: 4px 16px 14px; border-top: 1px solid var(--line-soft); }
-.day-h { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 0 8px; font-size: 13.5px; }
-.day-h b { font-size: 14.5px; }
-.day-h span { color: var(--text-3); font-variant-numeric: tabular-nums; }
-.day.today .day-h b { color: var(--accent); }
-.day.today .day-h b::after { content: " · dziś"; }
-.cls { display: grid; grid-template-columns: 56px 1fr; gap: 12px; padding: 8px 0; align-items: start; }
-.cls .t { font-variant-numeric: tabular-nums; font-size: 14px; font-weight: 650; line-height: 1.25; padding-top: 9px; }
-.cls .t small { display: block; color: var(--text-3); font-weight: 500; }
-.card { border-radius: 12px; padding: 8px 11px 9px 13px; background: hsl(var(--h) var(--tint-s) var(--tint-l)); position: relative; min-width: 0; }
-.card::before { content: ""; position: absolute; left: 0; top: 8px; bottom: 8px; width: 3.5px; border-radius: 3px; background: hsl(var(--h) var(--sub-s) var(--sub-l)); }
-.card .n { font-weight: 650; line-height: 1.3; display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: baseline; }
-.card .k { font-size: 12px; font-weight: 700; color: hsl(var(--h) var(--sub-s) var(--sub-l)); letter-spacing: .02em; }
-.card .m { font-size: 13.5px; color: var(--text-2); margin-top: 2px; display: flex; flex-wrap: wrap; gap: 2px 12px; }
+.zgrid { display: grid; grid-template-columns: 50px repeat(var(--cols), minmax(0, 1fr)); column-gap: 10px; padding: 0 14px 12px; }
+.dh { grid-row: 1; padding: 10px 2px 8px; margin-bottom: 4px; border-bottom: 1px solid var(--line-soft); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 8px; align-items: baseline; font-size: 13px; min-width: 0; }
+.dh b { font-size: 14.5px; }
+.dh span { color: var(--text-3); font-variant-numeric: tabular-nums; }
+.dh.today b { color: var(--accent); }
+.tl { grid-column: 1; padding: 10px 0 0; font-variant-numeric: tabular-nums; font-size: 14px; font-weight: 650; line-height: 1.2; }
+.tl small { display: block; color: var(--text-3); font-weight: 500; font-size: 12.5px; }
+.slot { padding: 4px 0; min-width: 0; display: flex; align-items: flex-start; }
+.slot > * { flex: 1; min-width: 0; }
+.slot.fill { align-items: stretch; }
+.free { border: 1.5px dashed var(--line-soft); border-radius: 12px; min-height: 44px; }
+.dayoff { border: 1.5px dashed var(--line); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--text-3); font-size: 13.5px; font-weight: 600; min-height: 60px; }
+
+.card { border-radius: 12px; background: hsl(var(--h) var(--tint-s) var(--tint-l)); position: relative; }
+.card::before { content: ""; position: absolute; left: 0; top: 9px; bottom: 9px; width: 3.5px; border-radius: 3px; background: hsl(var(--h) var(--sub-s) var(--sub-l)); }
+.card .head { display: block; width: 100%; text-align: left; background: none; border: 0; padding: 8px 10px 9px 13px; cursor: pointer; border-radius: 12px; }
+.card .head:focus-visible { outline: 2px solid var(--accent); }
+.card .n { font-weight: 650; line-height: 1.28; overflow-wrap: anywhere; }
+.card .m { font-size: 13px; color: var(--text-2); margin-top: 3px; display: flex; flex-wrap: wrap; gap: 2px 10px; align-items: center; }
 .card .room { font-weight: 650; color: var(--text); }
-.card .room.none { font-weight: 500; color: var(--text-3); }
-.cls.past { opacity: .5; }
-.cls.live .card { outline: 2px solid hsl(var(--h) var(--sub-s) var(--sub-l)); outline-offset: 1px; }
-.cls.opt .card { background: transparent; border: 1.5px dashed var(--line); }
-.cls.opt .card::before { display: none; }
-.cls.opt .n { color: var(--text-2); font-weight: 600; }
-.gap { margin-left: 68px; font-size: 12.5px; color: var(--text-3); padding: 2px 0; display: flex; align-items: center; gap: 8px; }
-.gap::after { content: ""; flex: 1; border-top: 1px dashed var(--line); }
-.more { width: 100%; margin-bottom: 14px; justify-content: center; color: var(--text-2); }
+.card .ico { display: inline-flex; align-items: center; gap: 3px; color: hsl(var(--h) var(--sub-s) var(--sub-l)); font-weight: 650; }
+.card .ico svg { width: 14px; height: 14px; }
+.card .chev { position: absolute; right: 8px; top: 9px; width: 14px; height: 14px; color: var(--text-3); transition: transform .15s; }
+.card.open .chev { transform: rotate(180deg); }
+.card .n { padding-right: 16px; }
+.card.past { opacity: .55; }
+.card.open { opacity: 1; }
+.card.live { outline: 2px solid hsl(var(--h) var(--sub-s) var(--sub-l)); outline-offset: 1px; }
+.card.flash { animation: flash 1.6s ease-out; }
+@keyframes flash { 0%, 40% { box-shadow: 0 0 0 4px hsl(var(--h) var(--sub-s) var(--sub-l) / .45); } 100% { box-shadow: 0 0 0 0 transparent; } }
+.body { padding: 0 11px 11px 13px; font-size: 13.5px; }
+.body dl { margin: 0 0 10px; display: grid; grid-template-columns: auto 1fr; gap: 3px 10px; }
+.body dt { color: var(--text-3); }
+.body dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+.body label { display: block; font-weight: 650; margin-bottom: 4px; }
+.body textarea { width: 100%; min-height: 92px; resize: vertical; border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; background: var(--surface); font-size: 16px; line-height: 1.4; }
+.body textarea:focus { outline: 2px solid hsl(var(--h) var(--sub-s) var(--sub-l)); outline-offset: -1px; border-color: transparent; }
+.note-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin-top: 8px; }
+.note-actions .btn { padding: 7px 16px; }
+.nstat { font-size: 12.5px; color: var(--text-2); }
+.nstat.ok { color: var(--ok); font-weight: 650; }
+.nstat.dirty { color: var(--warn); font-weight: 650; }
+.orphans { margin-top: 4px; }
+.more { width: 100%; margin-bottom: 14px; color: var(--text-2); }
 .empty { color: var(--text-2); padding: 30px 0; text-align: center; }
+@media (max-width: 560px) {
+  .zgrid { grid-template-columns: 40px repeat(var(--cols), minmax(0, 1fr)); column-gap: 6px; padding: 0 10px 10px; }
+  .zjazd > header { padding: 12px 12px 2px; }
+  .tl { font-size: 13px; padding-top: 9px; }
+  .tl small { font-size: 11.5px; }
+  .dh b { font-size: 13.5px; }
+  .dh span { font-size: 12px; }
+  .card .head { padding: 7px 7px 8px 11px; }
+  .card .n { font-size: 13.5px; }
+  .card .m { font-size: 12.5px; gap: 1px 8px; }
+  .card .chev { right: 5px; top: 8px; }
+  .body { padding: 0 8px 9px 11px; font-size: 13px; }
+  .body dl { grid-template-columns: 1fr; gap: 0; }
+  .body dt { margin-top: 3px; }
+}
+
+/* ---------- cały semestr ---------- */
+.sem { display: grid; grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: 10px; }
+@media (max-width: 400px) { .sem { gap: 8px; } }
+.sc { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 9px 9px 10px; box-shadow: var(--shadow); min-width: 0; }
+.sc.past { opacity: .5; }
+.sc.next { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.sc-h { display: flex; justify-content: space-between; align-items: baseline; gap: 6px; margin-bottom: 6px; font-size: 13px; }
+.sc-h b { font-size: 13.5px; }
+.sc-h span { color: var(--text-3); font-size: 12px; white-space: nowrap; }
+.sg { display: grid; grid-template-columns: 30px repeat(var(--cols), minmax(0, 1fr)); gap: 3px; }
+.sg .d { font-size: 11px; font-weight: 700; color: var(--text-3); text-align: center; text-transform: uppercase; letter-spacing: .03em; }
+.sg .d.today { color: var(--accent); }
+.sg .t { font-size: 10.5px; color: var(--text-3); font-variant-numeric: tabular-nums; line-height: 22px; }
+.chip { height: 22px; border-radius: 6px; background: hsl(var(--h) var(--tint-s) var(--tint-l)); color: hsl(var(--h) var(--sub-s) calc(var(--sub-l) - 6%)); font-size: 10.5px; font-weight: 750; display: flex; align-items: center; justify-content: center; gap: 2px; padding: 0 3px; border: 0; cursor: pointer; overflow: hidden; white-space: nowrap; position: relative; min-width: 0; }
+@media (prefers-color-scheme: dark) { .chip { color: hsl(var(--h) var(--sub-s) var(--sub-l)); } }
+.chip small { font-weight: 600; opacity: .75; font-size: 9.5px; }
+.chip.cont { border-top-left-radius: 0; border-top-right-radius: 0; margin-top: -3px; height: 25px; }
+.chip.cont > span { opacity: .45; }
+.chip .nd { position: absolute; top: 3px; right: 3px; width: 6px; height: 6px; border-radius: 50%; background: var(--warn); }
+.nochip { height: 22px; border-radius: 6px; background: var(--line-soft); opacity: .45; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; margin: 14px 2px 4px; font-size: 13px; color: var(--text-2); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend .chip { display: inline-flex; height: 20px; min-width: 38px; cursor: default; }
+.legend .nd-demo { width: 7px; height: 7px; border-radius: 50%; background: var(--warn); display: inline-block; }
 
 /* ---------- przedmioty ---------- */
 .subjects { display: grid; gap: 12px; }
@@ -161,11 +223,16 @@ h1 { margin: 2px 0 0; font-size: 30px; line-height: 1.1; letter-spacing: -.02em;
 .bar { width: 76px; height: 6px; border-radius: 3px; background: var(--line-soft); overflow: hidden; margin-top: 4px; }
 .bar i { display: block; height: 100%; background: hsl(var(--h) var(--sub-s) var(--sub-l)); }
 .cnt { text-align: right; font-variant-numeric: tabular-nums; color: var(--text-2); font-size: 13px; }
+.snotes { border-top: 1px solid var(--line-soft); padding-top: 8px; margin-top: 2px; display: grid; gap: 6px; }
+.snote { display: block; width: 100%; text-align: left; background: hsl(var(--h) var(--tint-s) var(--tint-l)); border: 0; border-radius: 10px; padding: 7px 10px; font-size: 13.5px; cursor: pointer; white-space: pre-wrap; overflow-wrap: anywhere; }
+.snote b { display: block; font-size: 12px; color: var(--text-2); margin-bottom: 1px; }
 
-/* ---------- zmiany / kalendarz ---------- */
+/* ---------- zmiany / ustawienia ---------- */
 .panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow); margin-bottom: 14px; }
-.panel h3 { margin: 0 0 8px; font-size: 16px; }
+.panel h3 { margin: 0 0 8px; font-size: 16px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 .panel p { margin: 6px 0; color: var(--text-2); }
+.state { font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: var(--line-soft); color: var(--text-2); }
+.state.on { background: var(--ok-soft); color: var(--ok); }
 .log { list-style: none; margin: 0; padding: 0; }
 .log > li { padding: 12px 0; border-top: 1px solid var(--line-soft); }
 .log > li:first-child { border-top: 0; padding-top: 0; }
@@ -175,13 +242,19 @@ h1 { margin: 2px 0 0; font-size: 30px; line-height: 1.1; letter-spacing: -.02em;
 .log .what { color: var(--text-2); }
 .btns { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
 ol.steps { margin: 6px 0 0; padding-left: 20px; color: var(--text-2); }
-ol.steps li { margin: 3px 0; }
+ol.steps li { margin: 4px 0; }
+.field { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+.field input { flex: 1 1 220px; min-width: 0; border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; background: var(--surface); font-size: 16px; }
+.qr { margin-top: 12px; padding: 12px; background: #fff; border-radius: 12px; display: inline-block; }
+.qr svg { display: block; width: 220px; height: 220px; }
+.hint { font-size: 13px; color: var(--text-3); }
+.err { color: var(--bad); font-size: 13.5px; }
 .switch { display: flex; align-items: center; justify-content: space-between; gap: 12px; cursor: pointer; }
 .switch input { width: 20px; height: 20px; accent-color: var(--accent); flex: none; }
 .foot { color: var(--text-3); font-size: 12.5px; text-align: center; margin-top: 26px; }
 .foot a { color: inherit; }
 [hidden] { display: none !important; }
-.toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom)); transform: translateX(-50%); background: var(--text); color: var(--bg); padding: 9px 15px; border-radius: 10px; font-size: 14px; font-weight: 600; }
+.toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom)); transform: translateX(-50%); background: var(--text); color: var(--bg); padding: 9px 15px; border-radius: 10px; font-size: 14px; font-weight: 600; z-index: 20; max-width: calc(100% - 32px); text-align: center; }
 </style>
 </head>
 <body>
@@ -198,18 +271,28 @@ ol.steps li { margin: 3px 0; }
 
   <div class="tabs">
     <div class="seg" role="tablist">
-      <button role="tab" data-tab="zjazdy" aria-selected="true">Zjazdy</button>
+      <button role="tab" data-tab="plan" aria-selected="true">Plan</button>
       <button role="tab" data-tab="przedmioty" aria-selected="false">Przedmioty</button>
       <button role="tab" data-tab="zmiany" aria-selected="false">Zmiany</button>
-      <button role="tab" data-tab="kalendarz" aria-selected="false">Kalendarz</button>
+      <button role="tab" data-tab="ustawienia" aria-selected="false">Ustawienia</button>
     </div>
   </div>
 
   <main>
-    <section data-view="zjazdy"><div id="notice"></div><div id="zjazdy"></div></section>
+    <section data-view="plan">
+      <div class="toolbar">
+        <div class="seg small" role="tablist" aria-label="Widok planu">
+          <button data-mode="zjazdy" aria-selected="true">Zjazdy</button>
+          <button data-mode="semestr" aria-selected="false">Cały semestr</button>
+        </div>
+      </div>
+      <div id="notice"></div>
+      <div id="zjazdy"></div>
+      <div id="semestr" hidden></div>
+    </section>
     <section data-view="przedmioty" hidden><div id="przedmioty" class="subjects"></div></section>
     <section data-view="zmiany" hidden><div id="zmiany"></div></section>
-    <section data-view="kalendarz" hidden><div id="kalendarz"></div></section>
+    <section data-view="ustawienia" hidden><div id="sync"></div><div id="kalendarz"></div></section>
   </main>
 
   <p class="foot" id="foot"></p>
@@ -217,20 +300,29 @@ ol.steps li { margin: 3px 0; }
 
 <script>
 "use strict";
-const HUES = { ZIDT: 262, PLK: 212, ZPR: 160, PBM: 24, ZJP: 340, KZP: 190, BiCP: 45, JA: 232, PS: 0 };
-const ELECTIVE_HUES = [300, 128];
+const HUES = { ZIDT: 262, PLK: 212, ZPR: 160, PBM: 24, ZJP: 340, KZP: 190, BiCP: 45, JA: 232 };
+const ELECTIVE_HUES = [300, 128, 88, 5, 280, 100];
 const DAY = ["niedziela", "poniedziałek", "wtorek", "środa", "czwartek", "piątek", "sobota"];
 const DAY_ACC = ["niedzielę", "poniedziałek", "wtorek", "środę", "czwartek", "piątek", "sobotę"];
-const DAY_SHORT =["ndz", "pon", "wt", "śr", "czw", "pt", "sob"];
+const DAY_SHORT = ["ndz", "pon", "wt", "śr", "czw", "pt", "sob"];
 const MONTH = ["stycznia", "lutego", "marca", "kwietnia", "maja", "czerwca", "lipca", "sierpnia", "września", "października", "listopada", "grudnia"];
 const TYPE_FULL = { W: "wykład", "Ćw": "ćwiczenia", Lab: "laboratorium", Lekt: "lektorat" };
 const CHANGE_LABEL = { moved: "przeniesione", removed: "odwołane", added: "nowe", room: "sala", teacher: "prowadzący" };
+const ICON_NOTE = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2.5h7l3 3v8H3z"/><path d="M5.5 7.5h5M5.5 10h5"/></svg>';
+const ICON_CHEV = '<svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg>';
 
 const store = {
   get(k, d) { try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch { return d; } },
   set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
+  del(k) { try { localStorage.removeItem(k); } catch {} },
 };
-const state = { data: null, status: null, tab: store.get("tab", "zjazdy"), showPast: false, showPS: store.get("showPS", true) };
+const state = {
+  data: null, status: null,
+  tab: store.get("tab2", "plan"), mode: store.get("mode", "zjazdy"),
+  showPast: false, showPS: store.get("showPS", true),
+  expanded: new Set(), drafts: new Map(), noteMsg: new Map(),
+  deferredRender: false,
+};
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
@@ -239,11 +331,14 @@ function toDate(date, time = "00:00") {
   const [hh, mm] = time.split(":").map(Number);
   return new Date(y, m - 1, d, hh, mm);
 }
+const isoDate = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 function parseLocal(iso) { const [d, t] = iso.split("T"); return toDate(d, t.slice(0, 5)); }
 const dayStart = (d) => new Date(d.getFullYear(), d.getMonth(), d.getDate());
 const daysBetween = (a, b) => Math.round((dayStart(b) - dayStart(a)) / 864e5);
 const fmtDay = (d) => `${d.getDate()} ${MONTH[d.getMonth()]}`;
 const fmtShort = (d) => `${d.getDate()}.${String(d.getMonth() + 1).padStart(2, "0")}`;
+const hm = (d) => `${String(d.getHours()).padStart(2, "0")}:${String(d.getMinutes()).padStart(2, "0")}`;
+const cap = (s) => s[0].toUpperCase() + s.slice(1);
 
 function relDay(d, now = new Date()) {
   const n = daysBetween(now, d);
@@ -251,7 +346,7 @@ function relDay(d, now = new Date()) {
   if (n === 1) return "jutro";
   if (n === -1) return "wczoraj";
   if (n > 1 && n < 7) return `${d.getDay() === 2 ? "we" : "w"} ${DAY_ACC[d.getDay()]}`;
-  if (n >= 7) { const w = Math.round(n / 7); return n < 14 ? `za ${n} dni` : `za ${w} tyg.`; }
+  if (n >= 7) return n < 14 ? `za ${n} dni` : `za ${Math.round(n / 7)} tyg.`;
   return `${-n} dni temu`;
 }
 function relTime(d, now = new Date()) {
@@ -267,16 +362,109 @@ function relTime(d, now = new Date()) {
   const h = Math.floor(min / 60), m = min % 60;
   return m && h < 5 ? `za ${h} h ${m} min` : `za ${Math.round(min / 60)} h`;
 }
+function electiveNames() {
+  return [...new Set(state.data.events.filter((e) => e.kind === "elective").map((e) => e.name))];
+}
 function hueFor(ev) {
-  if (ev.kind === "elective") {
-    const names = [...new Set(state.data.events.filter((e) => e.kind === "elective").map((e) => e.name))].sort();
-    return ELECTIVE_HUES[names.indexOf(ev.name) % ELECTIVE_HUES.length];
-  }
+  if (ev.kind === "elective") return ELECTIVE_HUES[electiveNames().indexOf(ev.name) % ELECTIVE_HUES.length];
   if (ev.code in HUES) return HUES[ev.code];
   let h = 0; for (const c of ev.code) h = (h * 31 + c.charCodeAt(0)) % 360; return h;
 }
+function abbr(ev) {
+  if (ev.kind === "language") return "ANG";
+  if (ev.kind !== "elective") return ev.code;
+  return ev.name.split(/[\s–-]+/).filter(Boolean).map((w) => (w.length <= 2 ? w[0].toLowerCase() : w[0].toUpperCase())).join("").slice(0, 5);
+}
 
-/* --------------- przygotowanie danych --------------- */
+/* =============== notatki (lokalnie + opcjonalna synchronizacja przez prywatne repo GitHub) =============== */
+const Notes = {
+  all: store.get("notes", {}),
+  dirty: new Set(store.get("notesDirty", [])),
+  token: store.get("syncToken", null),
+  lastSync: store.get("lastSync", null),
+  syncError: null,
+  syncing: null,
+  repo() { return state.data?.config?.notes_repo; },
+  get(key) { const n = this.all[key]; return n && n.text ? n : null; },
+  persist() { store.set("notes", this.all); store.set("notesDirty", [...this.dirty]); },
+  async save(key, text, meta) {
+    this.all[key] = { ...meta, text, updated: new Date().toISOString() };
+    this.dirty.add(key);
+    this.persist();
+    if (!this.token) return "local";
+    try { await this.sync(); return "synced"; } catch (e) { return e.auth ? "auth" : "offline"; }
+  },
+  api(path, opts = {}) {
+    return fetch(`https://api.github.com/repos/${this.repo()}/contents/${path}`, {
+      cache: "no-store",
+      ...opts,
+      headers: { Authorization: `Bearer ${this.token}`, Accept: "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28", ...(opts.headers || {}) },
+    });
+  },
+  async pull() {
+    const r = await this.api("notes.json");
+    if (r.status === 404) {
+      if (!(await this.repoVisible())) { const e = new Error("Brak dostępu do repozytorium notatek"); e.auth = true; throw e; }
+      return { notes: {}, sha: null };
+    }
+    if (r.status === 401 || r.status === 403) { const e = new Error("Klucz jest nieprawidłowy albo wygasł"); e.auth = true; throw e; }
+    if (!r.ok) throw new Error(`GitHub: ${r.status}`);
+    const j = await r.json();
+    const bytes = Uint8Array.from(atob(j.content.replace(/\s/g, "")), (c) => c.charCodeAt(0));
+    return { notes: JSON.parse(new TextDecoder().decode(bytes) || "{}"), sha: j.sha };
+  },
+  async repoVisible() {
+    const r = await fetch(`https://api.github.com/repos/${this.repo()}`, { cache: "no-store", headers: { Authorization: `Bearer ${this.token}` } });
+    return r.ok;
+  },
+  async push(notes, sha) {
+    const bytes = new TextEncoder().encode(JSON.stringify(notes, null, 1));
+    let bin = ""; for (let i = 0; i < bytes.length; i += 8192) bin += String.fromCharCode(...bytes.subarray(i, i + 8192));
+    const r = await this.api("notes.json", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: "Notatki: aktualizacja", content: btoa(bin), ...(sha ? { sha } : {}) }),
+    });
+    if (r.status === 409 || r.status === 422) return false;
+    if (r.status === 401 || r.status === 403) { const e = new Error("Klucz nie ma prawa zapisu"); e.auth = true; throw e; }
+    if (!r.ok) throw new Error(`GitHub: ${r.status}`);
+    return true;
+  },
+  sync() {
+    if (!this.token || !this.repo()) return Promise.resolve(false);
+    if (this.syncing) return this.syncing.then(() => this.sync());
+    this.syncing = (async () => {
+      try {
+        for (let attempt = 0; attempt < 4; attempt++) {
+          const { notes: remote, sha } = await this.pull();
+          let changedLocal = false;
+          for (const [k, rn] of Object.entries(remote)) {
+            const ln = this.all[k];
+            if (!ln || rn.updated > ln.updated) { this.all[k] = rn; this.dirty.delete(k); changedLocal = true; }
+            else if (rn.updated === ln.updated) this.dirty.delete(k);
+          }
+          if (!this.dirty.size) { this.persist(); this.done(); return changedLocal; }
+          const merged = { ...remote };
+          for (const k of this.dirty) merged[k] = this.all[k];
+          if (await this.push(merged, sha)) { this.dirty.clear(); this.persist(); this.done(); return changedLocal; }
+        }
+        throw new Error("Konflikt zapisu, spróbuj ponownie");
+      } catch (e) { this.syncError = e.message; throw e; }
+      finally { this.syncing = null; }
+    })();
+    return this.syncing;
+  },
+  done() { this.syncError = null; this.lastSync = new Date().toISOString(); store.set("lastSync", this.lastSync); },
+  connect(token) { this.token = token.trim(); store.set("syncToken", this.token); },
+  disconnect() { this.token = null; this.lastSync = null; store.del("syncToken"); store.del("lastSync"); },
+};
+// klucz przekazany kodem QR: ...#sync=TOKEN
+(function readHashToken() {
+  const m = location.hash.match(/sync=([\w-]+)/);
+  if (m) { Notes.connect(m[1]); history.replaceState(null, "", location.pathname + location.search); state.tab = "ustawienia"; state.justPaired = true; }
+})();
+
+/* =============== przygotowanie danych =============== */
 function prepare() {
   const events = state.data.events
     .filter((e) => state.showPS || e.kind !== "not_enrolled")
@@ -287,9 +475,11 @@ function prepare() {
     const last = blocks[blocks.length - 1];
     const same = last && last.date === ev.date && last.code === ev.code && last.name === ev.name && last.type_short === ev.type_short
       && last.room === ev.room && last.teacher === ev.teacher && ev.s - last.e <= 15 * 6e4;
-    if (same) { last.e = ev.e; last.end = ev.end; last.n++; last.keys.push(ev.key); }
-    else blocks.push({ ...ev, n: 1, keys: [ev.key] });
+    if (same) { last.e = ev.e; last.end = ev.end; last.n++; last.parts.push(ev); }
+    else blocks.push({ ...ev, n: 1, parts: [ev] });
   }
+  const blockOf = new Map();
+  for (const b of blocks) for (const p of b.parts) blockOf.set(p.key, b);
   // dni -> zjazdy (dni oddalone o max 2 doby tworzą jeden zjazd)
   const days = new Map();
   for (const b of blocks) { if (!days.has(b.date)) days.set(b.date, []); days.get(b.date).push(b); }
@@ -300,33 +490,46 @@ function prepare() {
     if (cur && daysBetween(cur.days[cur.days.length - 1].d, d) <= 2) cur.days.push({ date, d, list });
     else zjazdy.push({ days: [{ date, d, list }] });
   }
-  zjazdy.forEach((z, i) => { z.no = i + 1; z.start = z.days[0].d; z.end = z.days[z.days.length - 1].list.slice(-1)[0].e; });
-  return { blocks, zjazdy };
+  zjazdy.forEach((z, i) => {
+    z.no = i + 1;
+    // zawsze pełny weekend: brakującą sobotę/niedzielę dodaj jako pusty dzień
+    const dates = new Map(z.days.map((x) => [x.date, x]));
+    for (const x of [...z.days]) {
+      const wd = x.d.getDay();
+      const other = wd === 6 ? 1 : wd === 0 ? -1 : 0;
+      if (other) {
+        const od = new Date(x.d); od.setDate(od.getDate() + other);
+        const k = isoDate(od);
+        if (!dates.has(k)) dates.set(k, { date: k, d: od, list: [] });
+      }
+    }
+    z.cols = [...dates.values()].sort((a, b) => a.d - b.d);
+    z.start = z.cols.find((c) => c.list.length).list[0].s;
+    const lastDay = [...z.cols].reverse().find((c) => c.list.length);
+    z.end = lastDay.list[lastDay.list.length - 1].e;
+    z.slots = [...new Set(z.days.flatMap((x) => x.list.flatMap((b) => b.parts.map((p) => p.start))))].sort();
+  });
+  const allSlots = [...new Set(events.map((e) => e.start))].sort();
+  return { blocks, zjazdy, blockOf, allSlots };
 }
 
 function unseenChanges() {
   const seen = store.get("seenChange", null);
   const all = state.data.changes || [];
-  if (seen === null) {
-    const weekAgo = Date.now() - 7 * 864e5;
-    return all.filter((c) => parseLocal(c.detected_at) > weekAgo);
-  }
+  if (seen === null) return all.filter((c) => parseLocal(c.detected_at) > Date.now() - 7 * 864e5);
   return all.filter((c) => c.detected_at > seen);
 }
 function changedMarks() {
   const m = new Map();
-  for (const c of unseenChanges()) for (const it of c.items) {
-    const k = `${it.code}|${it.date}`;
-    if (!m.has(k)) m.set(k, it.kind);
-  }
+  for (const c of unseenChanges()) for (const it of c.items) if (!m.has(`${it.code}|${it.date}`)) m.set(`${it.code}|${it.date}`, it.kind);
   return m;
 }
 
-/* --------------- widoki --------------- */
-function metaLine(b, withTeacher = true) {
-  const room = b.room ? `<span class="room">sala ${esc(b.room)}</span>` : `<span class="room none">sala: —</span>`;
-  const blocks = b.n > 1 ? ` · ${b.n} bloki` : "";
-  return `<span>${esc(TYPE_FULL[b.type_short] || b.type)}${blocks}</span>${room}${withTeacher && b.teacher ? `<span>${esc(b.teacher)}</span>` : ""}`;
+/* =============== widoki =============== */
+function metaShort(b) {
+  const parts = [`<span>${esc(TYPE_FULL[b.type_short] || b.type)}</span>`];
+  if (b.room) parts.push(`<span class="room">${esc(b.room)}</span>`);
+  return parts.join("");
 }
 
 function renderHero(blocks) {
@@ -338,19 +541,20 @@ function renderHero(blocks) {
   const live = b.s <= now;
   const n = daysBetween(now, b.s);
   let label, when;
-  if (live) { label = `<span class="live">● Trwa teraz</span> · do ${b.end}`; when = `${b.start}–${b.end}`; }
+  if (live) { label = `<span class="live">● Trwa teraz</span> · do ${b.end}`; when = `${b.start}<small> – ${b.end}</small>`; }
   else if (n === 0) { label = `Dziś · ${relTime(b.s, now)}`; when = `${b.start}<small> – ${b.end}</small>`; }
   else { label = `Najbliższe · ${DAY[b.s.getDay()]}, ${fmtDay(b.s)} · ${relDay(b.s, now)}`; when = `${b.start}<small> – ${b.end}</small>`; }
   const sameDay = upcoming.slice(1).filter((x) => x.date === b.date && x.kind !== "not_enrolled");
   const after = sameDay.length ? sameDay : upcoming.slice(1, 4);
   const endOfDay = [b, ...sameDay].slice(-1)[0];
-  el.style.setProperty("--h", hueFor(b));
+  const note = Notes.get(b.key);
   el.innerHTML = `
     <div>
       <div class="hero-label">${label}</div>
       <div class="hero-when">${when}</div>
       <div class="hero-name">${esc(b.name)}</div>
-      <div class="hero-meta">${metaLine(b).replace(/<\/span><span/g, "</span> · <span")}</div>
+      <div class="hero-meta">${esc(TYPE_FULL[b.type_short] || b.type)}${b.n > 1 ? ` · ${b.n} bloki` : ""} · sala ${esc(b.room || "—")}${b.teacher ? ` · ${esc(b.teacher)}` : ""}</div>
+      ${note ? `<button class="snote" style="--h:${hueFor(b)};margin-top:10px" data-open="${esc(b.key)}"><b>Twoja notatka</b>${esc(note.text)}</button>` : ""}
     </div>
     <div class="hero-next">
       <div class="hero-label">${sameDay.length ? `Potem tego dnia · koniec o ${endOfDay.end}` : "Kolejne"}</div>
@@ -362,10 +566,10 @@ function renderHero(blocks) {
 function renderNotice() {
   const list = unseenChanges();
   const el = $("#notice");
-  const dot = document.querySelector('[data-tab="zmiany"]');
-  dot.querySelector(".dot")?.remove();
+  const tab = document.querySelector('[data-tab="zmiany"]');
+  tab.querySelector(".dot")?.remove();
   if (!list.length) { el.innerHTML = ""; return; }
-  dot.insertAdjacentHTML("beforeend", '<i class="dot"></i>');
+  tab.insertAdjacentHTML("beforeend", '<i class="dot"></i>');
   const items = list.flatMap((c) => c.items);
   el.innerHTML = `<div class="notice">
     <h3><span>Plan się zmienił</span><span class="tag">${items.length} ${items.length === 1 ? "zmiana" : items.length < 5 ? "zmiany" : "zmian"}</span></h3>
@@ -374,6 +578,45 @@ function renderNotice() {
     <button class="btn" id="ack">OK, widzę</button>
   </div>`;
   $("#ack").onclick = () => { store.set("seenChange", state.data.changes[0].detected_at); render(); };
+}
+
+function noteStatusHtml(key) {
+  const msg = state.noteMsg.get(key);
+  const saved = Notes.get(key)?.text || "";
+  const draft = state.drafts.get(key);
+  if (draft !== undefined && draft !== saved) return `<span class="nstat dirty">Niezapisane zmiany</span>`;
+  if (msg) return `<span class="nstat ${msg.cls}">${esc(msg.text)}</span>`;
+  const n = Notes.get(key);
+  return n ? `<span class="nstat">Zapisano ${fmtStamp(n.updated, true)}</span>` : `<span class="nstat">Notatka widoczna tylko dla Ciebie</span>`;
+}
+
+function cardHtml(b, now, marks) {
+  const open = state.expanded.has(b.key);
+  const note = Notes.get(b.key);
+  const draft = state.drafts.get(b.key);
+  const hasDraft = draft !== undefined && draft !== (note?.text || "");
+  const cls = ["card", b.e < now ? "past" : "", b.s <= now && b.e > now ? "live" : "", open ? "open" : ""].join(" ");
+  const mark = marks.get(`${b.code}|${b.date}`);
+  let html = `<div class="${cls}" style="--h:${hueFor(b)}" data-key="${esc(b.key)}">
+    <button class="head" aria-expanded="${open}" data-toggle="${esc(b.key)}">${ICON_CHEV}
+      <div class="n">${esc(b.name)}</div>
+      <div class="m">${metaShort(b)}${note || hasDraft ? `<span class="ico" title="Jest notatka">${ICON_NOTE}${hasDraft ? "*" : ""}</span>` : ""}${b.kind === "not_enrolled" ? `<span class="chg">niezapisany</span>` : ""}${mark ? `<span class="chg">${CHANGE_LABEL[mark]}</span>` : ""}</div>
+    </button>`;
+  if (open) {
+    const val = draft !== undefined ? draft : note?.text || "";
+    html += `<div class="body">
+      <dl>
+        <dt>Godziny</dt><dd>${b.start}–${b.end}${b.n > 1 ? ` (${b.n} bloki po 90 min)` : ""}</dd>
+        <dt>Rodzaj</dt><dd>${esc(TYPE_FULL[b.type_short] || b.type)}</dd>
+        <dt>Sala</dt><dd>${esc(b.room || "— (brak w planie)")}</dd>
+        <dt>Prowadzi</dt><dd>${esc(b.teacher || "—")}</dd>
+      </dl>
+      <label for="t-${esc(b.key)}">Notatka</label>
+      <textarea id="t-${esc(b.key)}" data-note="${esc(b.key)}" placeholder="np. przygotować projekt, co przynieść…">${esc(val)}</textarea>
+      <div class="note-actions"><button class="btn primary" data-save="${esc(b.key)}">Zapisz</button>${noteStatusHtml(b.key)}</div>
+    </div>`;
+  }
+  return html + `</div>`;
 }
 
 function renderZjazdy(zjazdy) {
@@ -388,44 +631,79 @@ function renderZjazdy(zjazdy) {
     const n = daysBetween(now, z.start);
     const running = z.start <= now && z.end >= now || (n <= 0 && z.end >= now);
     const tag = z.end < now ? "minął" : running ? "trwa" : n === 1 ? "jutro" : n < 7 ? `za ${n} dni` : relDay(z.start, now);
-    const range = z.days.length > 1
-      ? (z.start.getMonth() === z.days[z.days.length - 1].d.getMonth()
-        ? `${z.start.getDate()}–${fmtDay(z.days[z.days.length - 1].d)}`
-        : `${fmtDay(z.start)} – ${fmtDay(z.days[z.days.length - 1].d)}`)
-      : fmtDay(z.start);
-    html += `<article class="zjazd" id="z${z.no}"><header><h2><span>Zjazd ${z.no}</span>${range}</h2><span class="tag ${running || n < 7 && n >= 0 ? "now" : ""}">${tag}</span></header><div class="days">`;
-    for (const day of z.days) {
-      const first = day.list[0], last = day.list[day.list.length - 1];
-      const isToday = daysBetween(now, day.d) === 0;
-      html += `<div class="day ${isToday ? "today" : ""}"><div class="day-h"><b>${DAY[day.d.getDay()][0].toUpperCase() + DAY[day.d.getDay()].slice(1)} ${fmtShort(day.d)}</b><span>${first.start}–${last.end}</span></div>`;
-      day.list.forEach((b, i) => {
-        if (i > 0) {
-          const gap = (b.s - day.list[i - 1].e) / 6e4;
-          if (gap >= 45) html += `<div class="gap">okienko ${gap >= 60 ? `${Math.floor(gap / 60)} h ` : ""}${gap % 60 ? `${gap % 60} min` : ""}</div>`;
-        }
-        const cls = ["cls", b.e < now ? "past" : "", b.s <= now && b.e > now ? "live" : "", b.kind === "not_enrolled" ? "opt" : ""].join(" ");
-        const mark = marks.get(`${b.code}|${b.date}`);
-        html += `<div class="${cls}" style="--h:${hueFor(b)}"><div class="t">${b.start}<small>${b.end}</small></div><div class="card">
-          <div class="n"><span>${esc(b.name)}</span>${b.kind === "not_enrolled" ? `<span class="chg">niezapisany</span>` : ""}${mark ? `<span class="chg">${CHANGE_LABEL[mark]}</span>` : ""}</div>
-          <div class="m">${b.kind === "not_enrolled" ? "<span>termin zarezerwowany w planie kierunku</span>" : metaLine(b)}</div></div></div>`;
-      });
-      html += `</div>`;
-    }
-    html += `</div></article>`;
+    const first = z.cols[0].d, last = z.cols[z.cols.length - 1].d;
+    const range = first.getMonth() === last.getMonth() ? `${first.getDate()}–${fmtDay(last)}` : `${fmtDay(first)} – ${fmtDay(last)}`;
+    const row = new Map(z.slots.map((s, i) => [s, i + 2]));
+    const endOf = new Map();
+    for (const day of z.days) for (const b of day.list) for (const p of b.parts) if (!endOf.has(p.start)) endOf.set(p.start, p.end);
+    let g = "";
+    z.cols.forEach((col, ci) => {
+      const c = ci + 2;
+      const today = daysBetween(now, col.d) === 0;
+      g += `<div class="dh ${today ? "today" : ""}" style="grid-column:${c}"><b>${cap(DAY_SHORT[col.d.getDay()])} ${fmtShort(col.d)}${today ? " · dziś" : ""}</b><span>${col.list.length ? `${col.list[0].start}–${col.list[col.list.length - 1].end}` : "wolne"}</span></div>`;
+      if (!col.list.length) { g += `<div class="slot fill" style="grid-column:${c};grid-row:2 / ${z.slots.length + 2}"><div class="dayoff">brak zajęć</div></div>`; return; }
+      const used = new Set();
+      for (const b of col.list) {
+        const r = row.get(b.start);
+        const span = z.slots.filter((s) => s >= b.start && s < b.end).length || 1;
+        for (let k = 0; k < span; k++) used.add(r + k);
+        g += `<div class="slot ${span > 1 ? "fill" : ""}" style="grid-column:${c};grid-row:${r} / span ${span}">${cardHtml(b, now, marks)}</div>`;
+      }
+      for (let r = 2; r < z.slots.length + 2; r++) if (!used.has(r)) g += `<div class="slot fill" style="grid-column:${c};grid-row:${r}"><div class="free"></div></div>`;
+    });
+    z.slots.forEach((s, i) => { g += `<div class="tl" style="grid-row:${i + 2}">${s}<small>${endOf.get(s) || ""}</small></div>`; });
+    html += `<article class="zjazd" id="z${z.no}"><header><h2><span>Zjazd ${z.no}</span>${range}</h2><span class="tag ${running || (n < 7 && n >= 0) ? "now" : ""}">${tag}</span></header>
+      <div class="zgrid" style="--cols:${z.cols.length}">${g}</div></article>`;
+  }
+  // notatki do zajęć, których już nie ma w planie (np. po przeniesieniu terminu)
+  const keys = new Set(zjazdy.flatMap((z) => z.days.flatMap((d) => d.list.map((b) => b.key))));
+  const orphans = Object.entries(Notes.all).filter(([k, n]) => n.text && !keys.has(k));
+  if (orphans.length) {
+    html += `<div class="panel orphans"><h3>Notatki do terminów, których nie ma już w planie</h3>
+      ${orphans.map(([k, n]) => `<div class="snote" style="--h:210;cursor:default;margin-top:6px"><b>${esc(n.name || k)} · ${n.date ? `${fmtShort(toDate(n.date))} ${esc(n.start || "")}` : ""}</b>${esc(n.text)}</div>`).join("")}
+      <p class="hint">Termin zajęć zmienił się po dodaniu notatki. Przepisz ją do nowego terminu.</p></div>`;
   }
   $("#zjazdy").innerHTML = html;
   const t = $("#togglePast");
   if (t) t.onclick = () => { state.showPast = !state.showPast; render(); };
 }
 
-function renderPrzedmioty(blocksAll) {
+function renderSemestr(zjazdy, allSlots, blockOf) {
+  const now = new Date();
+  const nextNo = zjazdy.find((z) => z.end >= now)?.no;
+  const cards = zjazdy.map((z) => {
+    const first = z.cols[0].d, last = z.cols[z.cols.length - 1].d;
+    const range = first.getMonth() === last.getMonth() ? `${first.getDate()}–${fmtShort(last)}` : `${fmtShort(first)}–${fmtShort(last)}`;
+    let g = `<span></span>` + z.cols.map((c) => `<span class="d ${daysBetween(now, c.d) === 0 ? "today" : ""}">${DAY_SHORT[c.d.getDay()]}</span>`).join("");
+    for (const s of allSlots) {
+      g += `<span class="t">${s}</span>`;
+      for (const col of z.cols) {
+        const ev = col.list.flatMap((b) => b.parts).find((p) => p.start === s);
+        if (!ev) { g += `<span class="nochip"></span>`; continue; }
+        const b = blockOf.get(ev.key);
+        const cont = b.parts[0] !== ev;
+        const note = Notes.get(b.key);
+        g += `<button class="chip ${cont ? "cont" : ""}" style="--h:${hueFor(ev)}" data-open="${esc(b.key)}" title="${esc(`${ev.name} (${TYPE_FULL[ev.type_short] || ev.type}) ${ev.start}–${ev.end}${ev.room ? `, sala ${ev.room}` : ""}${note ? `\nNotatka: ${note.text}` : ""}`)}"><span>${esc(abbr(ev))}</span>${cont ? "" : `<small>${esc(ev.type_short)}</small>`}${note && !cont ? `<i class="nd"></i>` : ""}</button>`;
+      }
+    }
+    return `<div class="sc ${z.end < now ? "past" : ""} ${z.no === nextNo ? "next" : ""}"><div class="sc-h"><b>Zjazd ${z.no}</b><span>${range}</span></div><div class="sg" style="--cols:${z.cols.length}">${g}</div></div>`;
+  });
+  // legenda
+  const seen = new Map();
+  for (const z of zjazdy) for (const d of z.days) for (const b of d.list) if (!seen.has(b.name)) seen.set(b.name, b);
+  const legend = [...seen.values()].map((b) => `<span><span class="chip" style="--h:${hueFor(b)}"><span>${esc(abbr(b))}</span></span>${esc(b.name)}</span>`).join("");
+  $("#semestr").innerHTML = `<div class="sem">${cards.join("")}</div>
+    <div class="legend">${legend}<span><i class="nd-demo"></i>jest notatka</span></div>
+    <p class="hint" style="margin:8px 2px 0">Stuknij zajęcia, żeby zobaczyć szczegóły i notatkę.</p>`;
+}
+
+function renderPrzedmioty() {
   const now = new Date();
   const events = state.data.events.filter((e) => e.kind !== "not_enrolled" || state.showPS).map((e) => ({ ...e, s: toDate(e.date, e.start), e: toDate(e.date, e.end) }));
   const subjects = new Map();
   for (const e of events) {
-    const key = e.name;
-    if (!subjects.has(key)) subjects.set(key, { name: e.name, code: e.code, kind: e.kind, h: hueFor(e), types: new Map(), next: null });
-    const s = subjects.get(key);
+    if (!subjects.has(e.name)) subjects.set(e.name, { name: e.name, code: e.code, kind: e.kind, h: hueFor(e), types: new Map(), next: null });
+    const s = subjects.get(e.name);
     if (!s.types.has(e.type_short)) s.types.set(e.type_short, { total: 0, done: 0, teachers: new Set(), rooms: new Set(), min: 0 });
     const t = s.types.get(e.type_short);
     t.total++; if (e.e < now) t.done++;
@@ -436,21 +714,29 @@ function renderPrzedmioty(blocksAll) {
   }
   const order = { regular: 0, language: 1, elective: 2, not_enrolled: 3 };
   const list = [...subjects.values()].sort((a, b) => order[a.kind] - order[b.kind] || a.name.localeCompare(b.name, "pl"));
-  $("#przedmioty").innerHTML = list.map((s) => `
+  const notesBy = new Map();
+  for (const [k, n] of Object.entries(Notes.all)) if (n.text) { if (!notesBy.has(n.name)) notesBy.set(n.name, []); notesBy.get(n.name).push({ k, ...n }); }
+  const hasOptional = state.data.events.some((e) => e.kind === "not_enrolled");
+  $("#przedmioty").innerHTML = list.map((s) => {
+    const notes = (notesBy.get(s.name) || []).sort((a, b) => (a.date + a.start).localeCompare(b.date + b.start));
+    return `
     <div class="subj" style="--h:${s.h}">
       <h3><i></i>${esc(s.name)}</h3>
-      <div class="code">${esc(s.code)}${s.kind === "elective" ? " · przedmiot do wyboru" : s.kind === "not_enrolled" ? " · jeszcze nie zapisany" : ""}${s.next ? ` · następne: ${DAY_SHORT[s.next.s.getDay()]} ${fmtShort(s.next.s)}, ${s.next.start}` : " · zakończony"}</div>
+      <div class="code">${esc(abbr(s))}${s.kind === "elective" ? " · do wyboru" : s.kind === "not_enrolled" ? " · jeszcze nie zapisany" : ""}${s.next ? ` · następne: ${DAY_SHORT[s.next.s.getDay()]} ${fmtShort(s.next.s)}, ${s.next.start}` : " · zakończony"}</div>
       ${[...s.types].map(([ty, t]) => `
         <div class="row"><b>${esc(ty)}</b>
           <div class="who">${esc([...t.teachers].join(", ") || "—")}<small>${Math.round(t.min / 45)} h · ${t.rooms.size ? "sale: " + esc([...t.rooms].join(", ")) : "sala: —"}</small></div>
           <div class="cnt">${t.done}/${t.total}<div class="bar"><i style="width:${(t.done / t.total) * 100}%"></i></div></div>
         </div>`).join("")}
-    </div>`).join("") + `
-    <div class="panel" style="grid-column:1/-1">
-      <label class="switch"><span><b>Pokazuj „Przedmiot społeczny do wyboru”</b><br><span style="color:var(--text-2);font-size:14px">Terminy z planu kierunku, choć nie jesteś jeszcze zapisany.</span></span>
-      <input type="checkbox" id="ps" ${state.showPS ? "checked" : ""}></label>
+      ${notes.length ? `<div class="snotes">${notes.map((n) => `<button class="snote" data-open="${esc(n.k)}"><b>Notatka · ${DAY_SHORT[toDate(n.date).getDay()]} ${fmtShort(toDate(n.date))}, ${esc(n.start)} (${esc(n.type_short || "")})</b>${esc(n.text)}</button>`).join("")}</div>` : ""}
     </div>`;
-  $("#ps").onchange = (e) => { state.showPS = e.target.checked; store.set("showPS", state.showPS); render(); };
+  }).join("") + (hasOptional ? `
+    <div class="panel" style="grid-column:1/-1">
+      <label class="switch"><span><b>Pokazuj przedmioty, na które nie jesteś zapisany</b></span>
+      <input type="checkbox" id="ps" ${state.showPS ? "checked" : ""}></label>
+    </div>` : "");
+  const ps = $("#ps");
+  if (ps) ps.onchange = (e) => { state.showPS = e.target.checked; store.set("showPS", state.showPS); render(); };
 }
 
 function renderZmiany() {
@@ -459,7 +745,7 @@ function renderZmiany() {
   $("#zmiany").innerHTML = `
     <div class="panel">
       <h3>Jak to działa</h3>
-      <p>Co 2 godziny automat sprawdza <a href="${esc(state.data.source)}" target="_blank" rel="noopener">plan.ue.wroc.pl</a> (plan kierunku, Twoją grupę z angielskiego i przedmioty humanistyczne). Każda zmiana terminu, sali lub prowadzącego trafia tutaj, a strona i kalendarz aktualizują się same.</p>
+      <p>Co 2 godziny automat sprawdza <a href="${esc(state.data.source)}" target="_blank" rel="noopener">plan.ue.wroc.pl</a> (plan kierunku, Twoją grupę z angielskiego i przedmioty do wyboru). Każda zmiana terminu, sali lub prowadzącego trafia tutaj, a strona i kalendarz aktualizują się same.</p>
       <p>Ostatnie sprawdzenie: <b>${st ? `${fmtStamp(st.checked_at)}${st.ok ? "" : " — nieudane"}` : "brak danych"}</b>. Ostatnia zmiana danych: <b>${fmtStamp(state.data.generated_at)}</b>.</p>
     </div>
     <div class="panel"><h3>Historia zmian</h3>
@@ -468,27 +754,98 @@ function renderZmiany() {
     </div>`;
 }
 
+function patUrl() {
+  const repo = Notes.repo() || "";
+  const [owner, name] = repo.split("/");
+  const p = new URLSearchParams({ name: "Plan UEW – notatki", description: `Synchronizacja notatek (repo ${name})`, target_name: owner, expires_in: "365", contents: "write" });
+  return `https://github.com/settings/personal-access-tokens/new?${p}`;
+}
+
+function renderSync() {
+  const el = $("#sync");
+  if (!Notes.repo()) { el.innerHTML = ""; return; }
+  const on = !!Notes.token;
+  const localCount = Object.values(Notes.all).filter((n) => n.text).length;
+  el.innerHTML = on ? `
+    <div class="panel">
+      <h3>Synchronizacja notatek <span class="state ${Notes.syncError ? "" : "on"}">${Notes.syncError ? "problem" : "włączona"}</span></h3>
+      ${state.justPaired ? `<p><b>To urządzenie jest połączone.</b> Jeśli korzystasz z ikony na ekranie początkowym iPhone’a, otwórz ją, wejdź w Ustawienia i wklej tam klucz (przycisk „Kopiuj klucz” poniżej) — ikona ma osobną pamięć od Safari.</p>` : ""}
+      <p>Notatki zapisują się w prywatnym repozytorium <b>${esc(Notes.repo())}</b> i są takie same na telefonie i komputerze.</p>
+      <p>${Notes.syncError ? `<span class="err">${esc(Notes.syncError)}</span>` : `Ostatnia synchronizacja: <b>${Notes.lastSync ? fmtStamp(Notes.lastSync, true) : "—"}</b>`}${Notes.dirty.size ? ` · czeka na wysłanie: ${Notes.dirty.size}` : ""}</p>
+      <div class="btns">
+        <button class="btn" id="syncNow">Synchronizuj teraz</button>
+        <button class="btn" id="showQr">Połącz drugie urządzenie (QR)</button>
+        <button class="btn" id="copyKey">Kopiuj klucz</button>
+        <button class="btn" id="unpair">Rozłącz to urządzenie</button>
+      </div>
+      <div id="qrBox"></div>
+    </div>` : `
+    <div class="panel">
+      <h3>Synchronizacja notatek <span class="state">wyłączona</span></h3>
+      <p>Teraz notatki zapisują się tylko na tym urządzeniu${localCount ? ` (masz ich ${localCount})` : ""}. Żeby mieć je i na telefonie, i na komputerze, połącz synchronizację — to jednorazowe, ok. 2 minuty:</p>
+      <ol class="steps">
+        <li>Na komputerze otwórz <a href="${esc(patUrl())}" target="_blank" rel="noopener">tworzenie klucza na GitHubie</a>.</li>
+        <li>W <b>Repository access</b> wybierz <b>Only select repositories</b> → <b>${esc((Notes.repo() || "").split("/")[1] || "")}</b>.</li>
+        <li>W <b>Permissions</b> ustaw <b>Contents: Read and write</b> (jeśli nie jest już ustawione).</li>
+        <li>Kliknij <b>Generate token</b>, skopiuj klucz (zaczyna się od <code>github_pat_</code>) i wklej poniżej.</li>
+        <li>Potem kliknij „Połącz drugie urządzenie (QR)” i zeskanuj kod aparatem iPhone’a.</li>
+      </ol>
+      <div class="field"><input type="password" id="tokenIn" placeholder="github_pat_…" autocomplete="off" spellcheck="false"><button class="btn primary" id="pair">Połącz</button></div>
+      <p class="hint">Klucz daje dostęp wyłącznie do repozytorium z notatkami i zostaje tylko na Twoich urządzeniach.</p>
+      <div id="pairMsg"></div>
+    </div>`;
+  if (on) {
+    $("#syncNow").onclick = async () => { try { await Notes.sync(); toast("Notatki zsynchronizowane"); } catch { toast("Nie udało się zsynchronizować"); } render(true); };
+    $("#unpair").onclick = () => { if (confirm("Rozłączyć synchronizację na tym urządzeniu? Notatki zostaną tu zapisane lokalnie.")) { Notes.disconnect(); render(true); } };
+    $("#copyKey").onclick = async () => { try { await navigator.clipboard.writeText(Notes.token); toast("Skopiowano klucz"); } catch { prompt("Skopiuj klucz:", Notes.token); } };
+    $("#showQr").onclick = showQr;
+  } else {
+    $("#pair").onclick = async () => {
+      const v = $("#tokenIn").value.trim();
+      const m = v.match(/sync=([\w-]+)/);
+      const token = m ? m[1] : v;
+      if (!token) return;
+      Notes.connect(token);
+      $("#pairMsg").innerHTML = `<p class="hint">Sprawdzam klucz…</p>`;
+      try { await Notes.sync(); toast("Połączono — notatki są zsynchronizowane"); render(true); }
+      catch (e) { Notes.disconnect(); $("#pairMsg").innerHTML = `<p class="err">Nie udało się połączyć: ${esc(e.message)}. Sprawdź, czy klucz ma dostęp do repozytorium ${esc(Notes.repo())} z uprawnieniem Contents: Read and write.</p>`; }
+    };
+  }
+}
+
+async function showQr() {
+  const box = $("#qrBox");
+  if (box.innerHTML) { box.innerHTML = ""; return; }
+  const url = `${location.origin}${location.pathname}#sync=${Notes.token}`;
+  try {
+    if (!window.qrcode) await new Promise((ok, fail) => { const s = document.createElement("script"); s.src = "https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"; s.onload = ok; s.onerror = fail; document.head.appendChild(s); });
+    const q = window.qrcode(0, "M"); q.addData(url); q.make();
+    box.innerHTML = `<div class="qr">${q.createSvgTag({ cellSize: 4, margin: 2, scalable: true })}</div>
+      <p class="hint">Zeskanuj aparatem iPhone’a — otworzy się plan z włączoną synchronizacją. Kod zawiera Twój klucz, nie pokazuj go innym.</p>`;
+  } catch { box.innerHTML = `<p class="err">Nie udało się wygenerować kodu. Użyj „Kopiuj klucz” i wklej go na drugim urządzeniu.</p>`; }
+}
+
 function renderKalendarz() {
-  const icsUrl = new URL("plan.ics", location.href).href;
+  const icsUrl = new URL("plan.ics", location.href).href.split("#")[0];
   const webcal = icsUrl.replace(/^https?:/, "webcal:");
   const outlook = `https://outlook.live.com/calendar/0/addfromweb?url=${encodeURIComponent(icsUrl)}&name=${encodeURIComponent("UEW – plan zajęć")}`;
   const google = `https://calendar.google.com/calendar/r?cid=${encodeURIComponent(webcal)}`;
   $("#kalendarz").innerHTML = `
     <div class="panel">
       <h3>Subskrybuj w kalendarzu</h3>
-      <p>Zajęcia pojawią się w kalendarzu telefonu lub Outlooka i będą się same aktualizować po każdej zmianie w planie (bez przedmiotu społecznego, dopóki nie jesteś zapisany).</p>
+      <p>Zajęcia pojawią się w kalendarzu telefonu lub Outlooka i będą się same aktualizować po każdej zmianie w planie.</p>
       <div class="btns">
         <a class="btn primary" href="${esc(webcal)}">iPhone / Mac</a>
         <a class="btn" href="${esc(outlook)}" target="_blank" rel="noopener">Outlook</a>
         <a class="btn" href="${esc(google)}" target="_blank" rel="noopener">Google</a>
         <button class="btn" id="copy">Kopiuj link</button>
       </div>
-      <p style="font-size:13.5px">iPhone odświeża subskrybowane kalendarze sam; częstotliwość ustawisz w Ustawieniach → Aplikacje → Kalendarz → Konta kalendarza → Pobierz nowe dane.</p>
+      <p class="hint">iPhone odświeża subskrybowane kalendarze sam; częstotliwość ustawisz w Ustawieniach → Aplikacje → Kalendarz → Konta kalendarza → Pobierz nowe dane.</p>
     </div>
     <div class="panel">
       <h3>Ikona na ekranie iPhone’a</h3>
       <ol class="steps"><li>Otwórz tę stronę w Safari.</li><li>Stuknij <b>Udostępnij</b> (kwadrat ze strzałką).</li><li>Wybierz <b>Do ekranu początkowego</b>.</li></ol>
-      <p>Plan otworzy się jak aplikacja, pełnoekranowo, i działa też bez internetu (pokazuje ostatnio pobraną wersję).</p>
+      <p>Plan otworzy się jak aplikacja i działa też bez internetu. Uwaga: ikona ma osobną pamięć niż Safari — synchronizację notatek połącz w niej osobno.</p>
     </div>
     <div class="panel">
       <h3>Na komputerze</h3>
@@ -500,12 +857,11 @@ function renderKalendarz() {
   };
 }
 
-function fmtStamp(iso) {
+function fmtStamp(iso, isUtc = false) {
   if (!iso) return "—";
-  const d = parseLocal(iso);
+  const d = isUtc ? new Date(iso) : parseLocal(iso);
   const n = daysBetween(new Date(), d);
-  const hm = `${String(d.getHours()).padStart(2, "0")}:${String(d.getMinutes()).padStart(2, "0")}`;
-  return n === 0 ? `dziś ${hm}` : n === -1 ? `wczoraj ${hm}` : `${fmtShort(d)}.${d.getFullYear()} ${hm}`;
+  return n === 0 ? `dziś ${hm(d)}` : n === -1 ? `wczoraj ${hm(d)}` : `${fmtShort(d)}.${d.getFullYear()} ${hm(d)}`;
 }
 
 function renderStatus() {
@@ -524,34 +880,120 @@ function renderStatus() {
   $("#reload").onclick = () => load(true);
 }
 
-function render() {
+let prepared = null;
+function render(force = false) {
   if (!state.data) return;
+  // nie przerywaj pisania notatki odświeżeniem
+  if (!force && document.activeElement?.matches?.("textarea[data-note], #tokenIn")) { state.deferredRender = true; return; }
+  state.deferredRender = false;
   const cfg = state.data.config || {};
   $("#title").textContent = cfg.title || "Plan zajęć";
   $("#sub").textContent = cfg.subtitle || "UEW";
-  const { blocks, zjazdy } = prepare();
+  prepared = prepare();
+  const { blocks, zjazdy, blockOf, allSlots } = prepared;
   renderStatus();
   renderHero(blocks);
   renderNotice();
   renderZjazdy(zjazdy);
-  renderPrzedmioty(blocks);
+  renderSemestr(zjazdy, allSlots, blockOf);
+  renderPrzedmioty();
   renderZmiany();
+  renderSync();
   renderKalendarz();
   $("#foot").innerHTML = `Źródło: <a href="${esc(state.data.source)}" target="_blank" rel="noopener">plan.ue.wroc.pl</a> · w razie wątpliwości rozstrzyga oficjalny plan i USOS`;
   showTab(state.tab, false);
+  showMode(state.mode);
 }
 
 function showTab(tab, scroll = true) {
-  state.tab = tab; store.set("tab", tab);
+  if (!document.querySelector(`[data-view="${tab}"]`)) tab = "plan";
+  state.tab = tab; store.set("tab2", tab);
   document.querySelectorAll("[data-tab]").forEach((b) => b.setAttribute("aria-selected", b.dataset.tab === tab));
   document.querySelectorAll("[data-view]").forEach((v) => (v.hidden = v.dataset.view !== tab));
   if (scroll && window.scrollY > $(".tabs").offsetTop) window.scrollTo({ top: $(".tabs").offsetTop });
 }
+function showMode(mode) {
+  state.mode = mode; store.set("mode", mode);
+  document.querySelectorAll("[data-mode]").forEach((b) => b.setAttribute("aria-selected", b.dataset.mode === mode));
+  $("#zjazdy").hidden = mode !== "zjazdy";
+  $("#semestr").hidden = mode !== "semestr";
+  $("#notice").hidden = mode !== "zjazdy";
+}
 document.querySelectorAll("[data-tab]").forEach((b) => (b.onclick = () => showTab(b.dataset.tab)));
+document.querySelectorAll("[data-mode]").forEach((b) => (b.onclick = () => showMode(b.dataset.mode)));
+
+// otwórz konkretne zajęcia w widoku zjazdów (z widoku semestru, przedmiotów, karty "najbliższe")
+function openClass(key) {
+  const b = prepared?.blocks.find((x) => x.key === key);
+  if (!b) return;
+  if (b.e < new Date()) state.showPast = true;
+  state.expanded.add(key);
+  state.tab = "plan"; state.mode = "zjazdy";
+  render(true);
+  const card = document.querySelector(`.card[data-key="${CSS.escape(key)}"]`);
+  if (card) { card.scrollIntoView({ block: "center", behavior: "smooth" }); card.classList.add("flash"); }
+}
+
+// obsługa kliknięć i pisania (delegacja - elementy są przerysowywane)
+document.addEventListener("click", async (ev) => {
+  const t = ev.target.closest("[data-toggle],[data-save],[data-open]");
+  if (!t) return;
+  if (t.dataset.toggle) {
+    const k = t.dataset.toggle;
+    state.expanded.has(k) ? state.expanded.delete(k) : state.expanded.add(k);
+    state.noteMsg.delete(k);
+    rerenderCard(k);
+  } else if (t.dataset.open) {
+    openClass(t.dataset.open);
+  } else if (t.dataset.save) {
+    const k = t.dataset.save;
+    const b = prepared.blocks.find((x) => x.key === k);
+    const text = (state.drafts.has(k) ? state.drafts.get(k) : Notes.get(k)?.text || "").trim();
+    t.disabled = true; t.textContent = "Zapisuję…";
+    const res = await Notes.save(k, text, { name: b.name, date: b.date, start: b.start, end: b.end, type_short: b.type_short });
+    state.drafts.delete(k);
+    const time = hm(new Date());
+    const msg = {
+      local: { cls: "ok", text: `✓ Zapisano ${time}${Notes.repo() ? " (tylko na tym urządzeniu)" : ""}` },
+      synced: { cls: "ok", text: `✓ Zapisano ${time} · widoczne na wszystkich urządzeniach` },
+      offline: { cls: "dirty", text: `✓ Zapisano ${time} na tym urządzeniu · wyślę, gdy będzie internet` },
+      auth: { cls: "dirty", text: `✓ Zapisano ${time} lokalnie · sprawdź synchronizację w Ustawieniach` },
+    }[res];
+    state.noteMsg.set(k, msg);
+    toast(text ? "Notatka zapisana" : "Notatka usunięta");
+    render(true);
+  }
+});
+document.addEventListener("input", (ev) => {
+  const k = ev.target.dataset?.note;
+  if (!k) return;
+  state.drafts.set(k, ev.target.value);
+  state.noteMsg.delete(k);
+  const actions = ev.target.closest(".body")?.querySelector(".note-actions");
+  if (actions) actions.innerHTML = `<button class="btn primary" data-save="${esc(k)}">Zapisz</button>${noteStatusHtml(k)}`;
+});
+document.addEventListener("focusout", (ev) => {
+  // odłożone odświeżenie po wyjściu z pola (z opóźnieniem, żeby nie zgubić kliknięcia "Zapisz")
+  if (ev.target.matches?.("textarea[data-note]") && state.deferredRender) setTimeout(() => render(), 600);
+});
+document.addEventListener("keydown", (ev) => {
+  const k = ev.target.dataset?.note;
+  if (k && ev.key === "Enter" && (ev.ctrlKey || ev.metaKey)) { ev.preventDefault(); document.querySelector(`[data-save="${CSS.escape(k)}"]`)?.click(); }
+});
+window.addEventListener("beforeunload", (ev) => {
+  for (const [k, v] of state.drafts) if (v !== (Notes.get(k)?.text || "")) { ev.preventDefault(); ev.returnValue = ""; return; }
+});
+function rerenderCard(k) {
+  const el = document.querySelector(`.card[data-key="${CSS.escape(k)}"]`);
+  const b = prepared.blocks.find((x) => x.key === k);
+  if (!el || !b) return render(true);
+  el.outerHTML = cardHtml(b, new Date(), changedMarks());
+}
 
 function toast(msg) {
+  document.querySelectorAll(".toast").forEach((t) => t.remove());
   const t = document.createElement("div"); t.className = "toast"; t.textContent = msg;
-  document.body.appendChild(t); setTimeout(() => t.remove(), 2200);
+  document.body.appendChild(t); setTimeout(() => t.remove(), 2400);
 }
 
 async function getJSON(url) {
@@ -572,13 +1014,14 @@ async function load(manual = false) {
     if (!state.data) $("#zjazdy").innerHTML = `<p class="empty">Nie udało się wczytać planu. Sprawdź połączenie i odśwież stronę.</p>`;
     else if (manual) toast("Brak połączenia — pokazuję ostatnią wersję");
   } finally { loading = false; }
+  if (Notes.token) Notes.sync().then((changedNotes) => { if (changedNotes || state.tab === "ustawienia") render(); }).catch(() => state.tab === "ustawienia" && render());
 }
 
 load();
 document.addEventListener("visibilitychange", () => { if (!document.hidden) load(); });
 window.addEventListener("online", () => load());
 window.addEventListener("offline", () => state.data && renderStatus());
-setInterval(() => { if (!document.hidden) { load(); } }, 10 * 6e4);
+setInterval(() => { if (!document.hidden) load(); }, 10 * 6e4);
 setInterval(() => { if (state.data && !document.hidden) render(); }, 60 * 1000);
 if ("serviceWorker" in navigator && location.protocol === "https:") navigator.serviceWorker.register("sw.js").catch(() => {});
 </script>

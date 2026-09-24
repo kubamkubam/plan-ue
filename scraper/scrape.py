@@ -338,7 +338,8 @@ def main():
         return 0
 
     changes = list(prev.get("changes", [])) if prev else []
-    if prev:
+    # po zmianie config.json (np. nowy przedmiot do wyboru) różnice wynikają z konfiguracji, nie z planu
+    if prev and prev.get("config") == CONFIG:
         items = diff(prev["events"], events)
         if items:
             changes.insert(0, {"detected_at": now, "items": items})

@@ -26,7 +26,7 @@ END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
 UID:1dc4355e4e868287abb5b6b1577f05f7@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261003T080000
 DTEND;TZID=Europe/Warsaw:20261003T093000
 SUMMARY:Zarządzanie innowacjami i Design Thinking · W
@@ -36,7 +36,7 @@ DESCRIPTION:Zarządzanie innowacjami i Design Thinking (Wykład)\nProwadz
 END:VEVENT
 BEGIN:VEVENT
 UID:840e934d583291e87721697e2d066881@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261003T094500
 DTEND;TZID=Europe/Warsaw:20261003T111500
 SUMMARY:Zarządzanie innowacjami i Design Thinking · W
@@ -46,7 +46,7 @@ DESCRIPTION:Zarządzanie innowacjami i Design Thinking (Wykład)\nProwadz
 END:VEVENT
 BEGIN:VEVENT
 UID:0c1d974992bfd40984d4b9ab0469bf52@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261003T113000
 DTEND;TZID=Europe/Warsaw:20261003T130000
 SUMMARY:Planowanie projektów · W
@@ -56,7 +56,7 @@ DESCRIPTION:Planowanie projektów (Wykład)\nProwadzący: Dariusz Porębs
 END:VEVENT
 BEGIN:VEVENT
 UID:c83e95359dd1de454858d0109e5d6ee1@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261004T080000
 DTEND;TZID=Europe/Warsaw:20261004T093000
 SUMMARY:Zarządzanie procesami · W
@@ -66,7 +66,7 @@ DESCRIPTION:Zarządzanie procesami (Wykład)\nProwadzący: Renata Brajer-
 END:VEVENT
 BEGIN:VEVENT
 UID:23278ef2730be7ead4287655406c1d0b@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261004T094500
 DTEND;TZID=Europe/Warsaw:20261004T111500
 SUMMARY:Zarządzanie procesami · W
@@ -76,7 +76,7 @@ DESCRIPTION:Zarządzanie procesami (Wykład)\nProwadzący: Renata Brajer-
 END:VEVENT
 BEGIN:VEVENT
 UID:11b425c82ecb653893a4b4aa250f76d3@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261010T080000
 DTEND;TZID=Europe/Warsaw:20261010T093000
 SUMMARY:Etyka wpływu i manipulacji · W
@@ -86,7 +86,7 @@ DESCRIPTION:Etyka wpływu i manipulacji (Wykład)\nProwadzący: Anna Wój
 END:VEVENT
 BEGIN:VEVENT
 UID:63055dea96ace88e7928cc74ef5ddb12@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261010T094500
 DTEND;TZID=Europe/Warsaw:20261010T111500
 SUMMARY:Etyka wpływu i manipulacji · W
@@ -95,8 +95,18 @@ DESCRIPTION:Etyka wpływu i manipulacji (Wykład)\nProwadzący: Anna Wój
  cik-Lubzińska\nSala: brak w planie
 END:VEVENT
 BEGIN:VEVENT
+UID:2764567e67bf3de38d052b067d487ab1@plan-ue
+DTSTAMP:20260924T105935
+DTSTART;TZID=Europe/Warsaw:20261010T113000
+DTEND;TZID=Europe/Warsaw:20261010T130000
+SUMMARY:Społeczne kompetencje · W
+LOCATION:
+DESCRIPTION:Społeczne kompetencje (Wykład)\nProwadzący: Małgorzata W
+ ójcik-Pyzik\nSala: brak w planie
+END:VEVENT
+BEGIN:VEVENT
 UID:df1e67f6a14662e861c90cd3c49a93de@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261010T131500
 DTEND;TZID=Europe/Warsaw:20261010T144500
 SUMMARY:Projekty w badaniach marketingowych · W
@@ -106,7 +116,7 @@ DESCRIPTION:Projekty w badaniach marketingowych (Wykład)\nProwadzący: P
 END:VEVENT
 BEGIN:VEVENT
 UID:b31cc50540a5084bd770c61762431324@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261011T080000
 DTEND;TZID=Europe/Warsaw:20261011T093000
 SUMMARY:Megatrendy w kreatywnej przestrzeni · W
@@ -116,7 +126,7 @@ DESCRIPTION:Megatrendy w kreatywnej przestrzeni (Wykład)\nProwadzący: S
 END:VEVENT
 BEGIN:VEVENT
 UID:c4cffd5da66ce95c5f507b97edf1891b@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261011T094500
 DTEND;TZID=Europe/Warsaw:20261011T111500
 SUMMARY:Megatrendy w kreatywnej przestrzeni · W
@@ -125,8 +135,18 @@ DESCRIPTION:Megatrendy w kreatywnej przestrzeni (Wykład)\nProwadzący: S
  tanisław Korenik\nSala: brak w planie
 END:VEVENT
 BEGIN:VEVENT
+UID:e6a0935e048bc2142451bc2749c67785@plan-ue
+DTSTAMP:20260924T105935
+DTSTART;TZID=Europe/Warsaw:20261011T113000
+DTEND;TZID=Europe/Warsaw:20261011T130000
+SUMMARY:Nowe koncepcje w przestrzeni społeczno-gospodarczej · W
+LOCATION:
+DESCRIPTION:Nowe koncepcje w przestrzeni społeczno-gospodarczej (Wykład
+ )\nProwadzący: Dariusz Głuszczuk\nSala: brak w planie
+END:VEVENT
+BEGIN:VEVENT
 UID:b5ccf874d9dccf138a3e6a43a4b67c48@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261017T094500
 DTEND;TZID=Europe/Warsaw:20261017T111500
 SUMMARY:Planowanie projektów · W
@@ -136,7 +156,7 @@ DESCRIPTION:Planowanie projektów (Wykład)\nProwadzący: Dariusz Porębs
 END:VEVENT
 BEGIN:VEVENT
 UID:d72bf8b39db2eb05f18c5c3c81373205@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261017T113000
 DTEND;TZID=Europe/Warsaw:20261017T130000
 SUMMARY:Projekty w badaniach marketingowych · W
@@ -146,7 +166,7 @@ DESCRIPTION:Projekty w badaniach marketingowych (Wykład)\nProwadzący: P
 END:VEVENT
 BEGIN:VEVENT
 UID:6595684f171f098f118fa12741bc90f0@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261017T131500
 DTEND;TZID=Europe/Warsaw:20261017T144500
 SUMMARY:Projekty w badaniach marketingowych · W
@@ -156,7 +176,7 @@ DESCRIPTION:Projekty w badaniach marketingowych (Wykład)\nProwadzący: P
 END:VEVENT
 BEGIN:VEVENT
 UID:36a127bdb06a249f9d121cf008f199dd@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261018T080000
 DTEND;TZID=Europe/Warsaw:20261018T093000
 SUMMARY:Język angielski C1 · gr. 26 · Lekt
@@ -166,7 +186,7 @@ DESCRIPTION:Język angielski C1 · gr. 26 (Lektoraty)\nProwadzący: Magda
 END:VEVENT
 BEGIN:VEVENT
 UID:0bc188fe957be6c3a0df3ac0c62bd17d@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261018T094500
 DTEND;TZID=Europe/Warsaw:20261018T111500
 SUMMARY:Zarządzanie procesami · Ćw
@@ -176,7 +196,7 @@ DESCRIPTION:Zarządzanie procesami (Ćwiczenia)\nProwadzący: Ewelina Ksi
 END:VEVENT
 BEGIN:VEVENT
 UID:febc2692f9f9b62384d605974555d14b@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261018T131500
 DTEND;TZID=Europe/Warsaw:20261018T144500
 SUMMARY:Planowanie projektów · Ćw
@@ -186,7 +206,7 @@ DESCRIPTION:Planowanie projektów (Ćwiczenia)\nProwadzący: Dariusz Por
 END:VEVENT
 BEGIN:VEVENT
 UID:6fc5785bdf6ee1bc9bd0deb0f194e48b@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261024T080000
 DTEND;TZID=Europe/Warsaw:20261024T093000
 SUMMARY:Zarządzanie procesami · W
@@ -196,7 +216,7 @@ DESCRIPTION:Zarządzanie procesami (Wykład)\nProwadzący: Renata Brajer-
 END:VEVENT
 BEGIN:VEVENT
 UID:fd1f9fa6ddf496b0810da8ff27fa75c6@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261024T094500
 DTEND;TZID=Europe/Warsaw:20261024T111500
 SUMMARY:Zarządzanie procesami · W
@@ -206,7 +226,7 @@ DESCRIPTION:Zarządzanie procesami (Wykład)\nProwadzący: Renata Brajer-
 END:VEVENT
 BEGIN:VEVENT
 UID:1b57e301f49ecec87d99621a4d3bc285@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261024T113000
 DTEND;TZID=Europe/Warsaw:20261024T130000
 SUMMARY:Projekty w badaniach marketingowych · W
@@ -216,7 +236,7 @@ DESCRIPTION:Projekty w badaniach marketingowych (Wykład)\nProwadzący: P
 END:VEVENT
 BEGIN:VEVENT
 UID:35f7a10ecd56e66915d8faa1bfd1e98c@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261024T150000
 DTEND;TZID=Europe/Warsaw:20261024T163000
 SUMMARY:Zarządzanie innowacjami i Design Thinking · W
@@ -226,7 +246,7 @@ DESCRIPTION:Zarządzanie innowacjami i Design Thinking (Wykład)\nProwadz
 END:VEVENT
 BEGIN:VEVENT
 UID:7918d9ea4e2c0deb52ede91824174052@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261024T164500
 DTEND;TZID=Europe/Warsaw:20261024T181500
 SUMMARY:Zarządzanie jakością w projektach · W
@@ -236,7 +256,7 @@ DESCRIPTION:Zarządzanie jakością w projektach (Wykład)\nProwadzący:
 END:VEVENT
 BEGIN:VEVENT
 UID:5f4d52e8775f5d4fbf830289ec0eaaa9@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261025T094500
 DTEND;TZID=Europe/Warsaw:20261025T111500
 SUMMARY:Zarządzanie procesami · Ćw
@@ -246,7 +266,7 @@ DESCRIPTION:Zarządzanie procesami (Ćwiczenia)\nProwadzący: Ewelina Ksi
 END:VEVENT
 BEGIN:VEVENT
 UID:e65441f18f821b5ffa8bf9216f2d6c1e@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261025T113000
 DTEND;TZID=Europe/Warsaw:20261025T130000
 SUMMARY:Projekty w badaniach marketingowych · Ćw
@@ -256,7 +276,7 @@ DESCRIPTION:Projekty w badaniach marketingowych (Ćwiczenia)\nProwadzący
 END:VEVENT
 BEGIN:VEVENT
 UID:474eb1f7d9de477cfc8d892197e086ad@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261025T131500
 DTEND;TZID=Europe/Warsaw:20261025T144500
 SUMMARY:Zarządzanie jakością w projektach · Ćw
@@ -266,7 +286,7 @@ DESCRIPTION:Zarządzanie jakością w projektach (Ćwiczenia)\nProwadząc
 END:VEVENT
 BEGIN:VEVENT
 UID:0d8991a744d0b48747d98d60576ad7b7@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261025T150000
 DTEND;TZID=Europe/Warsaw:20261025T163000
 SUMMARY:Planowanie projektów · Lab
@@ -276,7 +296,7 @@ DESCRIPTION:Planowanie projektów (Laboratorium)\nProwadzący: Dariusz Po
 END:VEVENT
 BEGIN:VEVENT
 UID:7fc7c99d9da3a96d5c451c18522f6ac3@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261025T164500
 DTEND;TZID=Europe/Warsaw:20261025T181500
 SUMMARY:Język angielski C1 · gr. 26 · Lekt
@@ -286,7 +306,7 @@ DESCRIPTION:Język angielski C1 · gr. 26 (Lektoraty)\nProwadzący: Magda
 END:VEVENT
 BEGIN:VEVENT
 UID:2377e01f28ac710ddd39e7dd176370e3@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261107T131500
 DTEND;TZID=Europe/Warsaw:20261107T144500
 SUMMARY:Zarządzanie jakością w projektach · W
@@ -296,7 +316,7 @@ DESCRIPTION:Zarządzanie jakością w projektach (Wykład)\nProwadzący:
 END:VEVENT
 BEGIN:VEVENT
 UID:5a5235fdb4a45262223fb6fdde1ba16d@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261107T150000
 DTEND;TZID=Europe/Warsaw:20261107T163000
 SUMMARY:Zarządzanie innowacjami i Design Thinking · W
@@ -306,7 +326,7 @@ DESCRIPTION:Zarządzanie innowacjami i Design Thinking (Wykład)\nProwadz
 END:VEVENT
 BEGIN:VEVENT
 UID:7212f1a4ff2faaef99014787ee62655e@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261107T164500
 DTEND;TZID=Europe/Warsaw:20261107T181500
 SUMMARY:Planowanie projektów · W
@@ -316,7 +336,7 @@ DESCRIPTION:Planowanie projektów (Wykład)\nProwadzący: Dariusz Porębs
 END:VEVENT
 BEGIN:VEVENT
 UID:dfa48a82680e6a3a1bb9099e0c806c4f@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261108T080000
 DTEND;TZID=Europe/Warsaw:20261108T093000
 SUMMARY:Język angielski C1 · gr. 26 · Lekt
@@ -326,7 +346,7 @@ DESCRIPTION:Język angielski C1 · gr. 26 (Lektoraty)\nProwadzący: Magda
 END:VEVENT
 BEGIN:VEVENT
 UID:fb7f63f4fb4a7e4b1025ecc6f4e82a60@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261108T094500
 DTEND;TZID=Europe/Warsaw:20261108T111500
 SUMMARY:Projekty w badaniach marketingowych · Ćw
@@ -336,7 +356,7 @@ DESCRIPTION:Projekty w badaniach marketingowych (Ćwiczenia)\nProwadzący
 END:VEVENT
 BEGIN:VEVENT
 UID:1f39ded086482a798b6300ca10695bed@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261108T113000
 DTEND;TZID=Europe/Warsaw:20261108T130000
 SUMMARY:Planowanie projektów · Ćw
@@ -346,7 +366,7 @@ DESCRIPTION:Planowanie projektów (Ćwiczenia)\nProwadzący: Dariusz Por
 END:VEVENT
 BEGIN:VEVENT
 UID:1fa5afd095e9e2b2bb090fd15c4d7bd8@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261108T131500
 DTEND;TZID=Europe/Warsaw:20261108T144500
 SUMMARY:Zarządzanie innowacjami i Design Thinking · Ćw
@@ -356,7 +376,7 @@ DESCRIPTION:Zarządzanie innowacjami i Design Thinking (Ćwiczenia)\nProw
 END:VEVENT
 BEGIN:VEVENT
 UID:40d4d9b0df9e23738a4a4888fb1d4812@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261108T150000
 DTEND;TZID=Europe/Warsaw:20261108T163000
 SUMMARY:Zarządzanie jakością w projektach · Ćw
@@ -366,7 +386,7 @@ DESCRIPTION:Zarządzanie jakością w projektach (Ćwiczenia)\nProwadząc
 END:VEVENT
 BEGIN:VEVENT
 UID:e7798fa55be02e19e8e0838d46ea107e@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261108T164500
 DTEND;TZID=Europe/Warsaw:20261108T181500
 SUMMARY:Zarządzanie procesami · Ćw
@@ -376,7 +396,7 @@ DESCRIPTION:Zarządzanie procesami (Ćwiczenia)\nProwadzący: Ewelina Ksi
 END:VEVENT
 BEGIN:VEVENT
 UID:d6479dae152125215cb71753bd89ef51@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261114T080000
 DTEND;TZID=Europe/Warsaw:20261114T093000
 SUMMARY:Etyka wpływu i manipulacji · W
@@ -386,7 +406,7 @@ DESCRIPTION:Etyka wpływu i manipulacji (Wykład)\nProwadzący: Anna Wój
 END:VEVENT
 BEGIN:VEVENT
 UID:4d72fd378830dfe2b2b3f453b31bd899@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261114T094500
 DTEND;TZID=Europe/Warsaw:20261114T111500
 SUMMARY:Etyka wpływu i manipulacji · W
@@ -395,8 +415,28 @@ DESCRIPTION:Etyka wpływu i manipulacji (Wykład)\nProwadzący: Anna Wój
  cik-Lubzińska\nSala: brak w planie
 END:VEVENT
 BEGIN:VEVENT
+UID:618bcd1c6278399b5a82e6e2398ca578@plan-ue
+DTSTAMP:20260924T105935
+DTSTART;TZID=Europe/Warsaw:20261114T113000
+DTEND;TZID=Europe/Warsaw:20261114T130000
+SUMMARY:Społeczne kompetencje · W
+LOCATION:
+DESCRIPTION:Społeczne kompetencje (Wykład)\nProwadzący: Małgorzata W
+ ójcik-Pyzik\nSala: brak w planie
+END:VEVENT
+BEGIN:VEVENT
+UID:9fdca87f066751c95becb29e5b2c4903@plan-ue
+DTSTAMP:20260924T105935
+DTSTART;TZID=Europe/Warsaw:20261114T131500
+DTEND;TZID=Europe/Warsaw:20261114T144500
+SUMMARY:Społeczne kompetencje · W
+LOCATION:
+DESCRIPTION:Społeczne kompetencje (Wykład)\nProwadzący: Małgorzata W
+ ójcik-Pyzik\nSala: brak w planie
+END:VEVENT
+BEGIN:VEVENT
 UID:e9eb9bba17fde3bb541d1400f127f4f3@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261115T080000
 DTEND;TZID=Europe/Warsaw:20261115T093000
 SUMMARY:Megatrendy w kreatywnej przestrzeni · W
@@ -406,7 +446,7 @@ DESCRIPTION:Megatrendy w kreatywnej przestrzeni (Wykład)\nProwadzący: S
 END:VEVENT
 BEGIN:VEVENT
 UID:aa76cb71a7c14e9a4601178e0475f88f@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261115T094500
 DTEND;TZID=Europe/Warsaw:20261115T111500
 SUMMARY:Megatrendy w kreatywnej przestrzeni · W
@@ -415,8 +455,28 @@ DESCRIPTION:Megatrendy w kreatywnej przestrzeni (Wykład)\nProwadzący: S
  tanisław Korenik\nSala: brak w planie
 END:VEVENT
 BEGIN:VEVENT
+UID:ee32747d448e8d86828b7a274cf6f812@plan-ue
+DTSTAMP:20260924T105935
+DTSTART;TZID=Europe/Warsaw:20261115T113000
+DTEND;TZID=Europe/Warsaw:20261115T130000
+SUMMARY:Nowe koncepcje w przestrzeni społeczno-gospodarczej · W
+LOCATION:
+DESCRIPTION:Nowe koncepcje w przestrzeni społeczno-gospodarczej (Wykład
+ )\nProwadzący: Dariusz Głuszczuk\nSala: brak w planie
+END:VEVENT
+BEGIN:VEVENT
+UID:ecd63e3e73b9ad707694f7bf9a285720@plan-ue
+DTSTAMP:20260924T105935
+DTSTART;TZID=Europe/Warsaw:20261115T131500
+DTEND;TZID=Europe/Warsaw:20261115T144500
+SUMMARY:Nowe koncepcje w przestrzeni społeczno-gospodarczej · W
+LOCATION:
+DESCRIPTION:Nowe koncepcje w przestrzeni społeczno-gospodarczej (Wykład
+ )\nProwadzący: Dariusz Głuszczuk\nSala: brak w planie
+END:VEVENT
+BEGIN:VEVENT
 UID:96473efd905965759fc9424d52cd22a3@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261121T131500
 DTEND;TZID=Europe/Warsaw:20261121T144500
 SUMMARY:Planowanie projektów · W
@@ -426,7 +486,7 @@ DESCRIPTION:Planowanie projektów (Wykład)\nProwadzący: Dariusz Porębs
 END:VEVENT
 BEGIN:VEVENT
 UID:e60df3d4151923838b60f3b01ae06994@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261122T080000
 DTEND;TZID=Europe/Warsaw:20261122T093000
 SUMMARY:Język angielski C1 · gr. 26 · Lekt
@@ -436,7 +496,7 @@ DESCRIPTION:Język angielski C1 · gr. 26 (Lektoraty)\nProwadzący: Magda
 END:VEVENT
 BEGIN:VEVENT
 UID:7f316dc1a4fb3569fa8523122832f66d@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261122T094500
 DTEND;TZID=Europe/Warsaw:20261122T111500
 SUMMARY:Zarządzanie innowacjami i Design Thinking · Ćw
@@ -446,7 +506,7 @@ DESCRIPTION:Zarządzanie innowacjami i Design Thinking (Ćwiczenia)\nProw
 END:VEVENT
 BEGIN:VEVENT
 UID:cf249c8b0dd20b80bbad88a365a9bda3@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261122T113000
 DTEND;TZID=Europe/Warsaw:20261122T130000
 SUMMARY:Zarządzanie innowacjami i Design Thinking · Ćw
@@ -456,7 +516,7 @@ DESCRIPTION:Zarządzanie innowacjami i Design Thinking (Ćwiczenia)\nProw
 END:VEVENT
 BEGIN:VEVENT
 UID:7f4552d2690792358f244038acddb5ff@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261122T131500
 DTEND;TZID=Europe/Warsaw:20261122T144500
 SUMMARY:Zarządzanie jakością w projektach · Ćw
@@ -466,7 +526,7 @@ DESCRIPTION:Zarządzanie jakością w projektach (Ćwiczenia)\nProwadząc
 END:VEVENT
 BEGIN:VEVENT
 UID:661843608f1e13789c128dddccc2be71@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261122T150000
 DTEND;TZID=Europe/Warsaw:20261122T163000
 SUMMARY:Zarządzanie procesami · Ćw
@@ -476,7 +536,7 @@ DESCRIPTION:Zarządzanie procesami (Ćwiczenia)\nProwadzący: Ewelina Ksi
 END:VEVENT
 BEGIN:VEVENT
 UID:cce7818debca5377ec8dea3e3332bbc5@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261128T094500
 DTEND;TZID=Europe/Warsaw:20261128T111500
 SUMMARY:Budżetowanie i controlling projektów · W
@@ -486,7 +546,7 @@ DESCRIPTION:Budżetowanie i controlling projektów (Wykład)\nProwadzący
 END:VEVENT
 BEGIN:VEVENT
 UID:194eafeea94f5b6f9e067d7a9229a0a2@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261128T113000
 DTEND;TZID=Europe/Warsaw:20261128T130000
 SUMMARY:Zarządzanie jakością w projektach · W
@@ -496,7 +556,7 @@ DESCRIPTION:Zarządzanie jakością w projektach (Wykład)\nProwadzący:
 END:VEVENT
 BEGIN:VEVENT
 UID:05c8d744e362db0975aa712570043767@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261129T094500
 DTEND;TZID=Europe/Warsaw:20261129T111500
 SUMMARY:Budżetowanie i controlling projektów · Lab
@@ -506,7 +566,7 @@ DESCRIPTION:Budżetowanie i controlling projektów (Laboratorium)\nProwad
 END:VEVENT
 BEGIN:VEVENT
 UID:e044ca35a5ab824c9d2318e40e53affa@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261129T113000
 DTEND;TZID=Europe/Warsaw:20261129T130000
 SUMMARY:Projekty w badaniach marketingowych · Ćw
@@ -516,7 +576,7 @@ DESCRIPTION:Projekty w badaniach marketingowych (Ćwiczenia)\nProwadzący
 END:VEVENT
 BEGIN:VEVENT
 UID:2281bf4b49fc5d07e9a710e645bc086a@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261129T131500
 DTEND;TZID=Europe/Warsaw:20261129T144500
 SUMMARY:Zarządzanie innowacjami i Design Thinking · Ćw
@@ -526,7 +586,7 @@ DESCRIPTION:Zarządzanie innowacjami i Design Thinking (Ćwiczenia)\nProw
 END:VEVENT
 BEGIN:VEVENT
 UID:1e9dea71f1170a84bffe55c3e03f8f56@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261129T150000
 DTEND;TZID=Europe/Warsaw:20261129T163000
 SUMMARY:Zarządzanie innowacjami i Design Thinking · Ćw
@@ -536,7 +596,7 @@ DESCRIPTION:Zarządzanie innowacjami i Design Thinking (Ćwiczenia)\nProw
 END:VEVENT
 BEGIN:VEVENT
 UID:2be1a9c4f902ca6bc8b28b8dac5ea7f6@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261129T164500
 DTEND;TZID=Europe/Warsaw:20261129T181500
 SUMMARY:Język angielski C1 · gr. 26 · Lekt
@@ -546,7 +606,7 @@ DESCRIPTION:Język angielski C1 · gr. 26 (Lektoraty)\nProwadzący: Magda
 END:VEVENT
 BEGIN:VEVENT
 UID:ab18fdb1bc074d10b65adf6aee4e7401@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261205T080000
 DTEND;TZID=Europe/Warsaw:20261205T093000
 SUMMARY:Etyka wpływu i manipulacji · W
@@ -556,7 +616,7 @@ DESCRIPTION:Etyka wpływu i manipulacji (Wykład)\nProwadzący: Anna Wój
 END:VEVENT
 BEGIN:VEVENT
 UID:b96214ae7b7bd29ded183a298b132fa3@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261205T094500
 DTEND;TZID=Europe/Warsaw:20261205T111500
 SUMMARY:Etyka wpływu i manipulacji · W
@@ -565,8 +625,18 @@ DESCRIPTION:Etyka wpływu i manipulacji (Wykład)\nProwadzący: Anna Wój
  cik-Lubzińska\nSala: brak w planie
 END:VEVENT
 BEGIN:VEVENT
+UID:5c0d00c8df29a3b402d86606439d19d4@plan-ue
+DTSTAMP:20260924T105935
+DTSTART;TZID=Europe/Warsaw:20261205T113000
+DTEND;TZID=Europe/Warsaw:20261205T130000
+SUMMARY:Społeczne kompetencje · W
+LOCATION:
+DESCRIPTION:Społeczne kompetencje (Wykład)\nProwadzący: Małgorzata W
+ ójcik-Pyzik\nSala: brak w planie
+END:VEVENT
+BEGIN:VEVENT
 UID:ea6e860cf27299bd941e8406e9de76c6@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261206T080000
 DTEND;TZID=Europe/Warsaw:20261206T093000
 SUMMARY:Megatrendy w kreatywnej przestrzeni · W
@@ -576,7 +646,7 @@ DESCRIPTION:Megatrendy w kreatywnej przestrzeni (Wykład)\nProwadzący: S
 END:VEVENT
 BEGIN:VEVENT
 UID:b6bd842d73c68c82e507cf2ecdb72b42@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261206T094500
 DTEND;TZID=Europe/Warsaw:20261206T111500
 SUMMARY:Megatrendy w kreatywnej przestrzeni · W
@@ -585,8 +655,18 @@ DESCRIPTION:Megatrendy w kreatywnej przestrzeni (Wykład)\nProwadzący: S
  tanisław Korenik\nSala: brak w planie
 END:VEVENT
 BEGIN:VEVENT
+UID:3e6eebc2d75f4a05e54ddcd5bfc6a204@plan-ue
+DTSTAMP:20260924T105935
+DTSTART;TZID=Europe/Warsaw:20261206T113000
+DTEND;TZID=Europe/Warsaw:20261206T130000
+SUMMARY:Nowe koncepcje w przestrzeni społeczno-gospodarczej · W
+LOCATION:
+DESCRIPTION:Nowe koncepcje w przestrzeni społeczno-gospodarczej (Wykład
+ )\nProwadzący: Dariusz Głuszczuk\nSala: brak w planie
+END:VEVENT
+BEGIN:VEVENT
 UID:0007ab306020cb898323b4add7c905e5@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261212T094500
 DTEND;TZID=Europe/Warsaw:20261212T111500
 SUMMARY:Kierowanie zespołem projektowym · W
@@ -596,7 +676,7 @@ DESCRIPTION:Kierowanie zespołem projektowym (Wykład)\nProwadzący: Ewa
 END:VEVENT
 BEGIN:VEVENT
 UID:b5d4738b8f726787881eca78b12b43e0@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261212T113000
 DTEND;TZID=Europe/Warsaw:20261212T130000
 SUMMARY:Zarządzanie jakością w projektach · W
@@ -606,7 +686,7 @@ DESCRIPTION:Zarządzanie jakością w projektach (Wykład)\nProwadzący:
 END:VEVENT
 BEGIN:VEVENT
 UID:0d8550d5053078df6dc279341165843c@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261212T150000
 DTEND;TZID=Europe/Warsaw:20261212T163000
 SUMMARY:Budżetowanie i controlling projektów · W
@@ -616,7 +696,7 @@ DESCRIPTION:Budżetowanie i controlling projektów (Wykład)\nProwadzący
 END:VEVENT
 BEGIN:VEVENT
 UID:9cefeb37ebe5e3bd4e71ce6766e36ebc@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261213T113000
 DTEND;TZID=Europe/Warsaw:20261213T130000
 SUMMARY:Planowanie projektów · Lab
@@ -626,7 +706,7 @@ DESCRIPTION:Planowanie projektów (Laboratorium)\nProwadzący: Dariusz Po
 END:VEVENT
 BEGIN:VEVENT
 UID:c27d9461bb687e7c581739bc7c31adde@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261213T131500
 DTEND;TZID=Europe/Warsaw:20261213T144500
 SUMMARY:Projekty w badaniach marketingowych · Ćw
@@ -636,7 +716,7 @@ DESCRIPTION:Projekty w badaniach marketingowych (Ćwiczenia)\nProwadzący
 END:VEVENT
 BEGIN:VEVENT
 UID:7291fc0e258747e57bce0207711f5b4f@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261213T150000
 DTEND;TZID=Europe/Warsaw:20261213T163000
 SUMMARY:Zarządzanie jakością w projektach · Ćw
@@ -646,7 +726,7 @@ DESCRIPTION:Zarządzanie jakością w projektach (Ćwiczenia)\nProwadząc
 END:VEVENT
 BEGIN:VEVENT
 UID:67c9cc1e8712b0078dbaf985b1fb817f@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261213T164500
 DTEND;TZID=Europe/Warsaw:20261213T181500
 SUMMARY:Język angielski C1 · gr. 26 · Lekt
@@ -656,7 +736,7 @@ DESCRIPTION:Język angielski C1 · gr. 26 (Lektoraty)\nProwadzący: Magda
 END:VEVENT
 BEGIN:VEVENT
 UID:6ae6d9621c4afb58afaf167d6f9522d7@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261220T080000
 DTEND;TZID=Europe/Warsaw:20261220T093000
 SUMMARY:Zarządzanie innowacjami i Design Thinking · Ćw
@@ -666,7 +746,7 @@ DESCRIPTION:Zarządzanie innowacjami i Design Thinking (Ćwiczenia)\nProw
 END:VEVENT
 BEGIN:VEVENT
 UID:805a0f4fe3bcb08aa6c1c7072b464a9c@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261220T094500
 DTEND;TZID=Europe/Warsaw:20261220T111500
 SUMMARY:Zarządzanie innowacjami i Design Thinking · Ćw
@@ -676,7 +756,7 @@ DESCRIPTION:Zarządzanie innowacjami i Design Thinking (Ćwiczenia)\nProw
 END:VEVENT
 BEGIN:VEVENT
 UID:92ea26042ee12b758feff6c7b03c0fd2@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261220T113000
 DTEND;TZID=Europe/Warsaw:20261220T130000
 SUMMARY:Planowanie projektów · Ćw
@@ -686,7 +766,7 @@ DESCRIPTION:Planowanie projektów (Ćwiczenia)\nProwadzący: Dariusz Por
 END:VEVENT
 BEGIN:VEVENT
 UID:129d5dedf303270636df41d11f9d8ccb@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261220T131500
 DTEND;TZID=Europe/Warsaw:20261220T144500
 SUMMARY:Kierowanie zespołem projektowym · Ćw
@@ -696,7 +776,7 @@ DESCRIPTION:Kierowanie zespołem projektowym (Ćwiczenia)\nProwadzący: A
 END:VEVENT
 BEGIN:VEVENT
 UID:30636242dd20bdad8e5c4a946d0f3f08@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261220T150000
 DTEND;TZID=Europe/Warsaw:20261220T163000
 SUMMARY:Budżetowanie i controlling projektów · Lab
@@ -706,7 +786,7 @@ DESCRIPTION:Budżetowanie i controlling projektów (Laboratorium)\nProwad
 END:VEVENT
 BEGIN:VEVENT
 UID:181c5234dadac69a37f2f9702d8e7ed8@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20261220T164500
 DTEND;TZID=Europe/Warsaw:20261220T181500
 SUMMARY:Język angielski C1 · gr. 26 · Lekt
@@ -716,7 +796,7 @@ DESCRIPTION:Język angielski C1 · gr. 26 (Lektoraty)\nProwadzący: Magda
 END:VEVENT
 BEGIN:VEVENT
 UID:5475cd91b2117c45589dc87819d8930e@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20270109T094500
 DTEND;TZID=Europe/Warsaw:20270109T111500
 SUMMARY:Budżetowanie i controlling projektów · W
@@ -726,7 +806,7 @@ DESCRIPTION:Budżetowanie i controlling projektów (Wykład)\nProwadzący
 END:VEVENT
 BEGIN:VEVENT
 UID:ac16ae387e22a6ae2f3aaf5b1382ff78@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20270109T113000
 DTEND;TZID=Europe/Warsaw:20270109T130000
 SUMMARY:Kierowanie zespołem projektowym · W
@@ -736,7 +816,7 @@ DESCRIPTION:Kierowanie zespołem projektowym (Wykład)\nProwadzący: Ewa
 END:VEVENT
 BEGIN:VEVENT
 UID:a7fea65d5c62e4ae53d04254b0805257@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20270110T080000
 DTEND;TZID=Europe/Warsaw:20270110T093000
 SUMMARY:Język angielski C1 · gr. 26 · Lekt
@@ -746,7 +826,7 @@ DESCRIPTION:Język angielski C1 · gr. 26 (Lektoraty)\nProwadzący: Magda
 END:VEVENT
 BEGIN:VEVENT
 UID:c98c191d64a803edad1bfaf2824e58d7@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20270110T113000
 DTEND;TZID=Europe/Warsaw:20270110T130000
 SUMMARY:Budżetowanie i controlling projektów · Lab
@@ -756,7 +836,7 @@ DESCRIPTION:Budżetowanie i controlling projektów (Laboratorium)\nProwad
 END:VEVENT
 BEGIN:VEVENT
 UID:8ebed73fb24375669d25637e7366a46f@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20270110T131500
 DTEND;TZID=Europe/Warsaw:20270110T144500
 SUMMARY:Planowanie projektów · Lab
@@ -766,7 +846,7 @@ DESCRIPTION:Planowanie projektów (Laboratorium)\nProwadzący: Dariusz Po
 END:VEVENT
 BEGIN:VEVENT
 UID:a71f487679035cb80c4e0bf1ef3fee00@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20270110T150000
 DTEND;TZID=Europe/Warsaw:20270110T163000
 SUMMARY:Kierowanie zespołem projektowym · Ćw
@@ -776,7 +856,7 @@ DESCRIPTION:Kierowanie zespołem projektowym (Ćwiczenia)\nProwadzący: A
 END:VEVENT
 BEGIN:VEVENT
 UID:f44cbbee678805472023a3aca6f2f0e2@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20270117T113000
 DTEND;TZID=Europe/Warsaw:20270117T130000
 SUMMARY:Planowanie projektów · Lab
@@ -786,7 +866,7 @@ DESCRIPTION:Planowanie projektów (Laboratorium)\nProwadzący: Dariusz Po
 END:VEVENT
 BEGIN:VEVENT
 UID:58d1a2761b270a2ad18cf76e7ce8a001@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20270117T150000
 DTEND;TZID=Europe/Warsaw:20270117T163000
 SUMMARY:Kierowanie zespołem projektowym · Ćw
@@ -796,7 +876,7 @@ DESCRIPTION:Kierowanie zespołem projektowym (Ćwiczenia)\nProwadzący: A
 END:VEVENT
 BEGIN:VEVENT
 UID:55175e535e95617673a18ed9e66e9ff2@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20270117T164500
 DTEND;TZID=Europe/Warsaw:20270117T181500
 SUMMARY:Język angielski C1 · gr. 26 · Lekt
@@ -806,7 +886,7 @@ DESCRIPTION:Język angielski C1 · gr. 26 (Lektoraty)\nProwadzący: Magda
 END:VEVENT
 BEGIN:VEVENT
 UID:4be32379bdb7cb6c75dae18daf21585e@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20270123T080000
 DTEND;TZID=Europe/Warsaw:20270123T093000
 SUMMARY:Etyka wpływu i manipulacji · W
@@ -816,7 +896,7 @@ DESCRIPTION:Etyka wpływu i manipulacji (Wykład)\nProwadzący: Anna Wój
 END:VEVENT
 BEGIN:VEVENT
 UID:4c2d17dd6642d14318530e63a2c7b62c@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20270123T094500
 DTEND;TZID=Europe/Warsaw:20270123T111500
 SUMMARY:Etyka wpływu i manipulacji · W
@@ -826,7 +906,7 @@ DESCRIPTION:Etyka wpływu i manipulacji (Wykład)\nProwadzący: Anna Wój
 END:VEVENT
 BEGIN:VEVENT
 UID:45cd0f6e93b34200ac8e2051745591aa@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20270123T113000
 DTEND;TZID=Europe/Warsaw:20270123T130000
 SUMMARY:Kierowanie zespołem projektowym · W
@@ -836,7 +916,7 @@ DESCRIPTION:Kierowanie zespołem projektowym (Wykład)\nProwadzący: Ewa
 END:VEVENT
 BEGIN:VEVENT
 UID:46758c9ff5bdeab2229dc739ce2174de@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20270124T080000
 DTEND;TZID=Europe/Warsaw:20270124T093000
 SUMMARY:Megatrendy w kreatywnej przestrzeni · W
@@ -846,7 +926,7 @@ DESCRIPTION:Megatrendy w kreatywnej przestrzeni (Wykład)\nProwadzący: S
 END:VEVENT
 BEGIN:VEVENT
 UID:7f27b54213532d47ff013cab65a0004c@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20270124T094500
 DTEND;TZID=Europe/Warsaw:20270124T111500
 SUMMARY:Megatrendy w kreatywnej przestrzeni · W
@@ -856,7 +936,7 @@ DESCRIPTION:Megatrendy w kreatywnej przestrzeni (Wykład)\nProwadzący: S
 END:VEVENT
 BEGIN:VEVENT
 UID:cb6b118a4a76b2b98b5c0125d7a80b2e@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20270130T094500
 DTEND;TZID=Europe/Warsaw:20270130T111500
 SUMMARY:Budżetowanie i controlling projektów · W
@@ -866,7 +946,7 @@ DESCRIPTION:Budżetowanie i controlling projektów (Wykład)\nProwadzący
 END:VEVENT
 BEGIN:VEVENT
 UID:3269616100c19c9e3f6e56a259e66667@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20270130T113000
 DTEND;TZID=Europe/Warsaw:20270130T130000
 SUMMARY:Kierowanie zespołem projektowym · W
@@ -876,7 +956,7 @@ DESCRIPTION:Kierowanie zespołem projektowym (Wykład)\nProwadzący: Ewa
 END:VEVENT
 BEGIN:VEVENT
 UID:7bef1ac75c4eeacf5b0a15751735265d@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20270131T094500
 DTEND;TZID=Europe/Warsaw:20270131T111500
 SUMMARY:Kierowanie zespołem projektowym · Ćw
@@ -886,7 +966,7 @@ DESCRIPTION:Kierowanie zespołem projektowym (Ćwiczenia)\nProwadzący: A
 END:VEVENT
 BEGIN:VEVENT
 UID:0015d558db5248485583ee0295666bcf@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20270131T113000
 DTEND;TZID=Europe/Warsaw:20270131T130000
 SUMMARY:Planowanie projektów · Ćw
@@ -896,7 +976,7 @@ DESCRIPTION:Planowanie projektów (Ćwiczenia)\nProwadzący: Dariusz Por
 END:VEVENT
 BEGIN:VEVENT
 UID:358c13b33e99f6d2a5f08e893d6c772b@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20270131T131500
 DTEND;TZID=Europe/Warsaw:20270131T144500
 SUMMARY:Zarządzanie innowacjami i Design Thinking · Ćw
@@ -906,7 +986,7 @@ DESCRIPTION:Zarządzanie innowacjami i Design Thinking (Ćwiczenia)\nProw
 END:VEVENT
 BEGIN:VEVENT
 UID:c67ede318e7a5a9b1414ff7ad4b6463a@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20270131T150000
 DTEND;TZID=Europe/Warsaw:20270131T163000
 SUMMARY:Budżetowanie i controlling projektów · Lab
@@ -916,7 +996,7 @@ DESCRIPTION:Budżetowanie i controlling projektów (Laboratorium)\nProwad
 END:VEVENT
 BEGIN:VEVENT
 UID:629d53f9799c4f1ab178352f22a9e0f1@plan-ue
-DTSTAMP:20260924T095835
+DTSTAMP:20260924T105935
 DTSTART;TZID=Europe/Warsaw:20270131T164500
 DTEND;TZID=Europe/Warsaw:20270131T181500
 SUMMARY:Język angielski C1 · gr. 26 · Lekt
