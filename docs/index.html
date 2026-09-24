@@ -203,7 +203,6 @@ button.pill { cursor: pointer; font: inherit; font-size: 13px; }
 .prog .bar { flex: 1; margin: 0; width: auto; }
 h3.sec { font-size: 15px; margin: 18px 2px 8px; }
 .sessions { display: grid; gap: 8px; }
-@media (min-width: 760px) { .sessions { grid-template-columns: 1fr 1fr; align-items: start; } }
 .sess { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow); overflow: hidden; }
 .sess.past { opacity: .6; }
 .sess.past.open { opacity: 1; }
@@ -222,6 +221,46 @@ h3.sec { font-size: 15px; margin: 18px 2px 8px; }
 .scan video { width: 100%; height: 100%; object-fit: cover; display: block; }
 .scan-frame { position: absolute; inset: 16%; border: 3px solid rgba(255, 255, 255, .9); border-radius: 14px; box-shadow: 0 0 0 999px rgba(0, 0, 0, .35); }
 details.alt { margin-top: 14px; }
+/* obecność */
+.attb { font-size: 11.5px; font-weight: 700; padding: 1px 7px; border-radius: 999px; white-space: nowrap; }
+.attb.ok { background: var(--ok-soft); color: var(--ok); }
+.attb.bad { background: color-mix(in srgb, var(--bad) 14%, transparent); color: var(--bad); }
+.attb.warn { background: var(--warn-soft); color: var(--warn); }
+.att { margin: 0 0 12px; }
+.att-l { display: block; font-weight: 650; margin-bottom: 5px; font-size: 13.5px; }
+.att-opts { display: flex; gap: 4px; flex-wrap: wrap; }
+.att-opts button { flex: 1 1 auto; border: 1.5px solid var(--line); background: var(--surface); border-radius: 9px; padding: 6px 8px; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; color: var(--text-2); }
+.att-opts button.on.present { background: var(--ok-soft); border-color: var(--ok); color: var(--ok); }
+.att-opts button.on.absent { background: color-mix(in srgb, var(--bad) 14%, transparent); border-color: var(--bad); color: var(--bad); }
+.att-opts button.on.madeup { background: var(--warn-soft); border-color: var(--warn); color: var(--warn); }
+.att .note-actions { margin-top: 6px; }
+.attsum { font-size: 15px; padding: 8px 12px; border-radius: 10px; background: var(--line-soft); }
+.attsum.ok { background: var(--ok-soft); color: var(--ok); }
+.attsum.warn { background: var(--warn-soft); color: var(--warn); }
+.attsum.bad { background: color-mix(in srgb, var(--bad) 14%, transparent); color: var(--bad); }
+.tc-att { font-size: 13px; font-weight: 650; margin-top: 4px; }
+.tc-att.ok { color: var(--ok); } .tc-att.warn { color: var(--warn); } .tc-att.bad { color: var(--bad); }
+.field label.lim-l { flex: 1 0 100%; font-weight: 650; font-size: 13.5px; color: var(--text-2); }
+.field input[type=number] { flex: 0 1 120px; }
+/* zajęcia dodane ręcznie */
+.manb { font-size: 11px; font-weight: 700; padding: 0 6px; border-radius: 6px; border: 1px dashed var(--text-3); color: var(--text-2); white-space: nowrap; }
+.card.man { box-shadow: inset 0 0 0 1.5px hsl(var(--h) var(--sub-s) var(--sub-l) / .55); }
+.chip.man { outline: 1.5px dashed hsl(var(--h) var(--sub-s) var(--sub-l)); outline-offset: -2px; }
+.addform { border-color: var(--accent); scroll-margin-top: 70px; }
+.fgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; margin-top: 10px; }
+.fgrid label { display: flex; flex-direction: column; gap: 4px; font-size: 13px; font-weight: 650; color: var(--text-2); min-width: 0; }
+.fgrid label.wide { grid-column: 1 / -1; }
+.fgrid input, .fgrid select { border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; background: var(--surface); color: var(--text); font: inherit; font-size: 16px; min-width: 0; width: 100%; }
+.toolbar .btn { padding: 7px 12px; }
+/* wyszukiwarka */
+.pill svg { width: 14px; height: 14px; }
+.search-top { display: flex; gap: 8px; margin-bottom: 8px; }
+.search-top input { flex: 1; min-width: 0; border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; background: var(--surface); color: var(--text); font-size: 16px; }
+.sr-group { margin: 16px 2px 8px; font-size: 12.5px; font-weight: 700; color: var(--text-3); text-transform: uppercase; letter-spacing: .04em; }
+.sr { display: block; width: 100%; text-align: left; background: var(--surface); border: 1px solid var(--line); border-left: 4px solid hsl(var(--h) var(--sub-s) var(--sub-l)); border-radius: 12px; padding: 9px 12px; margin-bottom: 8px; font: inherit; color: inherit; cursor: pointer; }
+.sr .ctx { font-size: 12.5px; color: var(--text-2); font-weight: 600; }
+.sr .txt { font-size: 14px; white-space: pre-wrap; overflow-wrap: anywhere; margin-top: 2px; }
+mark { background: color-mix(in srgb, var(--warn) 35%, transparent); color: inherit; border-radius: 3px; padding: 0 1px; }
 details.alt summary { cursor: pointer; color: var(--accent); font-weight: 600; font-size: 14px; }
 .legend.abbr b { color: var(--text); }
 .more { width: 100%; margin-bottom: 14px; color: var(--text-2); }
@@ -325,6 +364,7 @@ ol.steps li { margin: 4px 0; }
     <div class="pills">
       <div class="pill" id="status"><i></i><span>Ładowanie…</span></div>
       <button class="pill" id="notesPill" hidden></button>
+      <button class="pill" id="searchBtn" title="Szukaj w notatkach i planie"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5 14 14"/></svg><span>Szukaj</span></button>
     </div>
   </header>
 
@@ -346,7 +386,9 @@ ol.steps li { margin: 4px 0; }
           <button data-mode="zjazdy" aria-selected="true">Zjazdy</button>
           <button data-mode="semestr" aria-selected="false">Cały semestr</button>
         </div>
+        <button class="btn" id="addBtn">＋ Dodaj zajęcia</button>
       </div>
+      <div id="addForm"></div>
       <div id="archive"></div>
       <div id="notice"></div>
       <div id="zjazdy"></div>
@@ -354,6 +396,10 @@ ol.steps li { margin: 4px 0; }
     </section>
     <section data-view="przedmioty" hidden><div id="przedmioty"></div></section>
     <section data-view="zmiany" hidden><div id="zmiany"></div></section>
+    <section data-view="szukaj" hidden>
+      <div class="search-top"><input id="q" type="search" placeholder="Szukaj w notatkach, przedmiotach, salach…" autocomplete="off" enterkeyhint="search" aria-label="Szukaj"><button class="btn" id="qClose">Zamknij</button></div>
+      <div id="results"></div>
+    </section>
     <section data-view="ustawienia" hidden><div id="sync"></div><div id="kalendarz"></div></section>
   </main>
 
@@ -369,8 +415,10 @@ const DAY = ["niedziela", "poniedziałek", "wtorek", "środa", "czwartek", "pią
 const DAY_ACC = ["niedzielę", "poniedziałek", "wtorek", "środę", "czwartek", "piątek", "sobotę"];
 const DAY_SHORT = ["ndz", "pon", "wt", "śr", "czw", "pt", "sob"];
 const MONTH = ["stycznia", "lutego", "marca", "kwietnia", "maja", "czerwca", "lipca", "sierpnia", "września", "października", "listopada", "grudnia"];
-const TYPE_FULL = { W: "wykład", "Ćw": "ćwiczenia", Lab: "laboratorium", Lekt: "lektorat" };
-const TYPE_GEN = { W: "wykładu", "Ćw": "ćwiczeń", Lab: "laboratorium", Lekt: "lektoratu" };
+const TYPE_FULL = { W: "wykład", "Ćw": "ćwiczenia", Lab: "laboratorium", Lekt: "lektorat", Inne: "inne" };
+const TYPE_GEN = { W: "wykładu", "Ćw": "ćwiczeń", Lab: "laboratorium", Lekt: "lektoratu", Inne: "innych zajęć" };
+const ATT = { present: "Obecny", absent: "Nieobecny", madeup: "Odrobione" };
+const ATT_BADGE = { present: ["ok", "✓ obecny"], absent: ["bad", "✗ nieobecny"], madeup: ["warn", "↺ odrobione"] };
 const CHANGE_LABEL = { moved: "przeniesione", removed: "odwołane", added: "nowe", room: "sala", teacher: "prowadzący" };
 const ICON_NOTE = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2.5h7l3 3v8H3z"/><path d="M5.5 7.5h5M5.5 10h5"/></svg>';
 const ICON_CHEV = '<svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg>';
@@ -382,12 +430,14 @@ const store = {
 };
 const state = {
   data: null, status: null,
-  tab: store.get("tab2", "plan"), mode: store.get("mode", "zjazdy"),
+  tab: store.get("tab2", "plan") === "szukaj" ? "plan" : store.get("tab2", "plan"), mode: store.get("mode", "zjazdy"),
   showPast: false, showPS: store.get("showPS", true),
   expanded: new Set(), drafts: new Map(), noteMsg: new Map(),
   deferredRender: false,
   noteMeta: new Map(), sOpen: new Set(), subj: store.get("subj", null),
   scanning: false, qrOpen: false,
+  attDraft: new Map(), attMsg: new Map(), limDraft: new Map(), limMsg: new Map(),
+  addForm: null, prevTab: "plan",
 };
 let editorSeq = 0;
 const metaOf = (b) => ({ name: b.name, date: b.date, start: b.start, end: b.end, type_short: b.type_short });
@@ -436,10 +486,12 @@ function relTime(d, now = new Date()) {
   return m && h < 5 ? `za ${h} h ${m} min` : `za ${Math.round(min / 60)} h`;
 }
 const hueFor = (ev) => TYPE_HUE[ev.type_short] ?? OTHER_HUE;
+const initials = (name) => name.split(/[\s–-]+/).filter(Boolean).map((w) => (w.length <= 2 ? w[0].toLowerCase() : w[0].toUpperCase())).join("").slice(0, 5);
 function abbr(ev) {
+  if (ev.ab) return ev.ab;
   if (ev.kind === "language") return "ANG";
   if (ev.kind !== "elective") return ev.code;
-  return ev.name.split(/[\s–-]+/).filter(Boolean).map((w) => (w.length <= 2 ? w[0].toLowerCase() : w[0].toUpperCase())).join("").slice(0, 5);
+  return initials(ev.name);
 }
 
 /* =============== notatki (lokalnie + opcjonalna synchronizacja przez prywatne repo GitHub) =============== */
@@ -453,13 +505,16 @@ const Notes = {
   repo() { return state.data?.config?.notes_repo; },
   get(key) { const n = this.all[key]; return n && n.text ? n : null; },
   persist() { store.set("notes", this.all); store.set("notesDirty", [...this.dirty]); },
-  async save(key, text, meta) {
-    this.all[key] = { ...meta, text, updated: new Date().toISOString() };
+  rec(key) { return this.all[key] || null; },
+  // każdy rekord (notatka, obecność, limit, zajęcia dodane ręcznie) synchronizuje się tak samo
+  async put(key, obj) {
+    this.all[key] = { ...obj, updated: new Date().toISOString() };
     this.dirty.add(key);
     this.persist();
     if (!this.token) return "local";
     try { await this.sync(); return "synced"; } catch (e) { return e.auth ? "auth" : "offline"; }
   },
+  save(key, text, meta) { return this.put(key, { ...meta, text }); },
   api(path, opts = {}) {
     return fetch(`https://api.github.com/repos/${this.repo()}/contents/${path}`, {
       cache: "no-store",
@@ -532,16 +587,33 @@ const Notes = {
 })();
 
 /* =============== przygotowanie danych =============== */
+function manualEvents() {
+  const known = new Map();
+  for (const e of state.data.events) if (!known.has(e.name)) known.set(e.name, e);
+  return Object.entries(Notes.all)
+    .filter(([k, r]) => k.startsWith("cls|") && !r.deleted && r.name && r.date && r.start && r.end)
+    .map(([k, r]) => {
+      const m = known.get(r.name);
+      const id = k.slice(4);
+      return {
+        date: r.date, start: r.start, end: r.end, name: r.name, code: m ? m.code : initials(r.name),
+        type_short: r.type_short || "Inne", type: TYPE_FULL[r.type_short] || r.type_short || "inne",
+        room: r.room || "", teacher: r.teacher || "", pid: "", kind: "manual", manual: true, mid: id, key: `M|${id}`,
+        subjKind: m ? m.kind : "manual", ab: m ? abbr(m) : initials(r.name),
+      };
+    });
+}
+
 function prepare() {
-  const events = state.data.events
-    .filter((e) => state.showPS || e.kind !== "not_enrolled")
-    .map((e) => ({ ...e, s: toDate(e.date, e.start), e: toDate(e.date, e.end) }));
+  const events = [...state.data.events.filter((e) => state.showPS || e.kind !== "not_enrolled"), ...manualEvents()]
+    .map((e) => ({ ...e, s: toDate(e.date, e.start), e: toDate(e.date, e.end) }))
+    .sort((a, b) => a.s - b.s || String(a.code).localeCompare(String(b.code)));
   // scal kolejne bloki tego samego przedmiotu (np. 8:00–9:30 + 9:45–11:15)
   const blocks = [];
   for (const ev of events) {
     const last = blocks[blocks.length - 1];
     const same = last && last.date === ev.date && last.code === ev.code && last.name === ev.name && last.type_short === ev.type_short
-      && last.room === ev.room && last.teacher === ev.teacher && ev.s - last.e <= 15 * 6e4;
+      && last.room === ev.room && last.teacher === ev.teacher && !!last.manual === !!ev.manual && ev.s - last.e <= 15 * 6e4;
     if (same) { last.e = ev.e; last.end = ev.end; last.n++; last.parts.push(ev); }
     else blocks.push({ ...ev, n: 1, parts: [ev] });
   }
@@ -552,20 +624,32 @@ function prepare() {
   // notatki bez zajęć w planie -> przechowalnia (nic nie znika po zmianie planu)
   const shown = new Set(blocks.map((b) => b.nk));
   const hidden = new Set(state.data.events.filter((e) => !state.showPS && e.kind === "not_enrolled").map((e) => e.key));
-  const orphans = Object.entries(Notes.all).filter(([k, n]) => n.text && !k.startsWith("subj|") && !shown.has(k) && !hidden.has(k))
+  const orphans = Object.entries(Notes.all).filter(([k, n]) => n.text && !/^(subj|att|lim|cls)\|/.test(k) && !shown.has(k) && !hidden.has(k))
     .map(([k, n]) => ({ k, ...n })).sort((a, b) => ((a.date || "") + (a.start || "")).localeCompare((b.date || "") + (b.start || "")));
   // dni -> zjazdy (dni oddalone o max 2 doby tworzą jeden zjazd)
   const days = new Map();
   for (const b of blocks) { if (!days.has(b.date)) days.set(b.date, []); days.get(b.date).push(b); }
   const zjazdy = [];
+  // zjazd = jeden weekend (pt–ndz); dni w tygodniu (np. dodane odrabianie) tworzą osobną grupę
+  const weekendOf = (d) => {
+    const w = d.getDay();
+    if (w !== 5 && w !== 6 && w !== 0) return null;
+    const sat = new Date(d); sat.setDate(sat.getDate() + (w === 5 ? 1 : w === 0 ? -1 : 0));
+    return isoDate(sat);
+  };
   for (const [date, list] of days) {
     const d = toDate(date);
+    const wk = weekendOf(d);
     const cur = zjazdy[zjazdy.length - 1];
-    if (cur && daysBetween(cur.days[cur.days.length - 1].d, d) <= 2) cur.days.push({ date, d, list });
-    else zjazdy.push({ days: [{ date, d, list }] });
+    const join = cur && (wk ? cur.wk === wk : !cur.wk && daysBetween(cur.days[cur.days.length - 1].d, d) <= 2);
+    if (join) cur.days.push({ date, d, list });
+    else zjazdy.push({ wk, days: [{ date, d, list }] });
   }
-  zjazdy.forEach((z, i) => {
-    z.no = i + 1;
+  let zno = 0;
+  zjazdy.forEach((z) => {
+    // numeruj tylko zjazdy z planu uczelni; same dodane ręcznie zajęcia to "dodatkowe"
+    z.no = z.days.some((d) => d.list.some((b) => !b.manual)) ? ++zno : null;
+    z.id = z.no ? `z${z.no}` : `x${z.days[0].date}`;
     // zawsze pełny weekend: brakującą sobotę/niedzielę dodaj jako pusty dzień
     const dates = new Map(z.days.map((x) => [x.date, x]));
     for (const x of [...z.days]) {
@@ -664,6 +748,38 @@ function noteStatusHtml(key) {
   return n ? `<span class="nstat">Zapisano ${fmtStamp(n.updated, true)}</span>` : `<span class="nstat">Notatka widoczna tylko dla Ciebie</span>`;
 }
 
+const attStatus = (b) => Notes.rec(`att|${b.key}`)?.status || "";
+function attBadge(b) {
+  const s = attStatus(b);
+  return s ? `<span class="attb ${ATT_BADGE[s][0]}">${ATT_BADGE[s][1]}</span>` : "";
+}
+function attEditor(b) {
+  const saved = attStatus(b);
+  const cur = state.attDraft.has(b.key) ? state.attDraft.get(b.key) : saved;
+  const msg = state.attMsg.get(b.key);
+  const status = cur !== saved ? `<span class="nstat dirty">Niezapisane</span>`
+    : msg ? `<span class="nstat ${msg.cls}">${esc(msg.text)}</span>`
+    : `<span class="nstat">${saved ? "Zapisano" : "Nie zaznaczono"}</span>`;
+  return `<div class="att"><span class="att-l">Obecność${b.n > 1 ? ` (${b.n} bloki po 90 min)` : ""}</span>
+    <div class="att-opts">${Object.entries(ATT).map(([k, l]) => `<button class="${k} ${cur === k ? "on" : ""}" data-att="${k}" data-att-key="${esc(b.key)}" aria-pressed="${cur === k}">${l}</button>`).join("")}</div>
+    <div class="note-actions"><button class="btn ${cur !== saved ? "primary" : ""}" data-att-save="${esc(b.key)}">Zapisz obecność</button>${status}</div></div>`;
+}
+const limKey = (name, ty) => `lim|${name}|${ty}`;
+function limitOf(name, ty) {
+  const r = Notes.rec(limKey(name, ty));
+  return r && r.value !== null && r.value !== undefined && r.value !== "" ? Number(r.value) : null;
+}
+function attInfo(name, t) {
+  const c = { absent: 0, madeup: 0, present: 0 };
+  for (const b of t.blocks) { const s = attStatus(b); if (s) c[s] += b.n; }
+  const lim = limitOf(name, t.ty);
+  const cls = lim === null ? "" : c.absent > lim ? "bad" : c.absent === lim ? "warn" : "ok";
+  return { ...c, lim, cls };
+}
+function manualButtons(b) {
+  return b.manual ? `<div class="btns"><button class="btn" data-medit="${esc(b.mid)}">Edytuj zajęcia</button><button class="btn" data-mdel="${esc(b.mid)}">Usuń zajęcia</button></div>` : "";
+}
+
 function noteEditor(key, meta, placeholder = "np. przygotować projekt, co przynieść…") {
   state.noteMeta.set(key, meta);
   const note = Notes.get(key);
@@ -679,12 +795,12 @@ function cardHtml(b, now, marks) {
   const note = Notes.get(nk);
   const draft = state.drafts.get(nk);
   const hasDraft = draft !== undefined && draft !== (note?.text || "");
-  const cls = ["card", b.e < now ? "past" : "", b.s <= now && b.e > now ? "live" : "", open ? "open" : ""].join(" ");
+  const cls = ["card", b.e < now ? "past" : "", b.s <= now && b.e > now ? "live" : "", open ? "open" : "", b.manual ? "man" : ""].join(" ");
   const mark = marks.get(`${b.code}|${b.date}`);
   let html = `<div class="${cls}" style="--h:${hueFor(b)}" data-key="${esc(b.key)}">
     <button class="head" aria-expanded="${open}" data-toggle="${esc(b.key)}">${ICON_CHEV}
       <div class="n">${esc(b.name)}</div>
-      <div class="m">${metaShort(b)}${note || hasDraft ? `<span class="ico" title="Jest notatka">${ICON_NOTE}${hasDraft ? "*" : ""}</span>` : ""}${b.kind === "not_enrolled" ? `<span class="chg">niezapisany</span>` : ""}${mark ? `<span class="chg">${CHANGE_LABEL[mark]}</span>` : ""}</div>
+      <div class="m">${metaShort(b)}${b.manual ? `<span class="manb">dodane</span>` : ""}${attBadge(b)}${note || hasDraft ? `<span class="ico" title="Jest notatka">${ICON_NOTE}${hasDraft ? "*" : ""}</span>` : ""}${b.kind === "not_enrolled" ? `<span class="chg">niezapisany</span>` : ""}${mark ? `<span class="chg">${CHANGE_LABEL[mark]}</span>` : ""}</div>
     </button>`;
   if (open) {
     const ctx = [[skey(b.name, b.type_short), `Notatki do ${TYPE_GEN[b.type_short] || b.type}`], [skey(b.name), "Notatki ogólne do przedmiotu"]]
@@ -696,10 +812,12 @@ function cardHtml(b, now, marks) {
         <dt>Sala</dt><dd>${esc(b.room || "— (brak w planie)")}</dd>
         <dt>Prowadzi</dt><dd>${esc(b.teacher || "—")}</dd>
       </dl>
+      ${attEditor(b)}
       ${ctx}
       <label>Notatka do tych zajęć</label>
       ${noteEditor(nk, metaOf(b))}
       <button class="linkbtn" data-goto="${esc(b.name)}" data-goto-type="${esc(b.type_short)}">Wszystkie zajęcia: ${esc(TYPE_FULL[b.type_short] || b.type)} ›</button>
+      ${manualButtons(b)}
     </div>`;
   }
   return html + `</div>`;
@@ -738,7 +856,7 @@ function renderZjazdy(zjazdy) {
       for (let r = 2; r < z.slots.length + 2; r++) if (!used.has(r)) g += `<div class="slot fill" style="grid-column:${c};grid-row:${r}"><div class="free"></div></div>`;
     });
     z.slots.forEach((s, i) => { g += `<div class="tl" style="grid-row:${i + 2}">${s}<small>${endOf.get(s) || ""}</small></div>`; });
-    html += `<article class="zjazd" id="z${z.no}"><header><h2><span>Zjazd ${z.no}</span>${range}</h2><span class="tag ${running || (n < 7 && n >= 0) ? "now" : ""}">${tag}</span></header>
+    html += `<article class="zjazd" id="${z.id}"><header><h2><span>${z.no ? `Zjazd ${z.no}` : "Dodatkowe"}</span>${range}</h2><span class="tag ${running || (n < 7 && n >= 0) ? "now" : ""}">${tag}</span></header>
       <div class="zgrid" style="--cols:${z.cols.length}">${g}</div></article>`;
   }
   $("#zjazdy").innerHTML = html;
@@ -748,7 +866,7 @@ function renderZjazdy(zjazdy) {
 
 function renderSemestr(zjazdy, allSlots, blockOf) {
   const now = new Date();
-  const nextNo = zjazdy.find((z) => z.end >= now)?.no;
+  const nextZ = zjazdy.find((z) => z.end >= now);
   const cards = zjazdy.map((z) => {
     const first = z.cols[0].d, last = z.cols[z.cols.length - 1].d;
     const range = first.getMonth() === last.getMonth() ? `${first.getDate()}–${fmtShort(last)}` : `${fmtShort(first)}–${fmtShort(last)}`;
@@ -761,10 +879,10 @@ function renderSemestr(zjazdy, allSlots, blockOf) {
         const b = blockOf.get(ev.key);
         const cont = b.parts[0] !== ev;
         const note = Notes.get(b.nk);
-        g += `<button class="chip ${cont ? "cont" : ""}" style="--h:${hueFor(ev)}" data-open="${esc(b.key)}" title="${esc(`${ev.name} (${TYPE_FULL[ev.type_short] || ev.type}) ${ev.start}–${ev.end}${ev.room ? `, sala ${ev.room}` : ""}${note ? `\nNotatka: ${note.text}` : ""}`)}"><span>${esc(abbr(ev))}</span>${cont ? "" : `<small>${esc(ev.type_short)}</small>`}${note && !cont ? `<i class="nd"></i>` : ""}</button>`;
+        g += `<button class="chip ${cont ? "cont" : ""} ${ev.manual ? "man" : ""}" style="--h:${hueFor(ev)}" data-open="${esc(b.key)}" title="${esc(`${ev.name} (${TYPE_FULL[ev.type_short] || ev.type}) ${ev.start}–${ev.end}${ev.room ? `, sala ${ev.room}` : ""}${note ? `\nNotatka: ${note.text}` : ""}`)}"><span>${esc(abbr(ev))}</span>${cont ? "" : `<small>${esc(ev.type_short)}</small>`}${note && !cont ? `<i class="nd"></i>` : ""}</button>`;
       }
     }
-    return `<div class="sc ${z.end < now ? "past" : ""} ${z.no === nextNo ? "next" : ""}"><div class="sc-h"><b>Zjazd ${z.no}</b><span>${range}</span></div><div class="sg" style="--cols:${z.cols.length}">${g}</div></div>`;
+    return `<div class="sc ${z.end < now ? "past" : ""} ${z === nextZ ? "next" : ""}"><div class="sc-h"><b>${z.no ? `Zjazd ${z.no}` : "Dodatkowe"}</b><span>${range}</span></div><div class="sg" style="--cols:${z.cols.length}">${g}</div></div>`;
   });
   // legenda: kolory rodzajów + skróty przedmiotów
   const seen = new Map();
@@ -783,8 +901,10 @@ function subjectsModel() {
   const now = new Date();
   const map = new Map();
   for (const b of prepared.blocks) {
-    if (!map.has(b.name)) map.set(b.name, { name: b.name, kind: b.kind, ab: abbr(b), types: new Map(), next: null, min: 0 });
+    const kind = b.manual ? b.subjKind : b.kind;
+    if (!map.has(b.name)) map.set(b.name, { name: b.name, kind, ab: abbr(b), types: new Map(), next: null, min: 0 });
     const s = map.get(b.name);
+    if (s.kind === "manual" && kind !== "manual") s.kind = kind;
     if (!s.types.has(b.type_short)) s.types.set(b.type_short, { ty: b.type_short, type_short: b.type_short, type: b.type, blocks: [], teachers: new Set(), rooms: new Set(), min: 0, total: 0, done: 0, next: null });
     const t = s.types.get(b.type_short);
     t.blocks.push(b);
@@ -795,7 +915,7 @@ function subjectsModel() {
     if (b.e > now && (!s.next || b.s < s.next.s)) s.next = b;
   }
   for (const s of map.values()) s.types = new Map([...s.types].sort((a, b) => (TYPE_ORDER[a[0]] ?? 9) - (TYPE_ORDER[b[0]] ?? 9)));
-  const order = { regular: 0, language: 1, elective: 2, not_enrolled: 3 };
+  const order = { regular: 0, language: 1, elective: 2, not_enrolled: 3, manual: 4 };
   return [...map.values()].sort((a, b) => order[a.kind] - order[b.kind] || a.name.localeCompare(b.name, "pl"));
 }
 function notesCount(s, ty) {
@@ -812,10 +932,10 @@ function subjListHtml(list) {
   return `<div class="subjects">${list.map((s) => `
     <button class="subj subj-link" data-nav="${esc(s.name)}">
       <h3><span>${esc(s.name)}</span><span class="go">›</span></h3>
-      <div class="code" style="margin-left:0">${esc(s.ab)}${s.kind === "elective" ? " · do wyboru" : s.kind === "not_enrolled" ? " · jeszcze nie zapisany" : ""}${s.next ? ` · następne: ${nextTxt(s.next)}` : " · zakończony"}</div>
+      <div class="code" style="margin-left:0">${esc(s.ab)}${s.kind === "elective" ? " · do wyboru" : s.kind === "not_enrolled" ? " · jeszcze nie zapisany" : s.kind === "manual" ? " · dodane ręcznie" : ""}${s.next ? ` · następne: ${nextTxt(s.next)}` : " · zakończony"}</div>
       ${[...s.types.values()].map((t) => `
         <div class="row" style="--h:${hueFor(t)}"><b class="ty">${esc(t.ty)}</b>
-          <div class="who">${esc([...t.teachers].join(", ") || "—")}<small>${Math.round(t.min / 45)} h · ${t.rooms.size ? "sale: " + esc([...t.rooms].join(", ")) : "sala: —"}</small></div>
+          <div class="who">${esc([...t.teachers].join(", ") || "—")}<small>${Math.round(t.min / 45)} h · ${t.rooms.size ? "sale: " + esc([...t.rooms].join(", ")) : "sala: —"}${(() => { const a = attInfo(s.name, t); return a.absent || a.lim !== null ? ` · nieobecności: ${a.absent}${a.lim !== null ? `/${a.lim}` : ""}` : ""; })()}</small></div>
           <div class="cnt">${t.done}/${t.total}<div class="bar"><i style="width:${(t.done / t.total) * 100}%"></i></div></div>
         </div>`).join("")}
       ${ncountHtml(notesCount(s))}
@@ -835,6 +955,7 @@ function subjPageHtml(s) {
         <div class="tc-h"><b>${esc(cap(TYPE_FULL[t.ty] || t.type))}</b><span class="go">›</span></div>
         <div class="tc-m">${esc([...t.teachers].join(", ") || "—")}</div>
         <div class="tc-m">${t.blocks.length} ${plural(t.blocks.length, "spotkanie", "spotkania", "spotkań")} · ${Math.round(t.min / 45)} h${t.next ? ` · następne: ${nextTxt(t.next)}` : " · zakończone"}</div>
+        ${(() => { const a = attInfo(s.name, t); return a.absent || a.lim !== null ? `<div class="tc-att ${a.cls}">Nieobecności: ${a.absent}${a.lim !== null ? ` z ${a.lim}` : ""}</div>` : ""; })()}
         <div class="bar"><i style="width:${(t.done / t.total) * 100}%"></i></div>
         ${ncountHtml(notesCount(s, t.ty))}
       </button>`).join("")}</div>
@@ -847,13 +968,13 @@ function sessionHtml(b, i, next) {
   const open = state.sOpen.has(b.key);
   const note = Notes.get(b.nk);
   const status = b.e < now ? "odbyte" : b.s <= now ? "trwa" : b === next ? `najbliższe · ${relDay(b.s, now)}` : relDay(b.s, now);
-  return `<div class="sess ${b.e < now ? "past" : ""} ${b === next ? "next" : ""} ${open ? "open" : ""}" style="--h:${hueFor(b)}">
+  return `<div class="sess ${b.e < now ? "past" : ""} ${b === next ? "next" : ""} ${open ? "open" : ""}" style="--h:${hueFor(b)}" data-skey="${esc(b.key)}">
     <button class="sess-h" data-stoggle="${esc(b.key)}" aria-expanded="${open}">
       <div class="sess-no">${i + 1}</div>
-      <div class="sess-main"><b>${cap(DAY[b.s.getDay()])}, ${fmtDay(b.s)}</b><span>${b.start}–${b.end}${b.n > 1 ? ` · ${b.n} bloki` : ""} · sala ${esc(b.room || "—")}${b.teacher ? ` · ${esc(b.teacher)}` : ""}</span></div>
+      <div class="sess-main"><b>${cap(DAY[b.s.getDay()])}, ${fmtDay(b.s)} ${b.manual ? `<span class="manb">dodane</span>` : ""} ${attBadge(b)}</b><span>${b.start}–${b.end}${b.n > 1 ? ` · ${b.n} bloki` : ""} · sala ${esc(b.room || "—")}${b.teacher ? ` · ${esc(b.teacher)}` : ""}</span></div>
       <span class="tag ${b === next ? "now" : ""}">${status}</span>
     </button>
-    ${open ? `<div class="sess-body">${noteEditor(b.nk, metaOf(b))}<button class="linkbtn" data-open="${esc(b.key)}">Pokaż w planie ›</button></div>`
+    ${open ? `<div class="sess-body">${attEditor(b)}<label style="display:block;font-weight:650;font-size:13.5px;margin-bottom:4px">Notatka</label>${noteEditor(b.nk, metaOf(b))}<button class="linkbtn" data-open="${esc(b.key)}">Pokaż w planie ›</button>${manualButtons(b)}</div>`
       : note ? `<button class="sess-note" data-stoggle="${esc(b.key)}">${ICON_NOTE}<span>${esc(note.text)}</span></button>`
       : `<button class="sess-add" data-stoggle="${esc(b.key)}">+ Dodaj notatkę</button>`}
   </div>`;
@@ -867,8 +988,26 @@ function typePageHtml(s, t) {
       <div class="prog"><div class="bar"><i style="width:${(t.done / t.total) * 100}%"></i></div><span>odbyte ${t.done} z ${t.total} bloków po 90 min</span></div></div>
     <div class="panel"><h3>Notatki do ${esc(TYPE_GEN[t.ty] || label.toLowerCase())}</h3>
       ${noteEditor(skey(s.name, t.ty), { name: s.name, type_short: t.ty, scope: "type" }, "np. materiały, wymagania, terminy oddania…")}</div>
+    ${attPanelHtml(s, t)}
     <h3 class="sec">Zajęcia (${t.blocks.length})</h3>
-    <div class="sessions">${t.blocks.map((b, i) => sessionHtml(b, i, t.next)).join("")}</div>`;
+    <div class="sessions">${t.blocks.map((b, i) => sessionHtml(b, i, t.next)).join("")}</div>
+    <div class="btns"><button class="btn" data-add-subj="${esc(s.name)}" data-add-type="${esc(t.ty)}">＋ Dodaj zajęcia (np. odrabianie)</button></div>`;
+}
+
+function attPanelHtml(s, t) {
+  const a = attInfo(s.name, t);
+  const lk = `${s.name}|${t.ty}`;
+  const val = state.limDraft.has(lk) ? state.limDraft.get(lk) : a.lim ?? "";
+  const msg = state.limMsg.get(lk);
+  const verdict = a.lim === null ? "" : a.absent > a.lim ? " — limit przekroczony!" : a.absent === a.lim ? " — limit wykorzystany" : ` — zostało ${a.lim - a.absent}`;
+  return `<div class="panel"><h3>Obecność</h3>
+    <div class="attsum ${a.cls}"><b>Nieobecności: ${a.absent}${a.lim !== null ? ` z ${a.lim} dozwolonych` : ""}</b>${verdict}</div>
+    <p class="hint">Liczone w blokach po 90 min. Obecny: ${a.present} · odrobione: ${a.madeup}. Obecność zaznaczasz przy każdych zajęciach poniżej.</p>
+    <div class="field"><label class="lim-l" for="limIn">Limit nieobecności (bloki po 90 min)</label>
+      <input type="number" inputmode="numeric" min="0" max="99" id="limIn" data-lim="${esc(lk)}" value="${esc(val)}" placeholder="np. 2">
+      <button class="btn primary" data-lim-save="${esc(lk)}">Zapisz limit</button></div>
+    ${msg ? `<p class="nstat ${msg.cls}" style="margin:6px 0 0">${esc(msg.text)}</p>` : ""}
+  </div>`;
 }
 
 function renderPrzedmioty() {
@@ -1129,7 +1268,8 @@ let prepared = null;
 function render(force = false) {
   if (!state.data) return;
   // nie przerywaj pisania notatki odświeżeniem
-  if (!force && document.activeElement?.matches?.("textarea[data-note], #tokenIn")) { state.deferredRender = true; return; }
+  // nie przerywaj pisania (notatka, formularz, limit) odświeżeniem
+  if (!force && document.activeElement?.matches?.("textarea, select, input:not([type=checkbox]):not([type=search])")) { state.deferredRender = true; return; }
   editorSeq = 0;
   state.deferredRender = false;
   const cfg = state.data.config || {};
@@ -1149,6 +1289,7 @@ function render(force = false) {
   // nie przerywaj skanowania ani wyświetlania kodu QR odświeżeniem
   if (!state.scanning && !state.qrOpen) renderSync();
   renderKalendarz();
+  if (state.tab === "szukaj") renderResults();
   $("#foot").innerHTML = `Źródło: <a href="${esc(state.data.source)}" target="_blank" rel="noopener">plan.ue.wroc.pl</a> · w razie wątpliwości rozstrzyga oficjalny plan i USOS`;
   showTab(state.tab, false);
   showMode(state.mode);
@@ -1179,6 +1320,67 @@ document.querySelectorAll("[data-tab]").forEach((b) => (b.onclick = () => {
 }));
 document.querySelectorAll("[data-mode]").forEach((b) => (b.onclick = () => showMode(b.dataset.mode)));
 
+function addMinutes(time, min) {
+  const [h, m] = time.split(":").map(Number);
+  const x = Math.min(23 * 60 + 59, h * 60 + m + min);
+  return `${String(Math.floor(x / 60)).padStart(2, "0")}:${String(x % 60).padStart(2, "0")}`;
+}
+function openAddForm(values = {}, id = null) {
+  state.addForm = { id, values };
+  state.tab = "plan"; state.mode = "zjazdy";
+  render(true);
+  renderAddForm();
+  $("#addForm .addform")?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+function renderAddForm() {
+  const el = $("#addForm");
+  const f = state.addForm;
+  if (!f) { el.innerHTML = ""; return; }
+  const names = [...new Set(state.data.events.map((e) => e.name))].sort((a, b) => a.localeCompare(b, "pl"));
+  const v = f.values;
+  const known = names.includes(v.name);
+  el.innerHTML = `<div class="panel addform"><h3>${f.id ? "Edytuj dodane zajęcia" : "Dodaj zajęcia ręcznie"}</h3>
+    <p class="hint">Np. odrabianie, konsultacje, dodatkowy termin. Pojawią się w planie i na wszystkich połączonych urządzeniach.</p>
+    <div class="fgrid">
+      <label class="wide">Przedmiot<select id="fSubj"><option value="">Inne — wpiszę nazwę</option>${names.map((n) => `<option ${v.name === n ? "selected" : ""}>${esc(n)}</option>`).join("")}</select></label>
+      <label class="wide" id="fNameL" ${known ? "hidden" : ""}>Nazwa<input id="fName" value="${esc(known ? "" : v.name || "")}" placeholder="np. Konsultacje"></label>
+      <label>Rodzaj<select id="fType">${["W", "Ćw", "Lab", "Lekt", "Inne"].map((ty) => `<option value="${ty}" ${(v.type_short || "Ćw") === ty ? "selected" : ""}>${cap(TYPE_FULL[ty])}</option>`).join("")}</select></label>
+      <label>Data<input type="date" id="fDate" value="${esc(v.date || "")}"></label>
+      <label>Od<input type="time" id="fStart" value="${esc(v.start || "08:00")}"></label>
+      <label>Do<input type="time" id="fEnd" value="${esc(v.end || "09:30")}"></label>
+      <label>Sala<input id="fRoom" value="${esc(v.room || "")}" placeholder="np. 105D"></label>
+      <label>Prowadzący<input id="fTeacher" value="${esc(v.teacher || "")}"></label>
+    </div>
+    <p class="err" id="fErr"></p>
+    <div class="btns"><button class="btn primary" id="fSave">Zapisz zajęcia</button><button class="btn" id="fCancel">Anuluj</button></div>
+  </div>`;
+  let endTouched = !!f.id;
+  const fillTeacher = () => {
+    const name = $("#fSubj").value, ty = $("#fType").value;
+    if (!name || $("#fTeacher").value) return;
+    const e = state.data.events.find((x) => x.name === name && x.type_short === ty && x.teacher);
+    if (e) $("#fTeacher").value = e.teacher;
+  };
+  $("#fSubj").onchange = () => { $("#fNameL").hidden = !!$("#fSubj").value; fillTeacher(); };
+  $("#fType").onchange = fillTeacher;
+  $("#fEnd").oninput = () => { endTouched = true; };
+  $("#fStart").onchange = () => { if (!endTouched && $("#fStart").value) $("#fEnd").value = addMinutes($("#fStart").value, 90); };
+  $("#fCancel").onclick = () => { state.addForm = null; renderAddForm(); };
+  $("#fSave").onclick = async () => {
+    const name = ($("#fSubj").value || $("#fName").value).trim();
+    const rec = { name, type_short: $("#fType").value, date: $("#fDate").value, start: $("#fStart").value, end: $("#fEnd").value, room: $("#fRoom").value.trim(), teacher: $("#fTeacher").value.trim(), deleted: false };
+    const err = !name ? "Wybierz przedmiot albo wpisz nazwę." : !rec.date ? "Podaj datę." : !rec.start || !rec.end ? "Podaj godziny." : rec.end <= rec.start ? "Koniec musi być po początku." : "";
+    if (err) { $("#fErr").textContent = err; return; }
+    const id = f.id || Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+    $("#fSave").disabled = true; $("#fSave").textContent = "Zapisuję…";
+    await Notes.put(`cls|${id}`, rec);
+    state.addForm = null; renderAddForm();
+    toast(f.id ? "Zmieniono zajęcia" : "Dodano zajęcia");
+    openClass(`M|${id}`);
+  };
+  fillTeacher();
+}
+
 function renderArchive(orphans, blocks) {
   const el = $("#archive");
   if (!orphans.length) { el.innerHTML = ""; return; }
@@ -1204,6 +1406,87 @@ function renderArchive(orphans, blocks) {
     <p>Te zajęcia zniknęły z planu albo zmieniły termin. Notatki są bezpieczne — przenieś je do nowego terminu albo skopiuj.</p>${items}</div>`;
 }
 
+// porównanie bez polskich znaków i wielkości liter; 1 znak -> 1 znak, żeby dało się podświetlić trafienie
+function fold(s) {
+  s = String(s ?? "");
+  let o = "";
+  for (let i = 0; i < s.length; i++) {
+    const c = s[i];
+    const f = c === "ł" || c === "Ł" ? "l" : c.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    o += f.length === 1 ? f : c;
+  }
+  return o;
+}
+function highlight(text, terms, max = 0) {
+  text = String(text ?? "");
+  const f = fold(text);
+  let ranges = [];
+  for (const q of terms) for (let i = f.indexOf(q); i >= 0; i = f.indexOf(q, i + q.length)) ranges.push([i, i + q.length]);
+  ranges.sort((a, b) => a[0] - b[0]);
+  ranges = ranges.reduce((acc, r) => { const l = acc[acc.length - 1]; if (l && r[0] <= l[1]) l[1] = Math.max(l[1], r[1]); else acc.push([...r]); return acc; }, []);
+  let from = 0, to = text.length;
+  if (max && text.length > max) { from = ranges.length ? Math.max(0, ranges[0][0] - 60) : 0; to = Math.min(text.length, from + max); }
+  let out = from > 0 ? "…" : "", pos = from;
+  for (const [a, b] of ranges) {
+    if (b <= from || a >= to) continue;
+    const s = Math.max(a, from), e = Math.min(b, to);
+    out += esc(text.slice(pos, s)) + `<mark>${esc(text.slice(s, e))}</mark>`;
+    pos = e;
+  }
+  return out + esc(text.slice(pos, to)) + (to < text.length ? "…" : "");
+}
+function noteContext(k, n) {
+  const m = k.match(/^subj\|(.+?)(?:\|([^|]+))?$/);
+  if (m) return m[2] ? `${m[1]} · notatki do ${TYPE_GEN[m[2]] || m[2]}` : `${m[1]} · notatki ogólne`;
+  const b = prepared.blocks.find((x) => x.nk === k);
+  const d = n.date ? toDate(n.date) : null;
+  return `${n.name || "Zajęcia"} · ${TYPE_FULL[n.type_short] || n.type_short || ""}${d ? ` · ${DAY_SHORT[d.getDay()]} ${fmtShort(d)}, ${n.start || ""}` : ""}${b ? "" : " · w przechowalni"}`;
+}
+function renderResults() {
+  const el = $("#results");
+  if (!el || !prepared) return;
+  const terms = fold($("#q").value).split(/\s+/).filter(Boolean);
+  if (terms.join("").length < 2) {
+    el.innerHTML = `<p class="hint">Wpisz co najmniej 2 znaki. Szukam w notatkach, nazwach przedmiotów, salach, prowadzących, datach i obecności. Polskie znaki i wielkość liter nie mają znaczenia — „znakow” znajdzie też „znaków”.</p>`;
+    return;
+  }
+  const hit = (hay) => { const f = fold(hay); return terms.every((q) => f.includes(q)); };
+  const notes = Object.entries(Notes.all)
+    .filter(([k, n]) => n.text && !/^(att|lim|cls)\|/.test(k))
+    .map(([k, n]) => ({ k, n, ctx: noteContext(k, n) }))
+    .filter((x) => hit(`${x.ctx} ${x.n.text}`))
+    .sort((a, b) => ((a.n.date || "0") + (a.n.start || "")).localeCompare((b.n.date || "0") + (b.n.start || "")));
+  const classes = prepared.blocks.filter((b) => hit([b.name, abbr(b), TYPE_FULL[b.type_short] || b.type, b.room, b.room && `sala ${b.room}`, b.teacher,
+    DAY[b.s.getDay()], fmtShort(b.s), fmtDay(b.s), b.date, b.start, b.manual ? "dodane ręcznie" : "", ATT[attStatus(b)] || ""].join(" ")));
+  const hue = (x) => hueFor({ type_short: x.n.type_short || (x.k.split("|")[2] || "") });
+  el.innerHTML = (!notes.length && !classes.length ? `<p class="empty">Nic nie znaleziono dla „${esc($("#q").value)}”.</p>` : "")
+    + (notes.length ? `<div class="sr-group">Notatki (${notes.length})</div>` + notes.map((x) => `
+      <button class="sr" style="--h:${hue(x)}" data-sr-note="${esc(x.k)}"><div class="ctx">${highlight(x.ctx, terms)}</div><div class="txt">${highlight(x.n.text, terms, 220)}</div></button>`).join("") : "")
+    + (classes.length ? `<div class="sr-group">Zajęcia (${classes.length})</div>` + classes.slice(0, 60).map((b) => `
+      <button class="sr" style="--h:${hueFor(b)}" data-open="${esc(b.key)}"><div class="ctx">${highlight(`${DAY_SHORT[b.s.getDay()]} ${fmtShort(b.s)}, ${b.start}–${b.end} · ${TYPE_FULL[b.type_short] || b.type}${b.room ? ` · sala ${b.room}` : ""}`, terms)}</div>
+        <div class="txt">${highlight(b.name, terms)}${b.teacher ? ` · ${highlight(b.teacher, terms)}` : ""} ${attBadge(b)}${b.manual ? ` <span class="manb">dodane</span>` : ""}</div></button>`).join("")
+      + (classes.length > 60 ? `<p class="hint">…i ${classes.length - 60} więcej. Doprecyzuj wyszukiwanie.</p>` : "") : "");
+}
+function openSearchNote(k) {
+  const m = k.match(/^subj\|(.+?)(?:\|([^|]+))?$/);
+  if (m) return navSubject(m[1], m[2]);
+  const b = prepared.blocks.find((x) => x.nk === k);
+  if (!b) return openNote(k);
+  state.sOpen.add(b.key);
+  navSubject(b.name, b.type_short);
+  const el = document.querySelector(`.sess[data-skey="${CSS.escape(b.key)}"]`);
+  if (el) { el.scrollIntoView({ block: "center", behavior: "smooth" }); el.style.setProperty("animation", "flash 1.6s ease-out"); }
+}
+$("#searchBtn").onclick = () => {
+  if (state.tab !== "szukaj") state.prevTab = state.tab;
+  showTab("szukaj");
+  renderResults();
+  $("#q").focus();
+};
+$("#qClose").onclick = () => showTab(state.prevTab || "plan");
+$("#q").addEventListener("input", renderResults);
+$("#addBtn").onclick = () => (state.addForm ? ((state.addForm = null), renderAddForm()) : openAddForm());
+
 function openNote(k) {
   const b = prepared?.blockOf.get(k);
   if (b && b.nk === k) return openClass(b.key);
@@ -1213,7 +1496,8 @@ function openNote(k) {
 
 // otwórz konkretne zajęcia w widoku zjazdów (z widoku semestru, przedmiotów, karty "najbliższe")
 function openClass(key) {
-  const b = prepared?.blocks.find((x) => x.key === key);
+  let b = prepared?.blocks.find((x) => x.key === key);
+  if (!b) { render(true); b = prepared?.blocks.find((x) => x.key === key); } // np. świeżo dodane zajęcia
   if (!b) return;
   if (b.e < new Date()) state.showPast = true;
   state.expanded.add(key);
@@ -1225,8 +1509,57 @@ function openClass(key) {
 
 // obsługa kliknięć i pisania (delegacja - elementy są przerysowywane)
 document.addEventListener("click", async (ev) => {
-  const t = ev.target.closest("[data-toggle],[data-save],[data-open],[data-open-note],[data-move],[data-copy],[data-drop],[data-nav],[data-stoggle],[data-goto]");
+  const t = ev.target.closest("[data-toggle],[data-save],[data-open],[data-open-note],[data-move],[data-copy],[data-drop],[data-nav],[data-stoggle],[data-goto],[data-att],[data-att-save],[data-lim-save],[data-medit],[data-mdel],[data-add-subj],[data-sr-note]");
   if (!t) return;
+  const now = hm(new Date());
+  if (t.dataset.srNote) return openSearchNote(t.dataset.srNote);
+  if (t.dataset.addSubj) return openAddForm({ name: t.dataset.addSubj, type_short: t.dataset.addType });
+  if (t.dataset.att) {
+    const k = t.dataset.attKey;
+    const cur = state.attDraft.has(k) ? state.attDraft.get(k) : attStatus({ key: k });
+    state.attDraft.set(k, cur === t.dataset.att ? "" : t.dataset.att);
+    state.attMsg.delete(k);
+    return render(true);
+  }
+  if (t.dataset.attSave) {
+    const k = t.dataset.attSave;
+    const b = prepared.blocks.find((x) => x.key === k);
+    if (!b) return;
+    const status = state.attDraft.has(k) ? state.attDraft.get(k) : attStatus(b);
+    t.disabled = true; t.textContent = "Zapisuję…";
+    const res = await Notes.put(`att|${k}`, { ...metaOf(b), status, n: b.n });
+    state.attDraft.delete(k);
+    state.attMsg.set(k, { cls: res === "synced" || res === "local" ? "ok" : "dirty", text: res === "synced" ? `✓ Zapisano ${now} · na wszystkich urządzeniach` : res === "local" ? `✓ Zapisano ${now}` : `✓ Zapisano ${now} na tym urządzeniu · wyślę później` });
+    toast(status ? `Zapisano: ${ATT[status].toLowerCase()}` : "Usunięto zaznaczenie obecności");
+    return render(true);
+  }
+  if (t.dataset.limSave) {
+    const lk = t.dataset.limSave;
+    const [name, ty] = [lk.slice(0, lk.lastIndexOf("|")), lk.slice(lk.lastIndexOf("|") + 1)];
+    const raw = String(state.limDraft.has(lk) ? state.limDraft.get(lk) : $("#limIn")?.value ?? "").trim();
+    const value = raw === "" ? null : Math.max(0, Math.min(99, parseInt(raw, 10) || 0));
+    await Notes.put(limKey(name, ty), { name, type_short: ty, value });
+    state.limDraft.delete(lk);
+    state.limMsg.set(lk, { cls: "ok", text: value === null ? `✓ Usunięto limit (${now})` : `✓ Zapisano limit: ${value} (${now})` });
+    toast("Zapisano limit nieobecności");
+    return render(true);
+  }
+  if (t.dataset.medit) {
+    const r = Notes.rec(`cls|${t.dataset.medit}`);
+    if (r) openAddForm({ ...r }, t.dataset.medit);
+    return;
+  }
+  if (t.dataset.mdel) {
+    const id = t.dataset.mdel;
+    const r = Notes.rec(`cls|${id}`);
+    if (!r) return;
+    const hasNote = !!Notes.get(`M|${id}`);
+    if (!confirm(`Usunąć zajęcia „${r.name}” (${r.date} ${r.start})?${hasNote ? "\nNotatka z tych zajęć trafi do przechowalni, nie zginie." : ""}`)) return;
+    await Notes.put(`cls|${id}`, { ...r, deleted: true });
+    state.expanded.delete(`M|${id}`);
+    toast("Usunięto zajęcia");
+    return render(true);
+  }
   if ("nav" in t.dataset) return navSubject(t.dataset.nav, t.dataset.navType);
   if (t.dataset.goto) return navSubject(t.dataset.goto, t.dataset.gotoType);
   if (t.dataset.stoggle) {
@@ -1287,6 +1620,7 @@ document.addEventListener("click", async (ev) => {
   }
 });
 document.addEventListener("input", (ev) => {
+  if (ev.target.dataset?.lim) { state.limDraft.set(ev.target.dataset.lim, ev.target.value); state.limMsg.delete(ev.target.dataset.lim); return; }
   const k = ev.target.dataset?.note;
   if (!k) return;
   state.drafts.set(k, ev.target.value);
@@ -1296,7 +1630,7 @@ document.addEventListener("input", (ev) => {
 });
 document.addEventListener("focusout", (ev) => {
   // odłożone odświeżenie po wyjściu z pola (z opóźnieniem, żeby nie zgubić kliknięcia "Zapisz")
-  if (ev.target.matches?.("textarea[data-note]") && state.deferredRender) setTimeout(() => render(), 600);
+  if (ev.target.matches?.("textarea, select, input") && state.deferredRender) setTimeout(() => render(), 600);
 });
 document.addEventListener("keydown", (ev) => {
   const k = ev.target.dataset?.note;

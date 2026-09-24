@@ -1,5 +1,5 @@
 // Offline: strona z pamięci podręcznej, dane zawsze najpierw z sieci.
-const CACHE = "plan-v4";
+const CACHE = "plan-v5";
 const SHELL = ["./", "index.html", "manifest.webmanifest", "icon-180.png", "icon-192.png", "icon-512.png"];
 
 self.addEventListener("install", (e) => {
