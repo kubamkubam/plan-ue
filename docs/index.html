@@ -689,9 +689,12 @@ function changedMarks() {
 }
 
 /* =============== widoki =============== */
+// wykłady są zdalne: zamiast "sala MS Teams" piszemy "online · MS Teams"
+const where = (b) => (b.online ? `online · ${b.room}` : b.room ? `sala ${b.room}` : "sala: —");
+const roomsTxt = (rooms) => (!rooms.size ? "sala: —" : [...rooms].every((r) => r === "online") ? "online (MS Teams)" : `sale: ${[...rooms].join(", ")}`);
 function metaShort(b) {
   const parts = [`<span>${esc(TYPE_FULL[b.type_short] || b.type)}</span>`];
-  if (b.room) parts.push(`<span class="room">${esc(b.room)}</span>`);
+  if (b.room) parts.push(`<span class="room">${b.online ? "online" : esc(b.room)}</span>`);
   return parts.join("");
 }
 
@@ -716,12 +719,12 @@ function renderHero(blocks) {
       <div class="hero-label">${label}</div>
       <div class="hero-when">${when}</div>
       <div class="hero-name">${esc(b.name)}</div>
-      <div class="hero-meta">${esc(TYPE_FULL[b.type_short] || b.type)}${b.n > 1 ? ` · ${b.n} bloki` : ""} · sala ${esc(b.room || "—")}${b.teacher ? ` · ${esc(b.teacher)}` : ""}</div>
+      <div class="hero-meta">${esc(TYPE_FULL[b.type_short] || b.type)}${b.n > 1 ? ` · ${b.n} bloki` : ""} · ${esc(where(b))}${b.teacher ? ` · ${esc(b.teacher)}` : ""}</div>
       ${note ? `<button class="snote" style="--h:${hueFor(b)};margin-top:10px" data-open="${esc(b.key)}"><b>Twoja notatka</b>${esc(note.text)}</button>` : ""}
     </div>
     <div class="hero-next">
       <div class="hero-label">${sameDay.length ? `Potem tego dnia · koniec o ${endOfDay.end}` : "Kolejne"}</div>
-      ${after.slice(0, 4).map((x) => `<div class="mini"><time>${x.date === b.date ? `${x.start}–${x.end}` : `${DAY_SHORT[x.s.getDay()]} ${fmtShort(x.s)} ${x.start}`}</time><span>${esc(x.name)} · ${esc(x.type_short)}${x.room ? ` · ${esc(x.room)}` : ""}</span></div>`).join("") || `<div class="mini"><span>Koniec zajęć tego dnia</span></div>`}
+      ${after.slice(0, 4).map((x) => `<div class="mini"><time>${x.date === b.date ? `${x.start}–${x.end}` : `${DAY_SHORT[x.s.getDay()]} ${fmtShort(x.s)} ${x.start}`}</time><span>${esc(x.name)} · ${esc(x.type_short)}${x.room ? ` · ${esc(x.online ? "online" : x.room)}` : ""}</span></div>`).join("") || `<div class="mini"><span>Koniec zajęć tego dnia</span></div>`}
     </div>`;
   el.hidden = false;
 }
@@ -814,7 +817,7 @@ function cardHtml(b, now, marks) {
       <dl>
         <dt>Godziny</dt><dd>${b.start}–${b.end}${b.n > 1 ? ` (${b.n} bloki po 90 min)` : ""}</dd>
         <dt>Rodzaj</dt><dd>${esc(TYPE_FULL[b.type_short] || b.type)}</dd>
-        <dt>Sala</dt><dd>${esc(b.room || "— (brak w planie)")}</dd>
+        <dt>Gdzie</dt><dd>${esc(b.online ? `online (${b.room})` : b.room ? `sala ${b.room}` : "— (brak sali w planie)")}</dd>
         <dt>Prowadzi</dt><dd>${esc(b.teacher || "—")}</dd>
       </dl>
       ${attEditor(b)}
@@ -889,7 +892,7 @@ function renderSemestr(zjazdy, allSlots, blockOf) {
         const b = blockOf.get(ev.key);
         const cont = b.parts[0] !== ev;
         const note = Notes.get(b.nk);
-        g += `<button class="chip ${cont ? "cont" : ""} ${ev.manual ? "man" : ""}" style="--h:${hueFor(ev)};${pos}" data-open="${esc(b.key)}" title="${esc(`${ev.name} (${TYPE_FULL[ev.type_short] || ev.type}) ${ev.start}–${ev.end}${ev.room ? `, sala ${ev.room}` : ""}${note ? `\nNotatka: ${note.text}` : ""}`)}"><span>${esc(abbr(ev))}</span>${cont ? "" : `<small>${esc(ev.type_short)}</small>`}${note && !cont ? `<i class="nd"></i>` : ""}</button>`;
+        g += `<button class="chip ${cont ? "cont" : ""} ${ev.manual ? "man" : ""}" style="--h:${hueFor(ev)};${pos}" data-open="${esc(b.key)}" title="${esc(`${ev.name} (${TYPE_FULL[ev.type_short] || ev.type}) ${ev.start}–${ev.end}${ev.room ? `, ${where(ev)}` : ""}${note ? `\nNotatka: ${note.text}` : ""}`)}"><span>${esc(abbr(ev))}</span>${cont ? "" : `<small>${esc(ev.type_short)}</small>`}${note && !cont ? `<i class="nd"></i>` : ""}</button>`;
       });
     });
     return `<div class="sc ${z.end < now ? "past" : ""} ${z === nextZ ? "next" : ""}"><div class="sc-h"><b>${z.no ? `Zjazd ${z.no}` : "Dodatkowe"}</b><span>${range}</span></div><div class="sg" style="--cols:${z.cols.length}">${g}</div></div>`;
@@ -920,7 +923,7 @@ function subjectsModel() {
     t.blocks.push(b);
     for (const p of b.parts) { t.total++; if (p.e < now) t.done++; t.min += (p.e - p.s) / 6e4; s.min += (p.e - p.s) / 6e4; }
     if (b.teacher) t.teachers.add(b.teacher);
-    if (b.room) t.rooms.add(b.room);
+    if (b.room) t.rooms.add(b.online ? "online" : b.room);
     if (b.e > now && !t.next) t.next = b;
     if (b.e > now && (!s.next || b.s < s.next.s)) s.next = b;
   }
@@ -945,7 +948,7 @@ function subjListHtml(list) {
       <div class="code" style="margin-left:0">${esc(s.ab)}${s.kind === "elective" ? " · do wyboru" : s.kind === "not_enrolled" ? " · jeszcze nie zapisany" : s.kind === "manual" ? " · dodane ręcznie" : ""}${s.next ? ` · następne: ${nextTxt(s.next)}` : " · zakończony"}</div>
       ${[...s.types.values()].map((t) => `
         <div class="row" style="--h:${hueFor(t)}"><b class="ty">${esc(t.ty)}</b>
-          <div class="who">${esc([...t.teachers].join(", ") || "—")}<small>${Math.round(t.min / 45)} h · ${t.rooms.size ? "sale: " + esc([...t.rooms].join(", ")) : "sala: —"}${(() => { const a = attInfo(s.name, t); return a.absent || a.lim !== null ? ` · nieobecności: ${a.absent}${a.lim !== null ? `/${a.lim}` : ""}` : ""; })()}</small></div>
+          <div class="who">${esc([...t.teachers].join(", ") || "—")}<small>${Math.round(t.min / 45)} h · ${esc(roomsTxt(t.rooms))}${(() => { const a = attInfo(s.name, t); return a.absent || a.lim !== null ? ` · nieobecności: ${a.absent}${a.lim !== null ? `/${a.lim}` : ""}` : ""; })()}</small></div>
           <div class="cnt">${t.done}/${t.total}<div class="bar"><i style="width:${(t.done / t.total) * 100}%"></i></div></div>
         </div>`).join("")}
       ${ncountHtml(notesCount(s))}
@@ -981,7 +984,7 @@ function sessionHtml(b, i, next) {
   return `<div class="sess ${b.e < now ? "past" : ""} ${b === next ? "next" : ""} ${open ? "open" : ""}" style="--h:${hueFor(b)}" data-skey="${esc(b.key)}">
     <button class="sess-h" data-stoggle="${esc(b.key)}" aria-expanded="${open}">
       <div class="sess-no">${i + 1}</div>
-      <div class="sess-main"><b>${cap(DAY[b.s.getDay()])}, ${fmtDay(b.s)} ${b.manual ? `<span class="manb">dodane</span>` : ""} ${attBadge(b)}</b><span>${b.start}–${b.end}${b.n > 1 ? ` · ${b.n} bloki` : ""} · sala ${esc(b.room || "—")}${b.teacher ? ` · ${esc(b.teacher)}` : ""}</span></div>
+      <div class="sess-main"><b>${cap(DAY[b.s.getDay()])}, ${fmtDay(b.s)} ${b.manual ? `<span class="manb">dodane</span>` : ""} ${attBadge(b)}</b><span>${b.start}–${b.end}${b.n > 1 ? ` · ${b.n} bloki` : ""} · ${esc(where(b))}${b.teacher ? ` · ${esc(b.teacher)}` : ""}</span></div>
       <span class="tag ${b === next ? "now" : ""}">${status}</span>
     </button>
     ${open ? `<div class="sess-body">${attEditor(b)}<label style="display:block;font-weight:650;font-size:13.5px;margin-bottom:4px">Notatka</label>${noteEditor(b.nk, metaOf(b))}<button class="linkbtn" data-open="${esc(b.key)}">Pokaż w planie ›</button>${manualButtons(b)}</div>`
@@ -994,7 +997,7 @@ function typePageHtml(s, t) {
   const label = cap(TYPE_FULL[t.ty] || t.type);
   return `<button class="back" data-nav="${esc(s.name)}">‹ ${esc(s.name)}</button>
     <div class="phead" style="--h:${hueFor(t)}"><h2><span class="ty-badge">${esc(label)}</span> ${esc(s.name)}</h2>
-      <p>${esc([...t.teachers].join(", ") || "—")} · ${Math.round(t.min / 45)} h · ${t.rooms.size ? "sale: " + esc([...t.rooms].join(", ")) : "sala: —"}</p>
+      <p>${esc([...t.teachers].join(", ") || "—")} · ${Math.round(t.min / 45)} h · ${esc(roomsTxt(t.rooms))}</p>
       <div class="prog"><div class="bar"><i style="width:${(t.done / t.total) * 100}%"></i></div><span>odbyte ${t.done} z ${t.total} bloków po 90 min</span></div></div>
     <div class="panel"><h3>Notatki do ${esc(TYPE_GEN[t.ty] || label.toLowerCase())}</h3>
       ${noteEditor(skey(s.name, t.ty), { name: s.name, type_short: t.ty, scope: "type" }, "np. materiały, wymagania, terminy oddania…")}</div>
@@ -1466,14 +1469,14 @@ function renderResults() {
     .map(([k, n]) => ({ k, n, ctx: noteContext(k, n) }))
     .filter((x) => hit(`${x.ctx} ${x.n.text}`))
     .sort((a, b) => ((a.n.date || "0") + (a.n.start || "")).localeCompare((b.n.date || "0") + (b.n.start || "")));
-  const classes = prepared.blocks.filter((b) => hit([b.name, abbr(b), TYPE_FULL[b.type_short] || b.type, b.room, b.room && `sala ${b.room}`, b.teacher,
+  const classes = prepared.blocks.filter((b) => hit([b.name, abbr(b), TYPE_FULL[b.type_short] || b.type, b.room, b.room && where(b), b.online ? "online zdalnie teams" : "", b.teacher,
     DAY[b.s.getDay()], fmtShort(b.s), fmtDay(b.s), b.date, b.start, b.manual ? "dodane ręcznie" : "", ATT[attStatus(b)] || ""].join(" ")));
   const hue = (x) => hueFor({ type_short: x.n.type_short || (x.k.split("|")[2] || "") });
   el.innerHTML = (!notes.length && !classes.length ? `<p class="empty">Nic nie znaleziono dla „${esc($("#q").value)}”.</p>` : "")
     + (notes.length ? `<div class="sr-group">Notatki (${notes.length})</div>` + notes.map((x) => `
       <button class="sr" style="--h:${hue(x)}" data-sr-note="${esc(x.k)}"><div class="ctx">${highlight(x.ctx, terms)}</div><div class="txt">${highlight(x.n.text, terms, 220)}</div></button>`).join("") : "")
     + (classes.length ? `<div class="sr-group">Zajęcia (${classes.length})</div>` + classes.slice(0, 60).map((b) => `
-      <button class="sr" style="--h:${hueFor(b)}" data-open="${esc(b.key)}"><div class="ctx">${highlight(`${DAY_SHORT[b.s.getDay()]} ${fmtShort(b.s)}, ${b.start}–${b.end} · ${TYPE_FULL[b.type_short] || b.type}${b.room ? ` · sala ${b.room}` : ""}`, terms)}</div>
+      <button class="sr" style="--h:${hueFor(b)}" data-open="${esc(b.key)}"><div class="ctx">${highlight(`${DAY_SHORT[b.s.getDay()]} ${fmtShort(b.s)}, ${b.start}–${b.end} · ${TYPE_FULL[b.type_short] || b.type}${b.room ? ` · ${where(b)}` : ""}`, terms)}</div>
         <div class="txt">${highlight(b.name, terms)}${b.teacher ? ` · ${highlight(b.teacher, terms)}` : ""} ${attBadge(b)}${b.manual ? ` <span class="manb">dodane</span>` : ""}</div></button>`).join("")
       + (classes.length > 60 ? `<p class="hint">…i ${classes.length - 60} więcej. Doprecyzuj wyszukiwanie.</p>` : "") : "");
 }

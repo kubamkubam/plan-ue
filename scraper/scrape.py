@@ -193,6 +193,10 @@ def build():
                           room=ev["room"] or el["rooms"].get((t["date"], t["start"]), ""))
             elif pos["code"] in CONFIG.get("not_enrolled", []):
                 ev["kind"] = "not_enrolled"
+            # na studiach niestacjonarnych wszystkie wykłady są zdalne - plan nie podaje dla nich sali
+            if ev["type_short"] == "W" and not ev["room"] and CONFIG.get("lecture_room"):
+                ev["room"] = CONFIG["lecture_room"]
+                ev["online"] = True
             ev["key"] = f"{ev['code']}|{ev['type_short']}|{ev['date']}|{ev['start']}"
             events.append(ev)
 

@@ -34,11 +34,12 @@
     {
       "code": "PS",
       "weekday": 6,
-      "name": "Nowe koncepcje w przestrzeni społeczno-gospodarczej",
-      "teacher": "Dariusz Głuszczuk",
-      "teacher_id": 10871
+      "name": "Wyzwania współczesnej polityki społecznej",
+      "teacher": "Katarzyna Sipurzyńska-Rudnicka",
+      "teacher_id": 4061
     }
   ],
   "not_enrolled": [],
+  "lecture_room": "MS Teams",
   "notes_repo": "kubamkubam/plan-ue-notatki"
 }
