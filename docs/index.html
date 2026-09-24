@@ -340,7 +340,7 @@ function renderHero(blocks) {
   let label, when;
   if (live) { label = `<span class="live">● Trwa teraz</span> · do ${b.end}`; when = `${b.start}–${b.end}`; }
   else if (n === 0) { label = `Dziś · ${relTime(b.s, now)}`; when = `${b.start}<small> – ${b.end}</small>`; }
-  else { label = `Najbliższe zajęcia · ${relDay(b.s, now)}`; when = `${b.start}<small> – ${b.end} · ${DAY[b.s.getDay()]}, ${fmtDay(b.s)}</small>`; }
+  else { label = `Najbliższe · ${DAY[b.s.getDay()]}, ${fmtDay(b.s)} · ${relDay(b.s, now)}`; when = `${b.start}<small> – ${b.end}</small>`; }
   const sameDay = upcoming.slice(1).filter((x) => x.date === b.date && x.kind !== "not_enrolled");
   const after = sameDay.length ? sameDay : upcoming.slice(1, 4);
   const endOfDay = [b, ...sameDay].slice(-1)[0];
