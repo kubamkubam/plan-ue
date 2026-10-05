@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-24T19:16:50",
+ "generated_at": "2026-10-05T10:45:24",
  "config": {
   "title": "Plan zajęć",
   "subtitle": "N1 · ZR/2 · semestr zimowy 2026/27",
@@ -110,7 +110,7 @@
   {
    "date": "2026-10-04",
    "start": "09:45",
-   "end": "11:15",
+   "end": "10:30",
    "code": "ZPR",
    "name": "Zarządzanie procesami",
    "type": "Wykład",
@@ -458,6 +458,21 @@
    "pid": "3346562",
    "kind": "language",
    "key": "JA|Lekt|2026-10-25|16:45"
+  },
+  {
+   "date": "2026-11-07",
+   "start": "12:15",
+   "end": "13:00",
+   "code": "ZPR",
+   "name": "Zarządzanie procesami",
+   "type": "Wykład",
+   "type_short": "W",
+   "room": "MS Teams",
+   "teacher": "Renata Brajer-Marczak",
+   "pid": "3348687",
+   "kind": "regular",
+   "online": true,
+   "key": "ZPR|W|2026-11-07|12:15"
   },
   {
    "date": "2026-11-07",
@@ -1472,5 +1487,19 @@
    "key": "JA|Lekt|2027-01-31|16:45"
   }
  ],
- "changes": []
+ "changes": [
+  {
+   "detected_at": "2026-10-05T10:45:24",
+   "items": [
+    {
+     "kind": "added",
+     "code": "ZPR",
+     "name": "Zarządzanie procesami",
+     "type_short": "W",
+     "date": "2026-11-07",
+     "text": "sob 07.11 12:15–13:00"
+    }
+   ]
+  }
+ ]
 }
