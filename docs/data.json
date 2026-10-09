@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-06T18:37:35",
+ "generated_at": "2026-10-10T00:48:42",
  "config": {
   "title": "Plan zajęć",
   "subtitle": "N1 · ZR/2 · semestr zimowy 2026/27",
@@ -25,23 +25,12 @@
     "name": "Megatrendy w kreatywnej przestrzeni",
     "teacher": "Stanisław Korenik",
     "teacher_id": 3946
-   },
-   {
-    "code": "PS",
-    "weekday": 5,
-    "name": "Społeczne kompetencje",
-    "teacher": "Małgorzata Wójcik-Pyzik",
-    "teacher_id": null
-   },
-   {
-    "code": "PS",
-    "weekday": 6,
-    "name": "Wyzwania współczesnej polityki społecznej",
-    "teacher": "Katarzyna Sipurzyńska-Rudnicka",
-    "teacher_id": 4061
    }
   ],
   "not_enrolled": [],
+  "skip": [
+   "PS"
+  ],
   "lecture_room": "MS Teams",
   "notes_repo": "kubamkubam/plan-ue-notatki"
  },
@@ -154,21 +143,6 @@
   },
   {
    "date": "2026-10-10",
-   "start": "11:30",
-   "end": "13:00",
-   "code": "PS",
-   "name": "Społeczne kompetencje",
-   "type": "Wykład",
-   "type_short": "W",
-   "room": "MS Teams",
-   "teacher": "Małgorzata Wójcik-Pyzik",
-   "pid": "3343848",
-   "kind": "elective",
-   "online": true,
-   "key": "PS|W|2026-10-10|11:30"
-  },
-  {
-   "date": "2026-10-10",
    "start": "13:15",
    "end": "14:45",
    "code": "PBM",
@@ -211,21 +185,6 @@
    "kind": "elective",
    "online": true,
    "key": "PH|W|2026-10-11|09:45"
-  },
-  {
-   "date": "2026-10-11",
-   "start": "11:30",
-   "end": "13:00",
-   "code": "PS",
-   "name": "Wyzwania współczesnej polityki społecznej",
-   "type": "Wykład",
-   "type_short": "W",
-   "room": "MS Teams",
-   "teacher": "Katarzyna Sipurzyńska-Rudnicka",
-   "pid": "3343850",
-   "kind": "elective",
-   "online": true,
-   "key": "PS|W|2026-10-11|11:30"
   },
   {
    "date": "2026-10-17",
@@ -634,36 +593,6 @@
    "key": "PH|W|2026-11-14|09:45"
   },
   {
-   "date": "2026-11-14",
-   "start": "11:30",
-   "end": "13:00",
-   "code": "PS",
-   "name": "Społeczne kompetencje",
-   "type": "Wykład",
-   "type_short": "W",
-   "room": "MS Teams",
-   "teacher": "Małgorzata Wójcik-Pyzik",
-   "pid": "3343848",
-   "kind": "elective",
-   "online": true,
-   "key": "PS|W|2026-11-14|11:30"
-  },
-  {
-   "date": "2026-11-14",
-   "start": "13:15",
-   "end": "14:45",
-   "code": "PS",
-   "name": "Społeczne kompetencje",
-   "type": "Wykład",
-   "type_short": "W",
-   "room": "MS Teams",
-   "teacher": "Małgorzata Wójcik-Pyzik",
-   "pid": "3343848",
-   "kind": "elective",
-   "online": true,
-   "key": "PS|W|2026-11-14|13:15"
-  },
-  {
    "date": "2026-11-15",
    "start": "08:00",
    "end": "09:30",
@@ -692,36 +621,6 @@
    "kind": "elective",
    "online": true,
    "key": "PH|W|2026-11-15|09:45"
-  },
-  {
-   "date": "2026-11-15",
-   "start": "11:30",
-   "end": "13:00",
-   "code": "PS",
-   "name": "Wyzwania współczesnej polityki społecznej",
-   "type": "Wykład",
-   "type_short": "W",
-   "room": "MS Teams",
-   "teacher": "Katarzyna Sipurzyńska-Rudnicka",
-   "pid": "3343850",
-   "kind": "elective",
-   "online": true,
-   "key": "PS|W|2026-11-15|11:30"
-  },
-  {
-   "date": "2026-11-15",
-   "start": "13:15",
-   "end": "14:45",
-   "code": "PS",
-   "name": "Wyzwania współczesnej polityki społecznej",
-   "type": "Wykład",
-   "type_short": "W",
-   "room": "MS Teams",
-   "teacher": "Katarzyna Sipurzyńska-Rudnicka",
-   "pid": "3343850",
-   "kind": "elective",
-   "online": true,
-   "key": "PS|W|2026-11-15|13:15"
   },
   {
    "date": "2026-11-21",
@@ -939,21 +838,6 @@
    "key": "PH|W|2026-12-05|09:45"
   },
   {
-   "date": "2026-12-05",
-   "start": "11:30",
-   "end": "13:00",
-   "code": "PS",
-   "name": "Społeczne kompetencje",
-   "type": "Wykład",
-   "type_short": "W",
-   "room": "MS Teams",
-   "teacher": "Małgorzata Wójcik-Pyzik",
-   "pid": "3343848",
-   "kind": "elective",
-   "online": true,
-   "key": "PS|W|2026-12-05|11:30"
-  },
-  {
    "date": "2026-12-06",
    "start": "08:00",
    "end": "09:30",
@@ -982,21 +866,6 @@
    "kind": "elective",
    "online": true,
    "key": "PH|W|2026-12-06|09:45"
-  },
-  {
-   "date": "2026-12-06",
-   "start": "11:30",
-   "end": "13:00",
-   "code": "PS",
-   "name": "Wyzwania współczesnej polityki społecznej",
-   "type": "Wykład",
-   "type_short": "W",
-   "room": "MS Teams",
-   "teacher": "Katarzyna Sipurzyńska-Rudnicka",
-   "pid": "3343850",
-   "kind": "elective",
-   "online": true,
-   "key": "PS|W|2026-12-06|11:30"
   },
   {
    "date": "2026-12-12",

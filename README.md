@@ -11,6 +11,7 @@ Czytelna wersja planu z [plan.ue.wroc.pl](https://plan.ue.wroc.pl/), która aktu
 
 ## Typowe zmiany w `config.json`
 
+- **Rezygnacja z przedmiotu (np. brak zapisu)** – dopisz jego kod do `skip` (np. `["PS"]`), wtedy znika z planu i kalendarza.
 - **Zmiana przedmiotu do wyboru** – popraw wpis w `electives`
   (kod `PH`/`PS`, dzień tygodnia: 5 = sobota, 6 = niedziela, nazwa, prowadzący, `teacher_id` z listy
   „Pracownicy” na plan.ue.wroc.pl).

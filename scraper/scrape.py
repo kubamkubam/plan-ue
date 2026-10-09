@@ -159,6 +159,8 @@ def build():
     if lang_pid:
         # konkretna grupa lektoratu zastępuje ogólny blok "Język obcy" z planu kierunku
         positions = [p for p in positions if p["code"] != "JO"] + [parse_position(lang_pid)]
+    # przedmioty, na które nie chodzisz w tym semestrze (np. brak zapisu) - całkiem poza planem
+    positions = [p for p in positions if p["code"] not in CONFIG.get("skip", [])]
 
     electives = {}
     for el in CONFIG.get("electives", []):
