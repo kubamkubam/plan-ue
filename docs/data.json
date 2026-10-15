@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-10T00:48:42",
+ "generated_at": "2026-10-15T13:13:22",
  "config": {
   "title": "Plan zajęć",
   "subtitle": "N1 · ZR/2 · semestr zimowy 2026/27",
@@ -1018,7 +1018,7 @@
    "name": "Kierowanie zespołem projektowym",
    "type": "Ćwiczenia",
    "type_short": "Ćw",
-   "room": "",
+   "room": "507E",
    "teacher": "Anna Marciszewska",
    "pid": "3348699",
    "kind": "regular",
@@ -1132,7 +1132,7 @@
    "name": "Kierowanie zespołem projektowym",
    "type": "Ćwiczenia",
    "type_short": "Ćw",
-   "room": "",
+   "room": "507E",
    "teacher": "Anna Marciszewska",
    "pid": "3348699",
    "kind": "regular",
@@ -1160,7 +1160,7 @@
    "name": "Kierowanie zespołem projektowym",
    "type": "Ćwiczenia",
    "type_short": "Ćw",
-   "room": "",
+   "room": "507E",
    "teacher": "Anna Marciszewska",
    "pid": "3348699",
    "kind": "regular",
@@ -1293,7 +1293,7 @@
    "name": "Kierowanie zespołem projektowym",
    "type": "Ćwiczenia",
    "type_short": "Ćw",
-   "room": "",
+   "room": "507E",
    "teacher": "Anna Marciszewska",
    "pid": "3348699",
    "kind": "regular",
@@ -1357,6 +1357,43 @@
   }
  ],
  "changes": [
+  {
+   "detected_at": "2026-10-15T13:13:22",
+   "items": [
+    {
+     "kind": "room",
+     "code": "KZP",
+     "name": "Kierowanie zespołem projektowym",
+     "type_short": "Ćw",
+     "date": "2026-12-20",
+     "text": "niedz 20.12 13:15–14:45: sala — → 507E"
+    },
+    {
+     "kind": "room",
+     "code": "KZP",
+     "name": "Kierowanie zespołem projektowym",
+     "type_short": "Ćw",
+     "date": "2027-01-10",
+     "text": "niedz 10.01 15:00–16:30: sala — → 507E"
+    },
+    {
+     "kind": "room",
+     "code": "KZP",
+     "name": "Kierowanie zespołem projektowym",
+     "type_short": "Ćw",
+     "date": "2027-01-17",
+     "text": "niedz 17.01 15:00–16:30: sala — → 507E"
+    },
+    {
+     "kind": "room",
+     "code": "KZP",
+     "name": "Kierowanie zespołem projektowym",
+     "type_short": "Ćw",
+     "date": "2027-01-31",
+     "text": "niedz 31.01 09:45–11:15: sala — → 507E"
+    }
+   ]
+  },
   {
    "detected_at": "2026-10-06T18:37:35",
    "items": [
