@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-16T15:08:20",
+ "generated_at": "2026-10-20T13:16:58",
  "config": {
   "title": "Plan zajęć",
   "subtitle": "N1 · ZR/2 · semestr zimowy 2026/27",
@@ -288,21 +288,6 @@
    "kind": "regular",
    "online": true,
    "key": "ZPR|W|2026-10-24|09:45"
-  },
-  {
-   "date": "2026-10-24",
-   "start": "11:30",
-   "end": "13:00",
-   "code": "PBM",
-   "name": "Projekty w badaniach marketingowych",
-   "type": "Wykład",
-   "type_short": "W",
-   "room": "MS Teams",
-   "teacher": "Paweł Waniowski",
-   "pid": "3348696",
-   "kind": "regular",
-   "online": true,
-   "key": "PBM|W|2026-10-24|11:30"
   },
   {
    "date": "2026-10-24",
@@ -885,6 +870,21 @@
    "key": "BiCP|W|2026-12-12|15:00"
   },
   {
+   "date": "2026-12-12",
+   "start": "16:45",
+   "end": "18:15",
+   "code": "PBM",
+   "name": "Projekty w badaniach marketingowych",
+   "type": "Wykład",
+   "type_short": "W",
+   "room": "MS Teams",
+   "teacher": "Paweł Waniowski",
+   "pid": "3348696",
+   "kind": "regular",
+   "online": true,
+   "key": "PBM|W|2026-12-12|16:45"
+  },
+  {
    "date": "2026-12-13",
    "start": "11:30",
    "end": "13:00",
@@ -1357,6 +1357,19 @@
   }
  ],
  "changes": [
+  {
+   "detected_at": "2026-10-20T13:16:58",
+   "items": [
+    {
+     "kind": "moved",
+     "code": "PBM",
+     "name": "Projekty w badaniach marketingowych",
+     "type_short": "W",
+     "date": "2026-12-12",
+     "text": "sob 24.10 11:30–13:00 → sob 12.12 16:45–18:15"
+    }
+   ]
+  },
   {
    "detected_at": "2026-10-16T15:08:20",
    "items": [
